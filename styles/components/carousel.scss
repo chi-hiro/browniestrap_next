@@ -1,0 +1,503 @@
+@use '/styles/core/core' as *;
+
+@use 'swiper/scss';
+@use 'swiper/scss/effect-fade';
+@use 'swiper/scss/pagination';
+@use 'swiper/scss/lazy';
+
+//***********************************************************************
+//  Transition
+//***********************************************************************
+.carousel.reveal {
+    &.carousel-visual,
+    &.carousel-slide {
+        opacity: 0;
+        transition: opacity 800ms linear;
+    }
+
+    &.carousel-lineup {
+        .swiper-slide {
+            img {
+                opacity: 0;
+                transform: scale(0.9) translateZ(0);
+                transition: opacity 800ms linear, transform 800ms $easeOutQuart;
+            }
+        }
+    }
+
+    .carousel-scrollbar {
+        transform: scale(0, 1);
+        transform-origin: center;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        transform: scale(0);
+        transform-origin: center;
+    }
+
+    &.reveal-active {
+        &.carousel-visual,
+        &.carousel-slide {
+            opacity: 1;
+        }
+
+        &.carousel-lineup {
+            .swiper-slide {
+                img {
+                    opacity: 1;
+                    transform: none;
+                }
+
+                @for $i from 2 through 10 {
+                    &:nth-child(#{$i}) {
+                        img { transition-delay: 100ms * $i; }
+                    }
+                }
+            }
+        }
+
+        .carousel-scrollbar {
+            transform: none;
+            transition: transform 800ms $easeInOutQuart;
+        }
+
+        .swiper-button-prev {
+            transform: none;
+            transition: transform 800ms $easeInOutQuart 200ms;
+        }
+
+        .swiper-button-next {
+            transform: none;
+            transition: transform 800ms $easeInOutQuart 300ms;
+        }
+    }
+}
+
+//***********************************************************************
+//  Base
+//***********************************************************************
+.carousel {
+    position: relative;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .embed img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        a {
+            overflow: hidden;
+            display: block;
+            position: relative;
+
+            &:hover, &:active {
+                text-decoration: none;
+                outline: none;
+            }
+        }
+    }
+
+    .swiper-lazy {
+        opacity: 0;
+        filter: blur(10px);
+        transition: opacity 400ms linear, filter 400ms linear;
+
+        &.swiper-lazy-loaded {
+            opacity: 1;
+            filter: none;
+        }
+    }
+
+    .swiper-lazy-loading {
+        position: absolute;
+    }
+
+    .swiper-lazy-preloader {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        animation: none !important;
+        background-color: $muted-bg;
+
+        @include darkmode {
+            background-color: $dark-muted-bg;
+        }
+
+        .loader {
+            position: static;
+        }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        cursor: pointer;
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        bottom: -$input-height + spacer(-1.5);
+        user-select: none;
+        width: $input-height;
+        height: $input-height;
+        margin: 0;
+        color: $body-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include breakpoint-down {
+            display: none;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            margin: auto;
+            border-top: 2px solid $body-color;
+            border-right: 2px solid $body-color;
+            transform: rotate(45deg);
+            @include transition(border);
+        }
+
+        &::after {
+            pointer-events: none;
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: $input-height;
+            height: $input-height;
+            margin: auto;
+            border: 2px solid $body-color;
+            border-radius: 100%;
+            @include transition((background, border));
+        }
+
+        @include darkmode {
+            color: $dark-body-color;
+
+            &::before {
+                border-color: white;
+            }
+
+            &::after {
+                border-color: white;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
+
+        @include hover-mouse {
+            &::before {
+                border-color: white;
+            }
+
+            &::after {
+                border-color: $link-hover-color;
+                background-color: $link-hover-color;
+            }
+        }
+
+        @include isTouch {
+            display: none;
+        }
+
+        &.swiper-button-disabled {
+            pointer-events: none;
+
+            &::before {
+                border-color: rgba(0,0,0,0.1);
+
+                @include darkmode {
+                    border-color: rgba(255,255,255,0.1);
+                }
+            }
+
+            &::after {
+                border-color: rgba(0,0,0,0.1);
+
+                @include darkmode {
+                    border-color: rgba(255,255,255,0.1);
+                }
+            }
+        }
+    }
+
+    .swiper-button-prev {
+        right: $input-height + spacer(0.5);
+
+        &::before {
+            left: 2px;
+            transform: rotate(-135deg);
+        }
+    }
+
+    .swiper-button-next {
+        &::before {
+            right: 2px;
+        }
+    }
+
+    .swiper-pagination {
+        bottom: spacer(1.5);
+
+        .swiper-pagination-bullet {
+            opacity: 1;
+            background-color: rgba(0,0,0,0.3);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: $brand-primary;
+        }
+    }
+
+    .carousel-loader {
+        pointer-events: none;
+        position: absolute;
+        z-index: 2;
+        right: calc($grid-gutter-width / 2);
+        bottom: calc($grid-gutter-width / 2);
+
+        &.hide {
+            opacity: 0;
+        }
+
+        .loader-circle {
+            svg {
+                circle {
+                    stroke: rgba(0,0,0,0.5);
+                }
+
+                &.loader-circle-active {
+                    circle {
+                        stroke: white;
+                    }
+                }
+            }
+
+            &.animate {
+                svg {
+                    circle {
+                        transition: stroke-dashoffset var(--carousel-timer-duration) linear;
+                        animation: carousel_timer_waiting 1000ms $easeInOutQuint var(--carousel-timer-duration) infinite;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes carousel_timer_waiting {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+//***********************************************************************
+//  Mode: Visual
+//***********************************************************************
+.carousel-visual {
+    .swiper-container {
+        cursor: default !important;
+    }
+
+    .swiper-slide {
+        height: 100vh;
+        height: 100svh;
+        max-height: 200vw;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.15);
+        }
+    }
+
+    .swiper-slide-prev,
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+        img, picture {
+            animation: visual_slide_zoom var(--carousel-duration) linear 1;
+        }
+    }
+}
+
+@keyframes visual_slide_zoom {
+    100% { transform: scale(1) }
+}
+
+//***********************************************************************
+//  Mode: Slide
+//***********************************************************************
+.carousel-slide {
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+        opacity: 1;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: 0;
+        bottom: 0;
+        width: 15%;
+        height: 100%;
+    }
+
+    .swiper-button-prev {
+        left: -44px;
+        right: auto;
+    }
+
+    .swiper-button-next {
+        right: -44px;
+        left: auto;
+    }
+
+    .loader-circle {
+        left: spacer(1);
+        margin: 0 auto;
+    }
+}
+
+//***********************************************************************
+//  Mode: Lineup
+//***********************************************************************
+.carousel-lineup {
+    .swiper {
+        overflow: visible !important;
+    }
+
+    .swiper-slide {
+        a {
+            display: block;
+            transition: opacity $duration linear;
+
+            @include focus-mouse {
+                opacity: 0.85;
+            }
+        }
+    }
+}
+
+//***********************************************************************
+//  Scrollbar
+//***********************************************************************
+$slider-height: 2px;
+
+.carousel-scrollbar {
+    cursor: ew-resize;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    height: $input-height;
+    width: 100%;
+    max-width: 75vw;
+    margin: spacer(1.5) auto 0;
+
+    @include breakpoint-up {
+        max-width: 400px;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        height: $slider-height;
+        background-color: darken($body-bg, 15%);
+
+        @include darkmode {
+            background-color: lighten($dark-body-bg, 15%);
+        }
+    }
+}
+
+.carousel-scrollbar-bar {
+    position: relative;
+    z-index: 5;
+    display: block;
+    height: $input-height;
+    padding: calc(($input-height - $slider-height) / 2) 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        height: $slider-height;
+        background-color: $brand-primary;
+    }
+
+    &.transition {
+        @include transition(transform);
+    }
+}
+
+.carousel-scrollbar-point {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carousel-scrollbar-point-item {
+    flex: 1 1 100%;
+    position: relative;
+    text-align: center;
+    height: $slider-height;
+
+    border-left: 1px solid $body-bg;
+    border-right: 1px solid $body-bg;
+
+    @include darkmode {
+        border-color: $dark-body-bg;
+    }
+}

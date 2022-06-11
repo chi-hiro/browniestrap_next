@@ -1,0 +1,256 @@
+@use '/styles/core/core' as *;
+
+.card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    @include rounded;
+
+    background-color: $muted-bg;
+    color: $body-color;
+
+    @include darkmode {
+        background-color: $dark-muted-bg;
+        color: $dark-body-color;
+    }
+
+    [class*="grid"] &, [class*="flex"] & {
+        height: 100%;
+    }
+
+    &.text-success {
+        background-color: lighten($brand-success, 45%);
+
+        .icon {
+            color: $brand-success;
+        }
+
+        &.hover-border::after {
+            border-color: $brand-success;
+        }
+    }
+
+    &.text-info {
+        background-color: lighten($brand-info, 35%);
+
+        .icon {
+            color: $brand-info;
+        }
+
+        &.hover-border::after {
+            border-color: $brand-info;
+        }
+    }
+
+    &.text-warning {
+        background-color: lighten($brand-warning, 40%);
+
+        .icon {
+            color: $brand-warning;
+        }
+
+        &.hover-border::after {
+            border-color: $brand-warning;
+        }
+    }
+
+    &.text-danger {
+        background-color: lighten($brand-danger, 40%);
+
+        .icon {
+            color: $brand-danger;
+        }
+
+        &.hover-border::after {
+            border-color: $brand-danger;
+        }
+    }
+
+    @each $key, $color in $themes {
+        @if $key != white {
+            &.bg-#{"" + $key} {
+                h2, h3, h4, h5, h6 {
+                    color: white;
+                }
+
+                small {
+                    color: rgba(255,255,255,0.7);
+                }
+
+                .icon {
+                    color: darken($color, 15%);
+                }
+
+                &.hover-border::after {
+                    border-color: darken($color, 15%);
+                }
+            }
+        }
+    }
+
+    &.bg-white {
+        @include darkmode {
+            background-color: #303030 !important;
+
+            small {
+                color: rgba(255,255,255,0.5);
+            }
+        }
+    }
+}
+
+a.card {
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &.hover-border {
+        &::after {
+            @include rounded;
+        }
+    }
+}
+
+.card-body {
+    flex: 1 1 auto;
+    position: relative;
+    padding: spacer(1.25);
+
+    @include breakpoint-up {
+        padding: spacer(1.5);
+    }
+
+    .icon {
+        margin-right: spacer(0.75);
+        line-height: 1;
+    }
+
+    .body {
+        position: relative;
+        font-size: 0.875rem;
+        line-height: 1.5;
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge {
+            margin-bottom: spacer(0.5);
+        }
+
+        > small {
+            display: block;
+            margin-bottom: spacer(0.5);
+        }
+
+        h2, h3, h4, h5, h6 {
+            font-size: 1.125rem;
+            margin-bottom: spacer(0.75);
+
+            + small {
+                margin-top: spacer(-0.5);
+                margin-bottom: spacer(0.75);
+            }
+        }
+    }
+}
+
+.card-thumb + .card-body {
+    padding: spacer(1.5);
+
+    .body {
+        > *:first-child.badge {
+            position: absolute;
+            z-index: 2;
+            top: spacer(-2.25);
+            left: 0;
+            margin: 0;
+        }
+    }
+}
+
+//***********************************************************************
+//  Notification
+//***********************************************************************
+.card-notification {
+    pointer-events: auto;
+    margin: 0 auto spacer(0.5);
+    width: 100%;
+    border: none;
+    box-shadow: $box-shadow-dark;
+    transform: translateY(-110%);
+    opacity: 0;
+
+    .card-body {
+        padding: spacer(1);
+
+        .body {
+            font-weight: bold;
+        }
+    }
+
+    @include breakpoint-up {
+        width: 600px;
+    }
+
+    .notification-container.left & {
+        transform: translateX(-100%);
+    }
+
+    .notification-container.right & {
+        transform: translateX(100%);
+    }
+
+    .notification-container.center & {
+        transform: scale(0.5);
+    }
+
+    &.notification-enter,
+    &.notification-exit {
+        @include transition((transform, opacity));
+        will-change: transform, opacity;
+    }
+
+    &.notification-enter-active,
+    &.notification-enter-done {
+        transform: none !important;
+        opacity: 1;
+    }
+}
+
+.notification-container {
+    position: fixed;
+    z-index: $zindex-modal;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    padding: spacer(0.5);
+
+    @include breakpoint-up {
+        padding: spacer(1);
+    }
+
+    &.left {
+        .card-notification {
+            margin-left: 0;
+        }
+    }
+
+    &.right {
+        .card-notification {
+            margin-right: 0;
+        }
+    }
+
+    &.center {
+        justify-content: center;
+    }
+}

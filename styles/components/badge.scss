@@ -1,0 +1,183 @@
+@use '/styles/core/core' as *;
+
+$badge-height: $icon-size;
+$badge-border-radius: 3px;
+
+.badge {
+    user-select: none;
+    display: inline-block;
+    padding: 0 spacer(0.5);
+    @include rounded($badge-border-radius);
+    min-width: $badge-height;
+    line-height: $badge-height;
+    font-size: 0.75rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    @include text-kerning;
+
+    color: $body-color;
+    background-color: rgba(0,0,0,0.05);
+
+    @include darkmode {
+        color: $dark-body-color;
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    &.badge-default {
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
+    // Icon badge
+    &.badge-status {
+        display: flex;
+        align-items: center;
+        gap: spacer(0.5);
+        min-width: initial;
+        padding: 0;
+        border-radius: none;
+        background: none;
+        user-select: auto;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            flex: 0 0 auto;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background-color: $muted-color;
+
+            @include darkmode {
+                background-color: $muted-color;
+            }
+        }
+
+        @each $key, $color in $themes {
+            &.is-#{"" + $key} {
+                &::before {
+                    background-color: $color;
+                }
+            }
+        }
+    }
+
+    &.badge-check {
+        position: relative;
+        vertical-align: top;
+        min-width: initial;
+        height: $badge-height;
+        padding: 0 0 0 $badge-height + spacer(0.5);
+        border-radius: none;
+        background: none;
+        user-select: auto;
+
+        font-size: 1rem;
+        font-weight: normal;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: $badge-height;
+            height: $badge-height;
+            border-radius: 100%;
+            background-color: $muted-color;
+
+            @include darkmode {
+                background-color: $muted-color;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 2;
+            top: 3px;
+            left: 8px;
+            margin: auto;
+            width: 8px;
+            height: 16px;
+            border-bottom: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg) scale(0.7);
+        }
+
+        @each $key, $color in $themes {
+            &.is-#{"" + $key} {
+                &::before {
+                    background-color: $color;
+                }
+            }
+        }
+
+        &.is-white {
+            &::after {
+                border-color: $dark-body-bg;
+            }
+        }
+    }
+
+    // Theme
+    &[class*='border-'] {
+        line-height: $badge-height - ($border-width * 2);
+        background: none;
+        border: $border-width solid $body-color;
+    }
+
+    @each $key, $color in $themes {
+        &.text-#{"" + $key} {
+            background-color: lighten($color, 35%);
+        }
+
+        &.border-#{"" + $key} {
+            color: $color;
+        }
+    }
+
+    &.text-primary {
+        background-color: lighten($brand-primary, 30%);
+    }
+
+    &.text-success {
+        background-color: lighten($brand-success, 45%);
+    }
+
+    &.text-warning {
+        background-color: lighten($brand-warning, 38%);
+    }
+
+    &.text-danger {
+        background-color: lighten($brand-danger, 40%);
+    }
+
+    &.text-white {
+        background-color: $body-color;
+    }
+
+    &.bg-white {
+        color: $body-color;
+    }
+}
+
+a.badge {
+    @include focus-mouse {
+        color: $body-color;
+        opacity: 0.7;
+
+        @include darkmode {
+            color: $dark-body-color;
+        }
+
+        @each $key, $color in $themes {
+            &.border-#{"" + $key} {
+                color: $color;
+            }
+        }
+    }
+}

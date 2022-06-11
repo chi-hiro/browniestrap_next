@@ -1,3 +1,10 @@
+const basePath = process.env.NODE_ENV === 'production' ? '' : ''
+
 module.exports = {
-  reactStrictMode: true,
+    reactStrictMode: false,
+    assetPrefix: basePath,
+    publicRuntimeConfig: {
+        basePath: basePath
+    },
+    trailingSlash: true,
 }

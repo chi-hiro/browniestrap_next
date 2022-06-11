@@ -1,0 +1,220 @@
+@use '/styles/core/core' as *;
+
+//***********************************************************************
+//  Transition
+//***********************************************************************
+.expansion-body-enter,
+.expansion-body-exit {
+    @include transition(height);
+    will-change: height;
+
+    @include breakpoint-up {
+        #header & {
+            @include transition((transform, opacity));
+            will-change: transform, opacity;
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+    }
+
+    .expansion-popup & {
+        > * {
+            @include transition((transform, opacity));
+            will-change: transform, opacity;
+            transform: translateX(spacer(1));
+            opacity: 0;
+        }
+    }
+}
+
+.expansion-body-enter-active {
+    @include breakpoint-up {
+        #header & {
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    .expansion-popup & {
+        > * {
+            transform: none;
+            opacity: 1;
+        }
+    }
+}
+
+//***********************************************************************
+//  Base
+//***********************************************************************
+.expansion {
+    .expansion-toggler {
+        @include button-reset;
+        position: relative;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        line-height: 1.5;
+        color: $headings-color;
+        @include transition(color);
+
+        .text {
+            flex: 1 1 auto;
+        }
+
+        .icon {
+            flex: 0 0 auto;
+            font-size: $icon-size;
+            line-height: 0;
+            @include transition(transform);
+
+            > * {
+                font-size: inherit;
+            }
+        }
+
+        @include focus-mouse {
+            text-decoration: none;
+            color: $link-hover-color;
+        }
+
+        @include darkmode {
+            color: $dark-headings-color;
+
+            &:hover {
+                color: $dark-headings-color;
+            }
+        }
+    }
+
+    .expansion-body {
+        position: relative;
+        overflow: hidden;
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &.show {
+        .expansion-toggler {
+            .icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &.lock {
+        .expansion-toggler {
+            cursor: default;
+            user-select: none;
+        }
+    }
+}
+
+.expansion-border {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    .expansion-toggler {
+        display: flex;
+        width: 100%;
+        padding: spacer(1.5) spacer(1);
+        font-weight: 700;
+        @include text-kerning;
+    }
+
+    .expansion-body {
+        margin-left: spacer(1);
+        margin-right: spacer(1);
+    }
+
+    @include darkmode {
+        border-color: $dark-border-color;
+    }
+
+    @include transition(padding);
+
+    &.show {
+        padding-bottom: spacer(1.5);
+    }
+
+    + .expansion {
+        border-top: none;
+    }
+}
+
+.expansion-popup {
+    position: relative;
+    display: block;
+
+    .expansion-toggler {
+        padding: calc(($component-height - $icon-size) / 2);
+        border-radius: 999px;
+        @include transition(color);
+
+        .icon {
+            position: static;
+            width: $icon-size;
+            height: $icon-size;
+            font-size: $icon-size;
+        }
+    }
+
+    .expansion-body {
+        overflow: hidden;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        min-width: 160px;
+        @include rounded;
+        box-shadow: $box-shadow-dark;
+
+        background-color: $body-bg;
+
+        @include darkmode {
+            background-color: $dark-body-bg;
+        }
+
+        ul {
+            margin: 0;
+            padding: spacer(0.5) 0;
+            list-style: none;
+
+            a, button {
+                @include button-reset;
+                display: flex;
+                align-items: center;
+                gap: spacer(0.5);
+                width: 100%;
+                padding: spacer(0.75) spacer(1.25);
+                line-height: $icon-size;
+                color: $body-color;
+                white-space: nowrap;
+
+                @include darkmode {
+                    color: $body-color;
+                }
+
+                @include focus-mouse {
+                    background-color: $muted-bg;
+                    color: $body-color;
+
+                    @include darkmode {
+                        background-color: $dark-muted-bg;
+                        color: $dark-body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.show {
+        .expansion-toggler {
+            .icon {
+                transform: none;
+            }
+        }
+    }
+}

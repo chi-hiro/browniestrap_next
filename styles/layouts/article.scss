@@ -1,0 +1,45 @@
+@use '/styles/core/core' as *;
+
+.article {
+    font-size: 1rem;
+    line-height: 2;
+
+    @include breakpoint-up {
+        font-size: 1.125rem;
+        line-height: 2;
+    }
+
+    .article-detail {
+        color: lighten($body-color, 20%);
+        margin-bottom: spacer(1);
+
+        @include darkmode {
+            color: darken($dark-body-color, 20%);
+        }
+    }
+
+    .article-date {
+        font-size: 1.1em;
+        line-height: $icon-size;
+    }
+
+    .article-title {
+        font-size: 1.2em;
+        line-height: 1.5;
+
+        @include breakpoint-up {
+            font-size: 1.7em;
+            margin-bottom: spacer(1.5);
+        }
+    }
+
+    .article-body {
+        img {
+            @include img-fluid;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
