@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import Head from 'next/head'
 import getConfig from 'next/config'
+import Image from 'next/image'
 import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
@@ -39,6 +40,7 @@ export default function Home() {
                     <Carousel
                         mode="visual"
                         duration={8000}
+                        zoom={true}
                         timer={true}
                         src={[
                             { src_lg: `${basePath}/dummy/visual1_lg.jpg`, src: `${basePath}/dummy/visual1.jpg` },
@@ -103,7 +105,9 @@ export default function Home() {
                         <p><a href="/" className="btn is-outline-white">ボタン</a></p>
                     </div>
 
-                    <span className="embed embed-1by1 lg:embed-21by9 section-cover-bg overlay reveal reveal-fade-back" style={{ backgroundImage: `url(${basePath}/dummy/cover.jpg)` }}></span>
+                    <span className="embed embed-1by1 lg:embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
+                        <Image src={`${basePath}/dummy/cover.jpg`} alt="" width={1920} height={1080} />
+                    </span>
                 </section>
 
                 <section className="section section-grid reveal">
@@ -145,6 +149,7 @@ export default function Home() {
                     <div className="container">
                         <Carousel
                             mode="lineup"
+                            zoom={true}
                             nav={true}
                             src={[
                                 { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.jpg` },
@@ -704,6 +709,12 @@ export default function Home() {
                             <Badge theme="badge-check is-danger capitalize">danger</Badge>
                             <Badge theme="badge-check is-white capitalize">white</Badge>
                         </div>
+
+                        <h3 className="section-heading-sm">Count</h3>
+                        <button type="button" className="btn is-primary">
+                            Sample
+                            <Badge theme="badge-count bg-danger">8</Badge>
+                        </button>
                     </div>
                 </section>
 

@@ -1,17 +1,3 @@
-export type Props = {
-    src: Array<{
-        src: string,
-        src_lg?: string,
-        url?: string,
-        embed?: string
-    }>,
-    mode: string,
-    duration?: number,
-    nav?: boolean,
-    timer?: boolean,
-    pagination?: boolean
-}
-
 export const initSwiperOption = (mode: string, duration: number | undefined, nav: boolean | undefined, pagination: boolean | undefined) => {
     let options: {[key: string]: any} = {
         loop: true,

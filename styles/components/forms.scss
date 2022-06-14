@@ -278,11 +278,19 @@ label + .form-text {
             border-color: rgba(0,0,0,0.2);
         }
 
+        @include hover-mouse {
+            border-color: rgba(0,0,0,0.2);
+        }
+
         @include darkmode {
             background-color: $dark-input-border-color;
 
             &:focus-visible {
                 border-color: rgba(255,255,255,0.3);
+            }
+
+            @include hover-mouse {
+                border-color: rgba(0,0,0,0.2);
             }
         }
 
@@ -424,10 +432,18 @@ label + .form-text {
         border-color: rgba(0,0,0,0.2);
     }
 
+    @include hover-mouse {
+        border-color: rgba(0,0,0,0.2);
+    }
+
     @include darkmode {
         background-color: $dark-input-border-color;
 
         &:focus-visible {
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        @include hover-mouse {
             border-color: rgba(255,255,255,0.3);
         }
     }

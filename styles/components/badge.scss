@@ -4,14 +4,19 @@ $badge-height: $icon-size;
 $badge-border-radius: 3px;
 
 .badge {
-    user-select: none;
-    display: inline-block;
-    padding: 0 spacer(0.5);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
     @include rounded($badge-border-radius);
     min-width: $badge-height;
-    line-height: $badge-height;
+    min-height: $badge-height;
+    padding: 0 spacer(0.5);
+
+    user-select: none;
     font-size: 0.75rem;
     text-align: center;
+    line-height: 1;
     white-space: nowrap;
     vertical-align: middle;
     @include text-kerning;
@@ -123,9 +128,20 @@ $badge-border-radius: 3px;
         }
     }
 
+    &.badge-count {
+        position: absolute;
+        right: calc($badge-height / -3);
+        top: calc($badge-height / -3);
+        border-radius: 999px;
+        padding: 0 spacer(0.25);
+        font-size: 11px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+        color: white;
+        background-color: $brand-primary;
+    }
+
     // Theme
     &[class*='border-'] {
-        line-height: $badge-height - ($border-width * 2);
         background: none;
         border: $border-width solid $body-color;
     }

@@ -17,11 +17,9 @@
 
     &.carousel-lineup {
         .swiper-slide {
-            img {
-                opacity: 0;
-                transform: scale(0.9) translateZ(0);
-                transition: opacity 800ms linear, transform 800ms $easeOutQuart;
-            }
+            opacity: 0;
+            transform: scale(0.9) translateZ(0);
+            transition: opacity 800ms linear, transform 800ms $easeOutQuart;
         }
     }
 
@@ -44,14 +42,12 @@
 
         &.carousel-lineup {
             .swiper-slide {
-                img {
-                    opacity: 1;
-                    transform: none;
-                }
+                opacity: 1;
+                transform: none;
 
                 @for $i from 2 through 10 {
                     &:nth-child(#{$i}) {
-                        img { transition-delay: 100ms * $i; }
+                        transition-delay: 100ms * $i;
                     }
                 }
             }
@@ -343,15 +339,22 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            transform: scale(1.15);
         }
     }
 
-    .swiper-slide-prev,
-    .swiper-slide-active,
-    .swiper-slide-duplicate-active {
-        img, picture {
-            animation: visual_slide_zoom var(--carousel-duration) linear 1;
+    &.effect-zoom {
+        .swiper-slide {
+            img {
+                transform: scale(1.15);
+            }
+        }
+
+        .swiper-slide-prev,
+        .swiper-slide-active,
+        .swiper-slide-duplicate-active {
+            img, picture {
+                animation: visual_slide_zoom var(--carousel-duration) linear 1;
+            }
         }
     }
 }
@@ -408,6 +411,22 @@
 
             @include focus-mouse {
                 opacity: 0.85;
+            }
+        }
+    }
+
+    &.effect-zoom {
+        .swiper-slide {
+            a {
+                img {
+                    transition: transform 600ms ease-out;
+                }
+
+                @include focus-mouse {
+                    img {
+                        transform: scale(1.15);
+                    }
+                }
             }
         }
     }

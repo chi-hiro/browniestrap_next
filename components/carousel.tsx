@@ -3,13 +3,28 @@ import { useSelector } from 'react-redux'
 import { EnvTypes } from 'store'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Navigation, Pagination, Lazy } from 'swiper'
-import { Props, initSwiperOption } from 'lib/swiperUtl'
+import { initSwiperOption } from 'lib/swiperUtl'
 import { elementInScreen } from 'lib/elementInScreen'
 import Loader from 'components/loader'
 import CarouselItem from 'components/carousel-item'
 import { CarouselScrollbar, CarouselScrollbarRefTypes } from 'components/carousel-scrollbar'
 
 let isResize: number = 0
+
+type Props = {
+    src: Array<{
+        src: string,
+        src_lg?: string,
+        url?: string,
+        embed?: string
+    }>,
+    mode: string,
+    zoom?: boolean,
+    duration?: number,
+    nav?: boolean,
+    timer?: boolean,
+    pagination?: boolean
+}
 
 const Carousel = (props: Props) => {
     // Store
@@ -135,7 +150,7 @@ const Carousel = (props: Props) => {
 
     // Render
     return (
-        <div ref={el} className={`carousel carousel-${props.mode} reveal`} style={durationStyle()}>
+        <div ref={el} className={`carousel carousel-${props.mode} reveal ${props.zoom ? 'effect-zoom' : ''}`} style={durationStyle()}>
             {isShow && (
                 <Swiper
                     {...swiperOption}
