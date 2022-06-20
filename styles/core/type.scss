@@ -4,6 +4,7 @@
 //  Headings
 //***********************************************************************
 h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
     margin-bottom: spacer(1);
     font-family:   inherit;
     font-weight:   700;
@@ -93,17 +94,6 @@ h6 { font-size: 1rem; }
 //***********************************************************************
 //  Line
 //***********************************************************************
-hr {
-    margin-top: $spacer;
-    margin-bottom: $spacer;
-    border: 0;
-    border-top: 1px solid $border-color;
-
-    @include darkmode {
-        border-color: $dark-border-color;
-    }
-}
-
 .hr-text {
     position: relative;
     text-align: center;

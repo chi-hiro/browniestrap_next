@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import Head from 'next/head'
 import getConfig from 'next/config'
-import Image from 'next/image'
 import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
@@ -106,7 +105,7 @@ export default function Home() {
                     </div>
 
                     <span className="embed embed-1by1 lg:embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
-                        <Image src={`${basePath}/dummy/cover.jpg`} alt="" width={1920} height={1080} />
+                        <img src={`${basePath}/dummy/cover.jpg`} alt="" />
                     </span>
                 </section>
 

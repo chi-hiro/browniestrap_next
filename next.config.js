@@ -7,4 +7,13 @@ module.exports = {
         basePath: basePath
     },
     trailingSlash: true,
+    exportPathMap: async function (
+        defaultPathMap,
+        { dev, dir, outDir, distDir, buildId }
+    ) {
+        return {
+            '/': { page: '/' },
+            '/dummy': { page: '/dummy' }
+        }
+    }
 }
