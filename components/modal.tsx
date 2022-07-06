@@ -7,7 +7,7 @@ import Icon from 'components/icon'
 type Props = {
     children: React.ReactNode
     title?: string
-    closebtn?: boolean
+    close?: boolean
 }
 
 export type ModalRefTypes = {
@@ -80,7 +80,7 @@ export const Modal = forwardRef((props: Props, ref) => {
                             <div className="modal-header">
                                 <h6 className="modal-header-title">{props.title}</h6>
 
-                                {props.closebtn && (
+                                {props.close && (
                                     <button v-if="props.closebtn" type="button" className="btn btn-icon-only modal-close" onClick={hide}>
                                         <Icon value="close" />
                                     </button>

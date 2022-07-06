@@ -832,7 +832,7 @@ export default function Home() {
                         </div>
                     </Modal>
 
-                    <Modal ref={dummyModal2Ref} title="Google 利用規約" closebtn={true}>
+                    <Modal ref={dummyModal2Ref} title="Google 利用規約" close={true}>
                         <div className="modal-body scroll">
                             <div className="inner terms">
                                 <p>本利用規約には、Google のビジネスの仕組み、Google に適用される法律、および Google が常に正しいと信じてきた事柄が反映されています。結果として、本利用規約は、サービスを利用するユーザーと Google との関係を定義するのに役立っています。たとえば、本規約の見出しには以下のような内容が含まれています。</p>
@@ -855,7 +855,7 @@ export default function Home() {
 
                         <div className="modal-footer">
                             <button type="button" className="btn is-primary rounded-full" onClick={() => dummyModal2Ref.current?.hide()}>
-                            承諾
+                                承諾
                             </button>
                         </div>
                     </Modal>
