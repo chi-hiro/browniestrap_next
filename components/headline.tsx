@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react'
 import Link from 'next/link'
-import Badge from 'components/badge'
+import UI from 'components/UIKit'
 
 type Props = {
     children: React.ReactNode,
@@ -27,7 +27,7 @@ const Headline = (props: Props) => {
         <div className="headline-item-body">
             <div className="detail">
                 {(props.category && props.theme) && (
-                    <Badge theme={props.theme}>{props.category}</Badge>
+                    <UI.Badge theme={props.theme}>{props.category}</UI.Badge>
                 )}
 
                 {props.date && (

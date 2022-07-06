@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react'
-import Badge from 'components/badge'
+import UI from 'components/UIKit'
 
 type Props = {
     children: React.ReactNode,
@@ -24,7 +24,7 @@ const Article = (props: Props) => {
         <article className="article" itemScope itemType="http://schema.org/NewsArticle">
             <div className="flex justify-between items-center article-detail">
                 <time itemProp="datepublished" dateTime={props.date} className="article-date">{formatDate}</time>
-                {(props.category && props.theme) && <Badge theme={props.theme}>{props.category}</Badge>}
+                {(props.category && props.theme) && <UI.Badge theme={props.theme}>{props.category}</UI.Badge>}
             </div>
 
             <h1 itemProp="name" className="article-title">

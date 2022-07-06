@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState, useEffect, useMemo, useImperativeHandle } from 'react'
+import { forwardRef, useState, useEffect, useMemo, useImperativeHandle } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'

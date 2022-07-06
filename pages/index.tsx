@@ -5,17 +5,13 @@ import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
 import { viewer } from 'lib/viewer'
-import Expansion from 'components/expansion'
-import Icon from 'components/icon'
-import Badge from 'components/badge'
-import Loader from 'components/loader'
-import Card from 'components/card'
+import UI from '@/components/UIKit'
+import { Modal, ModalRefTypes } from 'components/modal'
 import Carousel from 'components/carousel'
 import Headline from 'components/headline'
 import Article from 'components/article'
 import Breadcrumb from 'components/breadcrumb'
 import FormPassword from 'components/form-password'
-import { Modal, ModalRefTypes } from 'components/modal'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -173,70 +169,70 @@ export default function Home() {
 
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
-                                <Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" addclass="bg-white">
-                                    <Badge theme="bg-primary">News</Badge>
+                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" addclass="bg-white">
+                                    <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">「銀河」にインスパイアされた 2 種類のカラーで、どこまでも広がる遊びの世界へ。</p>
-                                </Card>
+                                </UI.Card>
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" addclass="bg-white">
-                                    <Badge theme="bg-primary">News</Badge>
+                                <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" addclass="bg-white">
+                                    <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">『FINAL FANTASY VII REMAKE INTERGRADE』は、大人気かつ受賞歴もある『FINAL FANTASY VII REMAKE』をPlayStation 5向けにライティングや質感、背景などの表現力を向上し、ユフィを主人公とした新規エピソード「FF7R EPISODE INTERmission」などの新要素を追加した作品だ。</p>
-                                </Card>
+                                </UI.Card>
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" addclass="bg-danger">
-                                    <Badge theme="bg-primary">News</Badge>
+                                <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" addclass="bg-danger">
+                                    <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">氷に覆われた文明崩壊後のロサンゼルスから、スナイパーのスコープから覗く第2次世界大戦まで、魅力的な体験がゾクゾク。</p>
-                                </Card>
+                                </UI.Card>
                             </div>
                         </div>
 
                         <h3 className="section-heading-sm">通知</h3>
 
-                        <Card icon="info" addclass="mb-1">
+                        <UI.Card icon="info" addclass="mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="check_circle" addclass="text-success mb-1">
+                        <UI.Card icon="check_circle" addclass="text-success mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="info" addclass="text-info mb-1">
+                        <UI.Card icon="info" addclass="text-info mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="warning" addclass="text-warning mb-1">
+                        <UI.Card icon="warning" addclass="text-warning mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="cancel" addclass="text-danger mb-1">
+                        <UI.Card icon="cancel" addclass="text-danger mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="check_circle" addclass="bg-success mb-1">
+                        <UI.Card icon="check_circle" addclass="bg-success mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="info" addclass="bg-info mb-1">
+                        <UI.Card icon="info" addclass="bg-info mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="warning" addclass="bg-warning mb-1">
+                        <UI.Card icon="warning" addclass="bg-warning mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                        </Card>
+                        </UI.Card>
 
-                        <Card icon="cancel" addclass="bg-danger mb-1">
+                        <UI.Card icon="cancel" addclass="bg-danger mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                        </Card>
+                        </UI.Card>
 
                         <div className="grid lg:flex gap-0.5">
                             <button type="button" className="btn is-outline-success" onClick={() => toast('success', 'You successfully read this important alert message.')}>Toast</button>
@@ -292,7 +288,7 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Basic</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-white">
-                            <button type="button" className="btn is-primary btn-block-sm-down rounded-full">Primary</button>
+                            <button type="button" className="is-primary btn-block-sm-down rounded-full">Primary</button>
                             <button type="button" className="btn is-secondary btn-block-sm-down rounded-full">Secondary</button>
                             <button type="button" className="btn is-success btn-block-sm-down rounded-full">Success</button>
                             <button type="button" className="btn is-info btn-block-sm-down rounded-full">Info</button>
@@ -342,59 +338,59 @@ export default function Home() {
                         <h3 className="section-heading-sm">Icon</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center">
                             <button type="button" className="btn btn-sm is-primary btn-block-sm-down">
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                                 Before.sm
                             </button>
 
                             <button type="button" className="btn btn-sm is-outline-primary btn-block-sm-down">
                                 After.sm
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                             </button>
 
                             <button type="button" className="btn is-primary btn-block-sm-down">
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                                 Before
                             </button>
 
                             <button type="button" className="btn is-outline-primary btn-block-sm-down">
                                 After
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                             </button>
 
                             <button type="button" className="btn btn-lg is-primary btn-block-sm-down">
                                 Before.lg
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                             </button>
 
                             <button type="button" className="btn btn-lg is-outline-primary btn-block-sm-down">
                                 After.lg
-                                <Icon value="shopping_cart" />
+                                <UI.Icon value="shopping_cart" />
                             </button>
                         </div>
 
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center mt-1">
                             <button type="button" className="btn btn-long btn-icon-before hover-icon-left is-primary btn-block-sm-down">
-                                <Icon value="chevron_left" />
+                                <UI.Icon value="chevron_left" />
                                 Before.btn-long
                             </button>
 
                             <button type="button" className="btn btn-long btn-icon-after hover-icon-right is-outline-primary btn-block-sm-down">
                                 After.btn-long
-                                <Icon value="chevron_right" />
+                                <UI.Icon value="chevron_right" />
                             </button>
                         </div>
 
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center mt-1">
                             <button type="button" className="btn btn-sm is-outline-info btn-icon-only rounded-full">
-                                <Icon value="chevron_left" />
+                                <UI.Icon value="chevron_left" />
                             </button>
 
                             <button type="button" className="btn btn is-danger btn-icon-only rounded-full">
-                                <Icon value="close" />
+                                <UI.Icon value="close" />
                             </button>
 
                             <button type="button" className="btn btn-lg is-outline-info btn-icon-only rounded-full">
-                                <Icon value="chevron_right" />
+                                <UI.Icon value="chevron_right" />
                             </button>
                         </div>
 
@@ -408,10 +404,10 @@ export default function Home() {
 
                             <div className="btn-switch">
                                 <button type="button" className="btn btn btn-icon-only active">
-                                    <Icon value="view_headline" />
+                                    <UI.Icon value="view_headline" />
                                 </button>
                                 <button type="button" className="btn btn btn-icon-only">
-                                    <Icon value="apps" />
+                                    <UI.Icon value="apps" />
                                 </button>
                             </div>
                         </div>
@@ -423,7 +419,7 @@ export default function Home() {
                         <h2 className="section-heading">フォーム</h2>
                         <form>
                             <div className="form-group">
-                                <label>ラベル <Badge theme="bg-danger">必須</Badge></label>
+                                <label>ラベル <UI.Badge theme="bg-danger">必須</UI.Badge></label>
                                 <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
                                 <input type="text" className="form-control" />
                             </div>
@@ -445,13 +441,13 @@ export default function Home() {
                                 <div className="form-combine form-combine-after">
                                     <input type="search" className="form-control" placeholder="検索" />
                                     <button type="button" className="form-combine-icon" tabIndex={-1}>
-                                        <Icon value="search" />
+                                        <UI.Icon value="search" />
                                     </button>
                                 </div>
 
                                 <div className="form-combine form-combine-before">
                                     <span className="form-combine-icon">
-                                        <Icon value="calendar_today" />
+                                        <UI.Icon value="calendar_today" />
                                     </span>
                                     <select className="form-control">
                                         <option value="./?dummy=1">2021年 1月</option>
@@ -624,27 +620,27 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-1">
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Dot</h3>
-                                <Loader type="dot" rounded={true} />
+                                <UI.Loader type="dot" rounded={true} />
                             </div>
 
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Spin</h3>
-                                <Loader type="spin" />
+                                <UI.Loader type="spin" />
                             </div>
 
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Circle</h3>
-                                <Loader type="circle" progress={26} />
+                                <UI.Loader type="circle" progress={26} />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Line</h3>
-                                <Loader type="line" />
+                                <UI.Loader type="line" />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Bar</h3>
-                                <Loader type="bar" progress={50} rounded={true} />
+                                <UI.Loader type="bar" progress={50} rounded={true} />
                             </div>
                         </div>
                     </div>
@@ -656,63 +652,63 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Text</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <Badge href="#" theme="text-primary uppercase">primary</Badge>
-                            <Badge href="#" theme="text-secondary uppercase">secondary</Badge>
-                            <Badge href="#" theme="text-success uppercase">success</Badge>
-                            <Badge href="#" theme="text-info uppercase">info</Badge>
-                            <Badge href="#" theme="text-warning uppercase">warning</Badge>
-                            <Badge href="#" theme="text-danger uppercase">danger</Badge>
-                            <Badge href="#" theme="text-white uppercase">white</Badge>
+                            <UI.Badge href="#" theme="text-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" theme="text-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" theme="text-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" theme="text-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" theme="text-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" theme="text-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" theme="text-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Background</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <Badge href="#" theme="bg-primary uppercase">primary</Badge>
-                            <Badge href="#" theme="bg-secondary uppercase">secondary</Badge>
-                            <Badge href="#" theme="bg-success uppercase">success</Badge>
-                            <Badge href="#" theme="bg-info uppercase">info</Badge>
-                            <Badge href="#" theme="bg-warning uppercase">warning</Badge>
-                            <Badge href="#" theme="bg-danger uppercase">danger</Badge>
-                            <Badge href="#" theme="bg-white uppercase">white</Badge>
+                            <UI.Badge href="#" theme="bg-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" theme="bg-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" theme="bg-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" theme="bg-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" theme="bg-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" theme="bg-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" theme="bg-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Border</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <Badge href="#" theme="border-primary uppercase">primary</Badge>
-                            <Badge href="#" theme="border-secondary uppercase">secondary</Badge>
-                            <Badge href="#" theme="border-success uppercase">success</Badge>
-                            <Badge href="#" theme="border-info uppercase">info</Badge>
-                            <Badge href="#" theme="border-warning uppercase">warning</Badge>
-                            <Badge href="#" theme="border-danger uppercase">danger</Badge>
-                            <Badge href="#" theme="border-white uppercase">white</Badge>
+                            <UI.Badge href="#" theme="border-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" theme="border-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" theme="border-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" theme="border-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" theme="border-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" theme="border-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" theme="border-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Icon: status</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <Badge theme="badge-status is-primary uppercase">primary</Badge>
-                            <Badge theme="badge-status is-secondary uppercase">secondary</Badge>
-                            <Badge theme="badge-status is-success uppercase">success</Badge>
-                            <Badge theme="badge-status is-info uppercase">info</Badge>
-                            <Badge theme="badge-status is-warning uppercase">warning</Badge>
-                            <Badge theme="badge-status is-danger uppercase">danger</Badge>
-                            <Badge theme="badge-status is-white uppercase">white</Badge>
+                            <UI.Badge theme="badge-status is-primary uppercase">primary</UI.Badge>
+                            <UI.Badge theme="badge-status is-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge theme="badge-status is-success uppercase">success</UI.Badge>
+                            <UI.Badge theme="badge-status is-info uppercase">info</UI.Badge>
+                            <UI.Badge theme="badge-status is-warning uppercase">warning</UI.Badge>
+                            <UI.Badge theme="badge-status is-danger uppercase">danger</UI.Badge>
+                            <UI.Badge theme="badge-status is-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Icon: check</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <Badge theme="badge-check is-primary capitalize">primary</Badge>
-                            <Badge theme="badge-check is-secondary capitalize">secondary</Badge>
-                            <Badge theme="badge-check is-success capitalize">success</Badge>
-                            <Badge theme="badge-check is-info capitalize">info</Badge>
-                            <Badge theme="badge-check is-warning capitalize">warning</Badge>
-                            <Badge theme="badge-check is-danger capitalize">danger</Badge>
-                            <Badge theme="badge-check is-white capitalize">white</Badge>
+                            <UI.Badge theme="badge-check is-primary capitalize">primary</UI.Badge>
+                            <UI.Badge theme="badge-check is-secondary capitalize">secondary</UI.Badge>
+                            <UI.Badge theme="badge-check is-success capitalize">success</UI.Badge>
+                            <UI.Badge theme="badge-check is-info capitalize">info</UI.Badge>
+                            <UI.Badge theme="badge-check is-warning capitalize">warning</UI.Badge>
+                            <UI.Badge theme="badge-check is-danger capitalize">danger</UI.Badge>
+                            <UI.Badge theme="badge-check is-white capitalize">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Count</h3>
                         <button type="button" className="btn is-primary">
                             Sample
-                            <Badge theme="badge-count bg-danger">8</Badge>
+                            <UI.Badge theme="badge-count bg-danger">8</UI.Badge>
                         </button>
                     </div>
                 </section>
@@ -734,18 +730,18 @@ export default function Home() {
                         <h2 className="section-heading">エキスパンション</h2>
 
                         <h3 className="section-heading-sm">Vanilla</h3>
-                        <Expansion title="Expansion (Click)">
+                        <UI.Expansion title="Expansion (Click)">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </Expansion>
+                        </UI.Expansion>
 
                         <h3 className="section-heading-sm">Border</h3>
-                        <Expansion title="Expansion (Hover)" theme="border" hover={true}>
+                        <UI.Expansion title="Expansion (Hover)" theme="border" hover={true}>
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </Expansion>
+                        </UI.Expansion>
 
                         <h3 className="section-heading-sm">Popup</h3>
                         <div className="flex justify-end">
-                            <Expansion theme="popup">
+                            <UI.Expansion theme="popup">
                                 <ul className="expansion-nav-body">
                                     <li>
                                         <button type="button">
@@ -759,12 +755,12 @@ export default function Home() {
                                     </li>
                                     <li>
                                         <button type="button" className="text-danger">
-                                            <Icon value="delete" />
+                                            <UI.Icon value="delete" />
                                             Item 3
                                         </button>
                                     </li>
                                 </ul>
-                            </Expansion>
+                            </UI.Expansion>
                         </div>
                     </div>
                 </section>
