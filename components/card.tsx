@@ -3,12 +3,12 @@ import Link from 'next/link'
 import Icon from 'components/icon'
 
 type Props = {
-    children: React.ReactNode,
-    href?: string,
-    title?: string,
-    icon?: string,
-    src?: string,
-    addclass?: string
+    children: React.ReactNode
+    href?: string
+    title?: string
+    icon?: string
+    src?: string
+    theme?: string
 }
 
 const Card = forwardRef((props: Props, ref) => {
@@ -37,12 +37,12 @@ const Card = forwardRef((props: Props, ref) => {
 
     return props.href ? (
         <Link href={props.href}>
-            <a className={`card hover-border ${props.addclass}`}>
+            <a className={`card hover-border ${props.theme}`}>
                 {renderBody}
             </a>
         </Link>
     ) : (
-        <div className={`card ${props.addclass}`}>
+        <div className={`card ${props.theme}`}>
             {renderBody}
         </div>
     )

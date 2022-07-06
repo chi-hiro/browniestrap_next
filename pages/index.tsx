@@ -9,7 +9,6 @@ import UI from '@/components/UIKit'
 import { Modal, ModalRefTypes } from 'components/modal'
 import Carousel from 'components/carousel'
 import Headline from 'components/headline'
-import Article from 'components/article'
 import Breadcrumb from 'components/breadcrumb'
 import FormPassword from 'components/form-password'
 
@@ -169,7 +168,7 @@ export default function Home() {
 
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" addclass="bg-white">
+                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" theme="bg-white">
                                     <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
@@ -178,7 +177,7 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" addclass="bg-white">
+                                <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" theme="bg-white">
                                     <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
@@ -187,7 +186,7 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" addclass="bg-danger">
+                                <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" theme="bg-danger">
                                     <UI.Badge theme="bg-primary">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
@@ -198,39 +197,39 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">通知</h3>
 
-                        <UI.Card icon="info" addclass="mb-1">
+                        <UI.Card icon="info" theme="mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="check_circle" addclass="text-success mb-1">
+                        <UI.Card icon="check_circle" theme="text-success mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="info" addclass="text-info mb-1">
+                        <UI.Card icon="info" theme="text-info mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
                         </UI.Card>
 
-                        <UI.Card icon="warning" addclass="text-warning mb-1">
+                        <UI.Card icon="warning" theme="text-warning mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
                         </UI.Card>
 
-                        <UI.Card icon="cancel" addclass="text-danger mb-1">
+                        <UI.Card icon="cancel" theme="text-danger mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
                         </UI.Card>
 
-                        <UI.Card icon="check_circle" addclass="bg-success mb-1">
+                        <UI.Card icon="check_circle" theme="bg-success mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="info" addclass="bg-info mb-1">
+                        <UI.Card icon="info" theme="bg-info mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
                         </UI.Card>
 
-                        <UI.Card icon="warning" addclass="bg-warning mb-1">
+                        <UI.Card icon="warning" theme="bg-warning mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
                         </UI.Card>
 
-                        <UI.Card icon="cancel" addclass="bg-danger mb-1">
+                        <UI.Card icon="cancel" theme="bg-danger mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
                         </UI.Card>
 
@@ -249,36 +248,23 @@ export default function Home() {
                             <h2 className="section-heading lg:w-1/3">ヘッドライン</h2>
 
                             <div className="grid reveal-group lg:w-2/3">
-                                <Headline href="/" date="2021-12-24" category="お知らせ" theme="bg-primary" addclass="border-t border-b">
+                                <Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true}>
                                     「よゐこのはじめてのプログラミング生活 第２回あそぶ編」（前編）を公開。視聴者のみなさんがつくったゲームをプレイします。
                                 </Headline>
 
-                                <Headline href="/" date="2021-10-02" category="重要" theme="bg-danger" addclass="border-t border-b">
+                                <Headline href="/" date="2021-10-02" badge={{ label: '重要', theme: 'bg-danger' }} border={true}>
                                     『スプラトゥーン3』の最新調査映像が公開。新たなステージやスペシャルウェポン、ヒーローモードの情報が判明。
                                 </Headline>
 
-                                <Headline href="/" date="2021-09-24" category="プレスリリース" theme="bg-secondary" addclass="border-t border-b">
+                                <Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', theme: 'bg-secondary' }} border={true}>
                                     シリーズ完全新作、Nintendo Switch『ベヨネッタ3』が2022年に発売決定。大魔獣を直接操作する新たなアクションも明らかに。
                                 </Headline>
 
-                                <Headline date="2021-09-01" category="お知らせ" theme="bg-primary" addclass="border-t border-b" rows={2}>
+                                <Headline date="2021-09-01" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true} rows={2}>
                                     Nintendo Switch『ゼルダ無双 厄災の黙示録』追加コンテンツ「エキスパンション・パス」第２弾のトレーラーが公開に。10月29日（金）に配信決定。
                                 </Headline>
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                <section id="section_article" className="section border-t">
-                    <div className="container lg:w-2/3 ml-auto mr-auto">
-                        <Article
-                            title="おうちで気軽に体を動かす。Nintendo Switchでおすすめの「体感ゲーム」をご紹介。"
-                            date="2022-01-17"
-                            category="Nintendo Switch"
-                            theme="bg-primary"
-                        >
-                            <p>寒い日が続きますが、皆さんいかがお過ごしでしょうか？ 外に出るのもためらってしまうほどのこの季節、お家で過ごすことにもなりがちですよね。<br />この記事では、Nintendo Switchで編集部おすすめの「体感ゲーム」をご紹介します。家の中でも体を動かせば、寒さも吹き飛ぶ…！？ かもしれません。</p>
-                        </Article>
                     </div>
                 </section>
 
@@ -620,17 +606,17 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-1">
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Dot</h3>
-                                <UI.Loader type="dot" rounded={true} />
+                                <UI.Loader type="dot" theme="rounded-full" />
                             </div>
 
-                            <div className="p-20px bg-muted">
-                                <h3 className="section-heading-sm text-center">Spin</h3>
-                                <UI.Loader type="spin" />
+                            <div className="p-20px bg-dark">
+                                <h3 className="section-heading-sm text-center text-white">Spin</h3>
+                                <UI.Loader type="spin" theme="is-white" />
                             </div>
 
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Circle</h3>
-                                <UI.Loader type="circle" progress={26} />
+                                <UI.Loader type="circle" progress={32} />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
@@ -640,7 +626,7 @@ export default function Home() {
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Bar</h3>
-                                <UI.Loader type="bar" progress={50} rounded={true} />
+                                <UI.Loader type="bar" progress={64} theme="rounded-full" />
                             </div>
                         </div>
                     </div>
@@ -813,7 +799,7 @@ export default function Home() {
 
                         <div className="flex flex-wrap gap-0.5 mt-2">
                             <a href={`${basePath}/dummy/video.mp4`} className="btn is-primary" onClick={viewer}>Video</a>
-                            <a href="https://www.youtube.com/watch?v=4mHq6Y7JSmg" className="btn is-primary" onClick={viewer}>YouTube</a>
+                            <a href="https://www.youtube.com/watch?v=Z2P818AAOn8" className="btn is-primary" onClick={viewer}>YouTube</a>
                         </div>
                     </div>
                 </section>

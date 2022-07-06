@@ -14,8 +14,10 @@
         stroke: $brand-primary;
         stroke-linecap: round;
         animation: spin_dash 600ms ease-in-out infinite;
+    }
 
-        .loader.is-white & {
+    &.is-white {
+        .path {
             stroke: white;
         }
     }
@@ -151,6 +153,12 @@
             border-radius: 9999px;
         }
     }
+
+    &.is-white {
+        .loader-line-active {
+            background-color: white;
+        }
+    }
 }
 
 @keyframes loader_line_animate {
@@ -254,6 +262,12 @@
             circle {
                 transition: stroke-dashoffset 100ms $easing;
             }
+        }
+    }
+
+    &.is-white {
+        svg.loader-circle-active circle {
+            stroke: white;
         }
     }
 }

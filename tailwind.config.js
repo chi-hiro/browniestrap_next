@@ -13,13 +13,6 @@ module.exports = {
     },
 
     theme: {
-        screens: {
-            'sm': '640px',
-            'md': '768px',
-            'lg': '992px',
-            'xl': '1280px'
-        },
-
         spacing: {
             '10px': '10px',
             '20px': '20px',

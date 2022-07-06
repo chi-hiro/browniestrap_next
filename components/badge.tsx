@@ -1,8 +1,8 @@
 import { memo } from 'react'
 
 type Props = {
-    children: React.ReactNode,
-    theme: string,
+    children: React.ReactNode
+    theme: string
     href?: string
 }
 

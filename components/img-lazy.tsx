@@ -4,10 +4,10 @@ import { toast } from 'lib/toast'
 import Loader from 'components/loader'
 
 type Props = {
-    src: string,
-    isShow: boolean,
-    width: number,
-    height: number,
+    src: string
+    isShow: boolean
+    width: number
+    height: number
     alt: string
 }
 

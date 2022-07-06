@@ -12,8 +12,7 @@ export default function Dummy() {
                         <Article
                             title="おうちで気軽に体を動かす。Nintendo Switchでおすすめの「体感ゲーム」をご紹介。"
                             date="2022-01-17"
-                            category="Nintendo Switch"
-                            theme="bg-primary"
+                            badge={{ label: 'Nintendo Switch', theme: 'bg-primary' }}
                         >
                             <p>寒い日が続きますが、皆さんいかがお過ごしでしょうか？ 外に出るのもためらってしまうほどのこの季節、お家で過ごすことにもなりがちですよね。<br />この記事では、Nintendo Switchで編集部おすすめの「体感ゲーム」をご紹介します。家の中でも体を動かせば、寒さも吹き飛ぶ…！？ かもしれません。</p>
                         </Article>

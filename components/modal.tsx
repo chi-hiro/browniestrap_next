@@ -5,8 +5,8 @@ import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
 import Icon from 'components/icon'
 
 type Props = {
-    children: React.ReactNode,
-    title?: string,
+    children: React.ReactNode
+    title?: string
     closebtn?: boolean
 }
 

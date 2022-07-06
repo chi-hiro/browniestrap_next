@@ -3,8 +3,8 @@ import { CSSTransition } from 'react-transition-group'
 import Icon from 'components/icon'
 
 type Props = {
-    theme: string,
-    children: React.ReactNode,
+    theme: string
+    children: React.ReactNode
     position?: string
 }
 

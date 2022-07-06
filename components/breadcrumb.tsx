@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Icon from 'components/icon'
 
 type Props = {
-    homeicon?: boolean,
+    homeicon?: boolean
     src: Array<{
         name: string,
         url: string

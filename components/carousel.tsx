@@ -17,12 +17,12 @@ type Props = {
         src_lg?: string,
         url?: string,
         embed?: string
-    }>,
-    mode: string,
-    zoom?: boolean,
-    duration?: number,
-    nav?: boolean,
-    timer?: boolean,
+    }>
+    mode: string
+    zoom?: boolean
+    duration?: number
+    nav?: boolean
+    timer?: boolean
     pagination?: boolean
 }
 

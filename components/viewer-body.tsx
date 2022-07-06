@@ -8,8 +8,8 @@ import ImgLazy from 'components/img-lazy'
 import Icon from 'components/icon'
 
 type Props = {
-    mode: string,
-    items: string[],
+    mode: string
+    items: string[]
     activeItem: number
 }
 

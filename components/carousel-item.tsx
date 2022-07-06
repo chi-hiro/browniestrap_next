@@ -6,9 +6,9 @@ import Loader from 'components/loader'
 
 type Props = {
     src: {
-        src: string,
-        src_lg?: string,
-        url?: string,
+        src: string
+        src_lg?: string
+        url?: string
         embed?: string
     }
 }

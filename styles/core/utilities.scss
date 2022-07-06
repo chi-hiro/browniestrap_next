@@ -28,6 +28,18 @@
     @include darkmode { border-color: $dark-border-color; }
 }
 
+.border-x {
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    @include darkmode { border-color: $dark-border-color; }
+}
+
+.border-y {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    @include darkmode { border-color: $dark-border-color; }
+}
+
 .rounded {
     border-radius: $border-radius !important;
 }

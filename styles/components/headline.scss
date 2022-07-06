@@ -110,21 +110,13 @@
         }
     }
 
-    &.border-t {
+    &.border-y {
         .headline-item-body {
             padding-top: spacer(1.5);
-
-            @include breakpoint-up {
-                padding-top: spacer(2);
-            }
-        }
-    }
-
-    &.border-b {
-        .headline-item-body {
             padding-bottom: spacer(1.5);
 
             @include breakpoint-up {
+                padding-top: spacer(2);
                 padding-bottom: spacer(2);
             }
         }

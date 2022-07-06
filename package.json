@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run open && next dev",
     "build": "next build",
-    "export": "NODE_ENV=production next build && next export"
+    "export": "NODE_ENV=production next build && next export",
+    "open": "open http://localhost:3000"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",

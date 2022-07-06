@@ -4,12 +4,12 @@ import { env } from 'lib/env'
 import Icon from 'components/icon'
 
 type Props = {
-    children: React.ReactNode,
-    title?: string,
-    theme?: string,
-    href?: string,
-    hover?: boolean,
-    opened?: boolean,
+    children: React.ReactNode
+    title?: string
+    theme?: string
+    href?: string
+    hover?: boolean
+    opened?: boolean
     locked?: boolean
 }
 

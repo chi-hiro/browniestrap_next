@@ -3,13 +3,13 @@ import { env } from 'lib/env'
 import { getTouchPosition } from 'lib/getTouchPosition'
 
 export type Props = {
-    divide?: boolean,
-    syncScrollbarMove: (value: number) => void,
+    divide?: boolean
+    syncScrollbarMove: (value: number) => void
     syncScrollbarEnd: (value: number) => void
 }
 
 export type CarouselScrollbarRefTypes = {
-    updateScrollbar: (snapLength: number, snapIndex: number) => void,
+    updateScrollbar: (snapLength: number, snapIndex: number) => void
     dragMove: (value: number) => void
 }
 
