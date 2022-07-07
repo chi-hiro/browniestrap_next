@@ -39,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta name="viewport" content={viewport} />
                 <meta name="format-detection" content="telephone=no" />
                 <title>{process.env.NEXT_PUBLIC_SITE_TITLE}</title>
+                {process.env.NEXT_PUBLIC_SITE_DESCRIPTION && <meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />}
             </Head>
 
             <Component {...pageProps} />
