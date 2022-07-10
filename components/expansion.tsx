@@ -61,9 +61,9 @@ const Expansion = (props: Props) => {
             <button type="button" className="expansion-toggler" onClick={toggle} onMouseEnter={showHover} tabIndex={props.locked ? -1 : 0}>
                 {props.title && props.title}
 
-                <span className="icon">
+                {!props.locked && (<span className="icon">
                     <Icon value={props.theme === 'popup' ? 'more_horiz' : 'expand_more'} />
-                </span>
+                </span>)}
             </button>
 
             <CSSTransition classNames="expansion-body" in={isShow} timeout={300} onEnter={beforeEnter} onEntering={enter} onEntered={afterEnter} onExit={beforeLeave} onExiting={leave} unmountOnExit>

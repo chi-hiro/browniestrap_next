@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import { EnvTypes } from 'store'
 import Loader from 'components/loader'
@@ -24,18 +23,16 @@ const CarouselItem = (props: Props) => {
                 <img data-src={props.src.src} width="900" height="900" alt="" className="swiper-lazy" />
             </span>
         ) : (
-            <img data-src={store.mobile ? props.src.src : props.src.src_lg} width={store.mobile ? 900 : 1920} height={store.mobile ? 900 : 1080} alt="" className="swiper-lazy" />
+            <img data-src={store.mobile ? props.src.src : (props.src.src_lg ? props.src.src_lg : props.src.src)} width={store.mobile ? 900 : 1920} height={store.mobile ? 900 : 1080} alt="" className="swiper-lazy" />
         )
     )
 
     return (
         <>
             {props.src.url ? (
-                <Link href={props.src.url}>
-                    <a tabIndex={-1}>
-                        {renderBody}
-                    </a>
-                </Link>
+                <a href={props.src.url} tabIndex={-1}>
+                    {renderBody}
+                </a>
             ) : (
                 renderBody
             )}

@@ -96,3 +96,17 @@ export const Modal = forwardRef((props: Props, ref) => {
         portal
     ) : null
 })
+
+export const ModalBody = (props: { children: React.ReactNode, scroll?: boolean, theme?: string }) => (
+    <div className={`modal-body ${props.scroll ? 'scroll' : ''}`}>
+        <div className={`inner ${props.theme ? props.theme : ''}`}>
+            {props.children}
+        </div>
+    </div>
+)
+
+export const ModalFooter = (props: { children: React.ReactNode }) => (
+    <div className="modal-footer">
+        {props.children}
+    </div>
+)

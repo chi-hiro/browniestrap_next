@@ -1,8 +1,7 @@
 import { memo } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { anchor } from 'lib/mixins'
-import Expansion from 'components/expansion'
+import UI from 'components/UIKit'
 
 const Navigation = () => {
     const router = useRouter()
@@ -11,15 +10,15 @@ const Navigation = () => {
         <nav>
             <ul>
                 <li>
-                    <Link href="/">Home</Link>
+                    <a href="/">Home</a>
                 </li>
 
                 <li>
-                    <Link href="/dummy">Dummy</Link>
+                    <a href="/dummy">Dummy</a>
                 </li>
 
                 <li>
-                    <Expansion title="Components" hover={true}>
+                    <UI.Expansion title="Components" hover={true}>
                         <ul className="navigation-child">
                             <li>
                                 <a href="#section_card" onClick={anchor}>Card</a>
@@ -40,7 +39,7 @@ const Navigation = () => {
                                 <a href="#section_modal" onClick={anchor}>Modal</a>
                             </li>
                         </ul>
-                    </Expansion>
+                    </UI.Expansion>
                 </li>
 
                 <li>

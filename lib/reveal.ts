@@ -4,7 +4,7 @@ import { elementInScreen, elementShowPos } from 'lib/elementInScreen'
 const reset = true
 
 export const reveal = () => {
-    window.addEventListener('pageshow', watch)
+    watch({ type: 'pageshow' } as Event)
     window.addEventListener('scroll', watch)
 }
 

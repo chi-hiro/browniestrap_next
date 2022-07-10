@@ -10,6 +10,7 @@ import CarouselItem from 'components/carousel-item'
 import { CarouselScrollbar, CarouselScrollbarRefTypes } from 'components/carousel-scrollbar'
 
 let isResize: number = 0
+let isPause: boolean = false
 
 type Props = {
     src: Array<{
@@ -39,7 +40,6 @@ const Carousel = (props: Props) => {
     const [mySwiper, setMySwiper] = useState<any>()
     const [lazyLoading, setLazyLoading] = useState<boolean>(false)
     const [isShow, setShow] = useState<boolean>(false)
-    const [isPause, setPause] = useState<boolean>(false)
     const [beforeW, setBeforeW] = useState<number>(0)
     const [timerProgress, setTimerProgress] = useState<number>(0)
 
@@ -66,13 +66,13 @@ const Carousel = (props: Props) => {
     const toggleAutoplay = (value: boolean) => {
         if (value) {
             if (isPause) {
-                setPause(false)
+                isPause = false
                 mySwiper.autoplay.start()
                 setTimer(100)
             }
         } else {
             if (!isPause) {
-                setPause(true)
+                isPause = true
                 mySwiper.autoplay.stop()
                 setTimer(0)
             }

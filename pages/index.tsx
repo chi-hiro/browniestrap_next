@@ -6,7 +6,7 @@ import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
 import { viewer } from 'lib/viewer'
 import UI from '@/components/UIKit'
-import { Modal, ModalRefTypes } from 'components/modal'
+import { Modal, ModalBody, ModalFooter, ModalRefTypes } from 'components/modal'
 import Carousel from 'components/carousel'
 import Headline from 'components/headline'
 import Breadcrumb from 'components/breadcrumb'
@@ -815,49 +815,45 @@ export default function Home() {
                     </div>
 
                     <Modal ref={dummyModal1Ref}>
-                        <div className="modal-body">
-                            <div className="inner">
-                                <p>容量がいっぱいでダウンロードできません。</p>
-                                <p>本体保存メモリーまたはSDカードに、9.3GBの空き容量が必要です。<br />ソフトのデータを整理してください。</p>
-                            </div>
-                        </div>
+                        <ModalBody>
+                            <p>容量がいっぱいでダウンロードできません。</p>
+                            <p>本体保存メモリーまたはSDカードに、9.3GBの空き容量が必要です。<br />ソフトのデータを整理してください。</p>
+                        </ModalBody>
 
-                        <div className="modal-footer">
+                        <ModalFooter>
                             <button type="button" className="btn is-outline-default rounded-full" onClick={() => dummyModal1Ref.current?.hide()}>
                                 とじる
                             </button>
                             <button type="button" className="btn is-primary rounded-full" onClick={(e) => dummyModal2Ref.current?.show(e)}>
                                 つぎへ
                             </button>
-                        </div>
+                        </ModalFooter>
                     </Modal>
 
                     <Modal ref={dummyModal2Ref} title="Google 利用規約" close={true}>
-                        <div className="modal-body scroll">
-                            <div className="inner terms">
-                                <p>本利用規約には、Google のビジネスの仕組み、Google に適用される法律、および Google が常に正しいと信じてきた事柄が反映されています。結果として、本利用規約は、サービスを利用するユーザーと Google との関係を定義するのに役立っています。たとえば、本規約の見出しには以下のような内容が含まれています。</p>
-                                <ul>
-                                    <li>ユーザーが Google に期待できることでは、Google がサービスを提供および開発する仕組みについて説明します</li>
-                                    <li>Google がユーザーに期待することでは、Google のサービスを利用する際のルールについて規定します</li>
-                                    <li>Google サービス内のコンテンツでは、Google のサービス内で見つかるコンテンツの知的所有権について説明し、そのコンテンツがユーザー、Google、または他者のうち誰に帰属するのかを示します</li>
-                                    <li>問題または意見の相違がある場合では、ユーザーのその他の法的権利と、誰かが本規約に違反した場合にどうなるかについて説明します</li>
-                                </ul>
-                                <p>ユーザーは、Google のサービスを利用することにより、本規約に同意することになります。そのため、本規約の内容を理解しておくことが重要です。</p>
-                                <p>本規約に加えて、Google はプライバシー ポリシーも公開しています。プライバシー ポリシーは本規約とは独立した規定ですが、ユーザーが自身の情報を更新、管理、書き出し、削除する方法について理解を深めるためにもご一読されることをおすすめします。</p>
-                                <h2>年齢に関する要件</h2>
-                                <p>ユーザーが自分で Google アカウントを管理するための年齢要件を満たしていない場合、Google アカウントを使用するには親または保護者の方の許可を得なければなりません。本規約を、親または保護者の方と一緒に読んでください。</p>
-                                <p>親または保護者の方がお子様のサービスの利用を許可する場合、本規約はその親または保護者の方に適用され、サービス利用時のお子様の行動について責任を負うことになります。</p>
-                                <p>一部の Google サービスには追加の年齢要件が設けられており、それぞれのサービス固有の追加規約およびポリシーにその旨が記載されています。</p>
-                                <h2>ユーザーと Google の関係</h2>
-                                <p>本規約は、ユーザーと Google の関係を定義するためのものです。大まかに言うと、Google は本規約を遵守することに同意したユーザーに Google のサービスの利用を許可します。本規約には、Google のビジネスの仕組みと収益を生み出す方法が反映されています。 「Google」とは、Google LLC およびその関連会社を意味します。</p>
-                            </div>
-                        </div>
+                        <ModalBody scroll={true} theme="terms">
+                            <p>本利用規約には、Google のビジネスの仕組み、Google に適用される法律、および Google が常に正しいと信じてきた事柄が反映されています。結果として、本利用規約は、サービスを利用するユーザーと Google との関係を定義するのに役立っています。たとえば、本規約の見出しには以下のような内容が含まれています。</p>
+                            <ul>
+                                <li>ユーザーが Google に期待できることでは、Google がサービスを提供および開発する仕組みについて説明します</li>
+                                <li>Google がユーザーに期待することでは、Google のサービスを利用する際のルールについて規定します</li>
+                                <li>Google サービス内のコンテンツでは、Google のサービス内で見つかるコンテンツの知的所有権について説明し、そのコンテンツがユーザー、Google、または他者のうち誰に帰属するのかを示します</li>
+                                <li>問題または意見の相違がある場合では、ユーザーのその他の法的権利と、誰かが本規約に違反した場合にどうなるかについて説明します</li>
+                            </ul>
+                            <p>ユーザーは、Google のサービスを利用することにより、本規約に同意することになります。そのため、本規約の内容を理解しておくことが重要です。</p>
+                            <p>本規約に加えて、Google はプライバシー ポリシーも公開しています。プライバシー ポリシーは本規約とは独立した規定ですが、ユーザーが自身の情報を更新、管理、書き出し、削除する方法について理解を深めるためにもご一読されることをおすすめします。</p>
+                            <h2>年齢に関する要件</h2>
+                            <p>ユーザーが自分で Google アカウントを管理するための年齢要件を満たしていない場合、Google アカウントを使用するには親または保護者の方の許可を得なければなりません。本規約を、親または保護者の方と一緒に読んでください。</p>
+                            <p>親または保護者の方がお子様のサービスの利用を許可する場合、本規約はその親または保護者の方に適用され、サービス利用時のお子様の行動について責任を負うことになります。</p>
+                            <p>一部の Google サービスには追加の年齢要件が設けられており、それぞれのサービス固有の追加規約およびポリシーにその旨が記載されています。</p>
+                            <h2>ユーザーと Google の関係</h2>
+                            <p>本規約は、ユーザーと Google の関係を定義するためのものです。大まかに言うと、Google は本規約を遵守することに同意したユーザーに Google のサービスの利用を許可します。本規約には、Google のビジネスの仕組みと収益を生み出す方法が反映されています。 「Google」とは、Google LLC およびその関連会社を意味します。</p>
+                        </ModalBody>
 
-                        <div className="modal-footer">
+                        <ModalFooter>
                             <button type="button" className="btn is-primary rounded-full" onClick={() => dummyModal2Ref.current?.hide()}>
                                 承諾
                             </button>
-                        </div>
+                        </ModalFooter>
                     </Modal>
                 </section>
             </main>

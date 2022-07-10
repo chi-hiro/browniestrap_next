@@ -59,6 +59,8 @@
         @include transition(color);
 
         .icon {
+            display: inline-block;
+            vertical-align: top;
             flex: 0 0 auto;
             font-size: $icon-size;
             line-height: 0;
