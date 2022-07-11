@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react'
 
 type Props = {
     children: React.ReactNode
-    size?: string
+    model?: string
     theme?: string
     href?: string
 }
@@ -10,10 +10,10 @@ type Props = {
 const Badge = (props: Props) => {
     const badgeClass = useMemo(() => {
         const classes = ['badge']
-        props.size && classes.push(`badge-${props.size}`)
+        props.model && classes.push(`badge-${props.model}`)
         props.theme && classes.push(props.theme)
         return classes.join(' ')
-    }, [props.size, props.theme])
+    }, [props.model, props.theme])
 
     return (
         props.href

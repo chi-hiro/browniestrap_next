@@ -2,7 +2,7 @@ import { forwardRef, useState, useEffect, useMemo, useImperativeHandle } from 'r
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
-import Icon from 'components/icon'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     children: React.ReactNode

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import Link from 'next/link'
-import Icon from 'components/icon'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     homeicon?: boolean

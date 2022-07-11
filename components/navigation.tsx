@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useRouter } from 'next/router'
 import { anchor } from 'lib/mixins'
-import UI from 'components/UIKit'
+import UI from '@/components/UI'
 
 const Navigation = () => {
     const router = useRouter()

@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react'
 import Link from 'next/link'
-import UI from 'components/UIKit'
+import UI from '@/components/UI'
 
 type Props = {
     children: React.ReactNode
@@ -25,7 +25,7 @@ const Headline = (props: Props) => {
     const renderBody = (
         <div className="headline-item-body">
             <div className="detail">
-                {props.badge && <UI.Badge theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
+                {props.badge && <UI.Badge model="sm" theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
                 {props.date && <time itemProp="datePublished" dateTime={props.date} className="date">{formatDate}</time>}
             </div>
 

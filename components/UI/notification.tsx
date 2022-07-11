@@ -1,6 +1,6 @@
 import { useRef, useState, useMemo, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import Icon from 'components/icon'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     theme: string

@@ -1,7 +1,7 @@
 import { memo, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { toast } from 'lib/toast'
-import Loader from 'components/loader'
+import Loader from '@/components/UI/loader'
 
 type Props = {
     src: string

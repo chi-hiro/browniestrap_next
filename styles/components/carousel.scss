@@ -88,6 +88,8 @@
     }
 
     .swiper-slide {
+        user-select: none;
+
         a {
             overflow: hidden;
             display: block;

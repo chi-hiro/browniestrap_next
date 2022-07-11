@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { EnvTypes } from 'store'
-import Loader from 'components/loader'
+import Loader from '@/components/UI/loader'
 
 type Props = {
     src: {

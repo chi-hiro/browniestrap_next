@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Navigation, Pagination, Lazy } from 'swiper'
 import { initSwiperOption } from 'lib/swiperUtl'
 import { elementInScreen } from 'lib/elementInScreen'
-import Loader from 'components/loader'
-import CarouselItem from 'components/carousel-item'
-import { CarouselScrollbar, CarouselScrollbarRefTypes } from 'components/carousel-scrollbar'
+import Loader from '@/components/UI/loader'
+import CarouselItem from '@/components/carousel/item'
+import { CarouselScrollbar, CarouselScrollbarRefTypes } from '@/components/carousel/scrollbar'
 
 let isResize: number = 0
 let isPause: boolean = false

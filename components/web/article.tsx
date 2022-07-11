@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react'
-import UI from 'components/UIKit'
+import UI from '@/components/UI'
 
 type Props = {
     children: React.ReactNode

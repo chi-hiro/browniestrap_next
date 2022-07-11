@@ -4,8 +4,8 @@ import { env } from 'lib/env'
 import { getTouchPosition } from 'lib/getTouchPosition'
 import { scrollElement } from 'lib/pageScroll'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
-import ImgLazy from 'components/img-lazy'
-import Icon from 'components/icon'
+import ImgLazy from '@/components/viewer/img-lazy'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     mode: string

@@ -5,12 +5,11 @@ import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
 import { viewer } from 'lib/viewer'
-import UI from '@/components/UIKit'
 import { Modal, ModalBody, ModalFooter, ModalRefTypes } from 'components/modal'
 import Carousel from 'components/carousel'
-import Headline from 'components/headline'
-import Breadcrumb from 'components/breadcrumb'
-import FormPassword from 'components/form-password'
+import UI from 'components/UI'
+import Form from '@/components/form'
+import Web from '@/components/web'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -169,7 +168,7 @@ export default function Home() {
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" theme="bg-white">
-                                    <UI.Badge theme="bg-primary">News</UI.Badge>
+                                    <UI.Badge model="sm" theme="bg-primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">「銀河」にインスパイアされた 2 種類のカラーで、どこまでも広がる遊びの世界へ。</p>
@@ -178,7 +177,7 @@ export default function Home() {
 
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" theme="bg-white">
-                                    <UI.Badge theme="bg-primary">News</UI.Badge>
+                                    <UI.Badge model="sm" theme="bg-secondary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">『FINAL FANTASY VII REMAKE INTERGRADE』は、大人気かつ受賞歴もある『FINAL FANTASY VII REMAKE』をPlayStation 5向けにライティングや質感、背景などの表現力を向上し、ユフィを主人公とした新規エピソード「FF7R EPISODE INTERmission」などの新要素を追加した作品だ。</p>
@@ -187,7 +186,7 @@ export default function Home() {
 
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" theme="bg-danger">
-                                    <UI.Badge theme="bg-primary">News</UI.Badge>
+                                    <UI.Badge model="sm" theme="bg-white">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">氷に覆われた文明崩壊後のロサンゼルスから、スナイパーのスコープから覗く第2次世界大戦まで、魅力的な体験がゾクゾク。</p>
@@ -248,21 +247,21 @@ export default function Home() {
                             <h2 className="section-heading lg:w-1/3">ヘッドライン</h2>
 
                             <div className="grid reveal-group lg:w-2/3">
-                                <Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true}>
+                                <Web.Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true}>
                                     「よゐこのはじめてのプログラミング生活 第２回あそぶ編」（前編）を公開。視聴者のみなさんがつくったゲームをプレイします。
-                                </Headline>
+                                </Web.Headline>
 
-                                <Headline href="/" date="2021-10-02" badge={{ label: '重要', theme: 'bg-danger' }} border={true}>
+                                <Web.Headline href="/" date="2021-10-02" badge={{ label: '重要', theme: 'bg-danger' }} border={true}>
                                     『スプラトゥーン3』の最新調査映像が公開。新たなステージやスペシャルウェポン、ヒーローモードの情報が判明。
-                                </Headline>
+                                </Web.Headline>
 
-                                <Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', theme: 'bg-secondary' }} border={true}>
+                                <Web.Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', theme: 'bg-secondary' }} border={true}>
                                     シリーズ完全新作、Nintendo Switch『ベヨネッタ3』が2022年に発売決定。大魔獣を直接操作する新たなアクションも明らかに。
-                                </Headline>
+                                </Web.Headline>
 
-                                <Headline date="2021-09-01" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true} rows={2}>
+                                <Web.Headline date="2021-09-01" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true} rows={2}>
                                     Nintendo Switch『ゼルダ無双 厄災の黙示録』追加コンテンツ「エキスパンション・パス」第２弾のトレーラーが公開に。10月29日（金）に配信決定。
-                                </Headline>
+                                </Web.Headline>
                             </div>
                         </div>
                     </div>
@@ -274,7 +273,7 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Basic</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-white">
-                            <button type="button" className="is-primary btn-block-sm-down rounded-full">Primary</button>
+                            <button type="button" className="btn is-primary btn-block-sm-down rounded-full">Primary</button>
                             <button type="button" className="btn is-secondary btn-block-sm-down rounded-full">Secondary</button>
                             <button type="button" className="btn is-success btn-block-sm-down rounded-full">Success</button>
                             <button type="button" className="btn is-info btn-block-sm-down rounded-full">Info</button>
@@ -405,7 +404,7 @@ export default function Home() {
                         <h2 className="section-heading">フォーム</h2>
                         <form>
                             <div className="form-group">
-                                <label>ラベル <UI.Badge theme="bg-danger">必須</UI.Badge></label>
+                                <label>ラベル <UI.Badge model="sm" theme="bg-danger">必須</UI.Badge></label>
                                 <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
                                 <input type="text" className="form-control" />
                             </div>
@@ -420,9 +419,7 @@ export default function Home() {
                             </div>
 
                             <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
-                                <FormPassword>
-                                    <input type="password" className="form-control" placeholder="パスワード" />
-                                </FormPassword>
+                                <Form.Password placeholder="パスワード" onChange={(e) => console.log(e.currentTarget.value)} />
 
                                 <div className="form-combine form-combine-after">
                                     <input type="search" className="form-control" placeholder="検索" />
@@ -498,7 +495,7 @@ export default function Home() {
 
                             <div className="form-group">
                                 <label>Textarea</label>
-                                <textarea rows={5} className="form-control"></textarea>
+                                <Form.TextareaAutoSize onChange={(e) => console.log(e)} />
                             </div>
 
                             <div className="form-group text-center">
@@ -638,74 +635,74 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Text</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" size="sm" theme="text-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="text-white uppercase">white</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="text-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Background</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" size="sm" theme="bg-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="bg-white uppercase">white</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="bg-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Border</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" size="sm" theme="border-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" size="sm" theme="border-white uppercase">white</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-primary uppercase">primary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-success uppercase">success</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-info uppercase">info</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-warning uppercase">warning</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-danger uppercase">danger</UI.Badge>
+                            <UI.Badge href="#" model="sm" theme="border-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">with Icon</h3>
                         <div className="flex flex-wrap items-center gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" size="sm" theme="text-primary uppercase rounded-full">
+                            <UI.Badge href="#" model="sm" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 small
                             </UI.Badge>
-                            <UI.Badge href="#" size="md" theme="text-primary uppercase rounded-full">
+                            <UI.Badge href="#" model="md" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge href="#" size="lg" theme="text-primary uppercase rounded-full">
+                            <UI.Badge href="#" model="lg" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge href="#" size="sm" theme="uppercase rounded-full">
+                            <UI.Badge href="#" model="sm" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 small
                             </UI.Badge>
-                            <UI.Badge href="#" size="md" theme="uppercase rounded-full">
+                            <UI.Badge href="#" model="md" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge href="#" size="lg" theme="uppercase rounded-full">
+                            <UI.Badge href="#" model="lg" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge href="#" size="sm" theme="text-danger uppercase rounded-full">
+                            <UI.Badge href="#" model="sm" theme="text-danger uppercase rounded-full">
                                 small
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge href="#" size="md" theme="text-danger uppercase rounded-full">
+                            <UI.Badge href="#" model="md" theme="text-danger uppercase rounded-full">
                                 medium
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge href="#" size="lg" theme="text-danger uppercase rounded-full">
+                            <UI.Badge href="#" model="lg" theme="text-danger uppercase rounded-full">
                                 large
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
@@ -713,30 +710,30 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Icon: status</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge size="status" theme="is-primary uppercase">primary</UI.Badge>
-                            <UI.Badge size="status" theme="is-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge size="status" theme="is-success uppercase">success</UI.Badge>
-                            <UI.Badge size="status" theme="is-info uppercase">info</UI.Badge>
-                            <UI.Badge size="status" theme="is-warning uppercase">warning</UI.Badge>
-                            <UI.Badge size="status" theme="is-danger uppercase">danger</UI.Badge>
-                            <UI.Badge size="status" theme="is-white uppercase">white</UI.Badge>
+                            <UI.Badge model="status" theme="is-primary uppercase">primary</UI.Badge>
+                            <UI.Badge model="status" theme="is-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge model="status" theme="is-success uppercase">success</UI.Badge>
+                            <UI.Badge model="status" theme="is-info uppercase">info</UI.Badge>
+                            <UI.Badge model="status" theme="is-warning uppercase">warning</UI.Badge>
+                            <UI.Badge model="status" theme="is-danger uppercase">danger</UI.Badge>
+                            <UI.Badge model="status" theme="is-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Icon: check</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge size="check" theme="is-primary capitalize">primary</UI.Badge>
-                            <UI.Badge size="check" theme="is-secondary capitalize">secondary</UI.Badge>
-                            <UI.Badge size="check" theme="is-success capitalize">success</UI.Badge>
-                            <UI.Badge size="check" theme="is-info capitalize">info</UI.Badge>
-                            <UI.Badge size="check" theme="is-warning capitalize">warning</UI.Badge>
-                            <UI.Badge size="check" theme="is-danger capitalize">danger</UI.Badge>
-                            <UI.Badge size="check" theme="is-white capitalize">white</UI.Badge>
+                            <UI.Badge model="check" theme="is-primary capitalize">primary</UI.Badge>
+                            <UI.Badge model="check" theme="is-secondary capitalize">secondary</UI.Badge>
+                            <UI.Badge model="check" theme="is-success capitalize">success</UI.Badge>
+                            <UI.Badge model="check" theme="is-info capitalize">info</UI.Badge>
+                            <UI.Badge model="check" theme="is-warning capitalize">warning</UI.Badge>
+                            <UI.Badge model="check" theme="is-danger capitalize">danger</UI.Badge>
+                            <UI.Badge model="check" theme="is-white capitalize">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Count</h3>
                         <button type="button" className="btn is-primary">
                             Sample
-                            <UI.Badge size="count" theme="bg-danger">8</UI.Badge>
+                            <UI.Badge model="count" theme="bg-danger">8</UI.Badge>
                         </button>
                     </div>
                 </section>
@@ -745,7 +742,7 @@ export default function Home() {
                     <div className="container">
                         <h2 className="section-heading">パンくずリスト</h2>
 
-                        <Breadcrumb homeicon={true} src={[
+                        <Web.Breadcrumb homeicon={true} src={[
                             { name: 'Home', url: '/' },
                             { name: 'Category', url: '/' },
                             { name: 'Content', url: '/' }
@@ -763,13 +760,13 @@ export default function Home() {
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Border</h3>
-                        <UI.Expansion title="Expansion (Hover)" theme="border" hover={true}>
+                        <UI.Expansion title="Expansion (Hover)" model="border" hover={true}>
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Popup</h3>
                         <div className="flex justify-end">
-                            <UI.Expansion theme="popup">
+                            <UI.Expansion model="popup">
                                 <ul className="expansion-nav-body">
                                     <li>
                                         <button type="button">

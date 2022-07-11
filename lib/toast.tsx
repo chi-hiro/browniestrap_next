@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import Notification from 'components/notification'
+import Notification from '@/components/UI/notification'
 
 export const toast = (theme: string, message: string, position?: string) => {
     const container = document.createElement('div')

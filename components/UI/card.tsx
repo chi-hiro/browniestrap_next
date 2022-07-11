@@ -1,6 +1,6 @@
 import { memo, forwardRef } from 'react'
 import Link from 'next/link'
-import Icon from 'components/icon'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     children: React.ReactNode
