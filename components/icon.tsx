@@ -26,7 +26,7 @@ const Icon = (props: Props) => {
         }
     }, [])
 
-    return <span className={materialClass}>{props.value}</span>
+    return <span className={[materialClass, 'font-icon'].join(' ')}>{props.value}</span>
 }
 
 export default memo(Icon)

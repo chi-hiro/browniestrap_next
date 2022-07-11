@@ -1,7 +1,16 @@
 @use '/styles/core/core' as *;
 
-$badge-height: $icon-size;
 $badge-border-radius: 3px;
+$badge-border-width: 1px;
+
+$badge-height: 32px;
+$badge-icon-height: $icon-size * 0.875;
+
+$badge-sm-height: 24px;
+$badge-sm-icon-height: $icon-size * 0.75;
+
+$badge-lg-height: 40px;
+$badge-lg-icon-height: $icon-size * 1;
 
 .badge {
     display: inline-flex;
@@ -9,12 +18,8 @@ $badge-border-radius: 3px;
     align-items: center;
 
     @include rounded($badge-border-radius);
-    min-width: $badge-height;
-    min-height: $badge-height;
-    padding: 0 spacer(0.5);
-
     user-select: none;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     text-align: center;
     line-height: 1;
     white-space: nowrap;
@@ -23,15 +28,73 @@ $badge-border-radius: 3px;
 
     color: $body-color;
     background-color: rgba(0,0,0,0.05);
+    border: $badge-border-width solid transparent;
 
     @include darkmode {
         color: $dark-body-color;
         background-color: rgba(255,255,255,0.1);
     }
 
-    &.badge-default {
+    // Sizing
+    min-width: $badge-height;
+    height: $badge-height;
+    gap: $badge-height - $badge-icon-height;
+    padding: 0 $badge-height - $badge-icon-height;
+
+    img, .font-icon {
+        margin: 0 calc(($badge-height - $badge-icon-height) / -2);
+    }
+
+    img {
+        width: $badge-icon-height;
+        height: $badge-icon-height;
+        object-fit: cover;
+    }
+
+    .font-icon {
+        font-size: $badge-icon-height;
+    }
+
+    &.badge-sm {
+        min-width: $badge-sm-height;
+        height: $badge-sm-height;
+        gap: $badge-sm-height - $badge-sm-icon-height;
+        padding: 0 $badge-sm-height - $badge-sm-icon-height;
+        font-size: 0.75rem;
+
+        img, .font-icon {
+            margin: 0 calc(($badge-sm-height - $badge-sm-icon-height) / -2);
+        }
+
+        img {
+            width: $badge-sm-icon-height;
+            height: $badge-sm-icon-height;
+        }
+
+        .font-icon {
+            font-size: $badge-sm-icon-height;
+        }
+    }
+
+    &.badge-lg {
+        min-width: $badge-lg-height;
+        height: $badge-lg-height;
+        gap: $badge-lg-height - $badge-lg-icon-height;
+        padding: 0 $badge-lg-height - $badge-lg-icon-height;
         font-size: 1rem;
-        font-weight: normal;
+
+        img, .font-icon {
+            margin: 0 calc(($badge-lg-height - $badge-lg-icon-height) / -2);
+        }
+
+        img {
+            width: $badge-lg-icon-height;
+            height: $badge-lg-icon-height;
+        }
+
+        .font-icon {
+            font-size: $badge-lg-icon-height;
+        }
     }
 
     // Icon badge
@@ -72,8 +135,8 @@ $badge-border-radius: 3px;
         position: relative;
         vertical-align: top;
         min-width: initial;
-        height: $badge-height;
-        padding: 0 0 0 $badge-height + spacer(0.5);
+        height: $icon-size;
+        padding: 0 0 0 $icon-size + spacer(0.5);
         border-radius: none;
         background: none;
         user-select: auto;
@@ -88,8 +151,8 @@ $badge-border-radius: 3px;
             z-index: 1;
             top: 0;
             left: 0;
-            width: $badge-height;
-            height: $badge-height;
+            width: $icon-size;
+            height: $icon-size;
             border-radius: 100%;
             background-color: $muted-color;
 
@@ -130,12 +193,13 @@ $badge-border-radius: 3px;
 
     &.badge-count {
         position: absolute;
-        right: calc($badge-height / -3);
-        top: calc($badge-height / -3);
+        min-width: $icon-size;
+        height: $icon-size;
+        right: calc($icon-size / -3);
+        top: calc($icon-size / -3);
         border-radius: 999px;
         padding: 0 spacer(0.25);
         font-size: 11px;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.2);
         color: white;
         background-color: $brand-primary;
     }
@@ -143,7 +207,7 @@ $badge-border-radius: 3px;
     // Theme
     &[class*='border-'] {
         background: none;
-        border: $border-width solid $body-color;
+        border-color: $body-color;
     }
 
     @each $key, $color in $themes {
@@ -182,17 +246,55 @@ $badge-border-radius: 3px;
 }
 
 a.badge {
-    @include focus-mouse {
+    // Default
+    @include transition((color, border, background));
+    @include hover-mouse {
         color: $body-color;
-        opacity: 0.7;
+        border-color: $border-color;
 
         @include darkmode {
             color: $dark-body-color;
+            border-color: $dark-border-color;
+        }
+    }
+
+    // Theme
+    @each $key, $color in $themes {
+        &.text-#{"" + $key} {
+            @include focus-mouse {
+                @if $key == white {
+                    border-color: $headings-color;
+                } @else {
+                    border-color: $color;
+                }
+            }
         }
 
-        @each $key, $color in $themes {
-            &.border-#{"" + $key} {
-                color: $color;
+        &.bg-#{"" + $key} {
+            @include focus-mouse {
+                border-color: darken($color, 20%);
+
+                @include darkmode {
+                    @if $key == white {
+                        border-color: darken(white, 20%);
+                        color: $body-color;
+                    } @else {
+                        border-color: lighten($color, 20%);
+                    }
+                }
+            }
+        }
+
+        &.border-#{"" + $key} {
+            @include focus-mouse {
+                background-color: $color;
+                border-color: transparent;
+
+                @if $key == white {
+                    color: $body-color;
+                } @else {
+                    color: white;
+                }
             }
         }
     }

@@ -1,13 +1,25 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 
 type Props = {
     children: React.ReactNode
-    theme: string
+    size?: string
+    theme?: string
     href?: string
 }
 
-const Badge = (props: Props) => props.href
-    ? <a className={`badge ${props.theme}`} href={props.href}>{props.children}</a>
-    : <span className={`badge ${props.theme}`}>{props.children}</span>
+const Badge = (props: Props) => {
+    const badgeClass = useMemo(() => {
+        const classes = ['badge']
+        props.size && classes.push(`badge-${props.size}`)
+        props.theme && classes.push(props.theme)
+        return classes.join(' ')
+    }, [props.size, props.theme])
+
+    return (
+        props.href
+            ? <a className={badgeClass} href={props.href}>{props.children}</a>
+            : <span className={badgeClass}>{props.children}</span>
+    )
+}
 
 export default memo(Badge)
