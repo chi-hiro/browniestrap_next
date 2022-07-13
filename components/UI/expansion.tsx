@@ -5,8 +5,8 @@ import Icon from '@/components/UI/icon'
 
 type Props = {
     children: React.ReactNode
+    type?: string
     title?: string
-    model?: string
     href?: string
     hover?: boolean
     opened?: boolean
@@ -47,9 +47,9 @@ const Expansion = (props: Props) => {
         const classes = ['expansion']
         isShow && classes.push('show')
         props.locked && classes.push('lock')
-        props.model && classes.push(`expansion-${props.model}`)
+        props.type && classes.push(`expansion-${props.type}`)
         return classes.join(' ')
-    }, [isShow, props.model, props.locked])
+    }, [isShow, props.type, props.locked])
 
     // Hooks
     useEffect(() => {
@@ -57,7 +57,7 @@ const Expansion = (props: Props) => {
     }, [props.opened])
 
     useEffect(() => {
-        if (props.model === 'popup') {
+        if (props.type === 'popup') {
             isShow && window.setTimeout(() => document.body.addEventListener('click', hide), 300)
             return () => document.body.removeEventListener('click', hide)
         }
@@ -70,7 +70,7 @@ const Expansion = (props: Props) => {
                 {props.title && props.title}
 
                 {!props.locked && (<span className="icon">
-                    <Icon value={props.model === 'popup' ? 'more_horiz' : 'expand_more'} />
+                    <Icon value={props.type === 'popup' ? 'more_horiz' : 'expand_more'} />
                 </span>)}
             </button>
 

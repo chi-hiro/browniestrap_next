@@ -11,13 +11,12 @@ type Props = {
     theme?: string
 }
 
-const Card = forwardRef((props: Props, ref) => {
-    // Render
+const Card = forwardRef((props: Props) => {
     const renderBody = (
         <>
-            {(props.src && props.title) && (
+            {props.src && (
                 <figure className="embed embed-16by9 card-thumb">
-                    <img src={props.src} alt={props.title} width="640" height="360" />
+                    <img src={props.src} alt={props.title ? props.title : ''} />
                 </figure>
             )}
 
