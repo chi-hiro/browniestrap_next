@@ -5,28 +5,17 @@ type Props = {
 }
 
 const Icon = (props: Props) => {
-    const font: string = 'rounded'
+    const type: string = 'rounded'
 
-    const materialClass = useMemo(() => {
-        switch(font) {
-            case 'rounded':
-                return 'material-icons-round'
+    const materialClass: {[key: string]: string} = {
+        'rounded': 'material-icons-round',
+        'outlined': 'material-icons-outlined',
+        'sharp': 'material-icons-sharp',
+        'two-tone': 'material-icons-two-tone',
+        'default': 'material-icons'
+    }
 
-            case 'outlined':
-                return 'material-icons-outlined'
-
-            case 'sharp':
-                return 'material-icons-sharp'
-
-            case 'two-tone':
-                return 'material-icons-two-tone'
-
-            default:
-                return 'material-icons'
-        }
-    }, [])
-
-    return <span className={[materialClass, 'font-icon'].join(' ')}>{props.value}</span>
+    return <span className={[materialClass[type], 'font-icon'].join(' ')}>{props.value}</span>
 }
 
 export default memo(Icon)

@@ -49,7 +49,7 @@ const TextareaAutoSize = forwardRef((props: Props, ref: React.Ref<HTMLTextAreaEl
             <label htmlFor={`form-combine-${props.name}`}>{props.placeholder}</label>
         </div>
     ) : (
-        <>{renderTextarea}</>
+        renderTextarea
     )
 })
 
