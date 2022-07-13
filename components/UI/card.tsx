@@ -11,7 +11,7 @@ type Props = {
     theme?: string
 }
 
-const Card = forwardRef((props: Props) => {
+const Card = (props: Props) => {
     const renderBody = (
         <>
             {props.src && (
@@ -45,6 +45,6 @@ const Card = forwardRef((props: Props) => {
             {renderBody}
         </div>
     )
-})
+}
 
 export default memo(Card)

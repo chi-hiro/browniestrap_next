@@ -20,6 +20,15 @@ export default function Home() {
     const dummyModal1Ref = useRef<ModalRefTypes>()
     const dummyModal2Ref = useRef<ModalRefTypes>()
 
+    // Methods
+    const formcheck = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log('check form ---------')
+        console.log('username:', e.currentTarget['username'].value)
+        console.log('password:', e.currentTarget['password'].value)
+        console.log('agreement:', e.currentTarget['agreement'].checked)
+    }
+
     // Render
     return (
         <Layout>
@@ -402,103 +411,84 @@ export default function Home() {
                 <section id="section_forms" className="section border-t">
                     <div className="container">
                         <h2 className="section-heading">フォーム</h2>
-                        <form>
-                            <div className="form-group">
-                                <label>ラベル <UI.Badge type="sm" theme="bg-danger">必須</UI.Badge></label>
-                                <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
-                                <input type="text" className="form-control" />
+
+                        <div className="form-group">
+                            <label>Basic <UI.Badge type="sm" theme="bg-danger">必須</UI.Badge></label>
+                            <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
+                            <input type="text" className="form-control" />
+                        </div>
+
+                        <div className="form-group is-danger">
+                            <input type="text" className="form-control" placeholder="Variant" />
+                            <div className="form-control-feedback">Error message.</div>
+                        </div>
+
+                        <div className="form-group">
+                            <input type="email" className="form-control" placeholder="Disabled" disabled />
+                        </div>
+
+                        <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
+
+                            <div className="form-combine form-combine-after">
+                                <input type="search" className="form-control" placeholder="検索" />
+                                <button type="button" className="form-combine-icon" tabIndex={-1}>
+                                    <UI.Icon value="search" />
+                                </button>
                             </div>
 
-                            <div className="form-group is-danger">
-                                <input type="text" className="form-control" placeholder="ID" />
-                                <div className="form-control-feedback">入力内容が間違っています。</div>
+                            <div className="form-combine form-combine-before">
+                                <span className="form-combine-icon">
+                                    <UI.Icon value="calendar_today" />
+                                </span>
+                                <select className="form-control">
+                                    <option value="./?dummy=1">2021年 1月</option>
+                                    <option value="./?dummy=2">2021年 2月</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <div className="form-control-static">
+                                Static item
+                            </div>
+                        </div>
+
+                        <div className="form-group flex flex-col lg:flex-row gap-0.25">
+                            <div className="form-control-checkbox box">
+                                <input type="checkbox" id="checkbox3" />
+                                <label htmlFor="checkbox3">Checkbox</label>
                             </div>
 
-                            <div className="form-group">
-                                <input type="email" className="form-control" placeholder="Disabled" disabled />
+                            <div className="form-control-checkbox box">
+                                <input type="checkbox" id="checkbox4" />
+                                <label htmlFor="checkbox4">Checkbox</label>
                             </div>
 
-                            <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
-                                <Form.Password placeholder="パスワード" onChange={(e) => console.log(e.currentTarget.value)} />
-
-                                <div className="form-combine form-combine-after">
-                                    <input type="search" className="form-control" placeholder="検索" />
-                                    <button type="button" className="form-combine-icon" tabIndex={-1}>
-                                        <UI.Icon value="search" />
-                                    </button>
-                                </div>
-
-                                <div className="form-combine form-combine-before">
-                                    <span className="form-combine-icon">
-                                        <UI.Icon value="calendar_today" />
-                                    </span>
-                                    <select className="form-control">
-                                        <option value="./?dummy=1">2021年 1月</option>
-                                        <option value="./?dummy=2">2021年 2月</option>
-                                    </select>
-                                </div>
+                            <div className="form-control-checkbox box">
+                                <input type="radio" name="radioGroup2" id="radio3" />
+                                <label htmlFor="radio3">Radio</label>
                             </div>
 
-                            <div className="form-group">
-                                <div className="form-control-static">
-                                    Static item
-                                </div>
+                            <div className="form-control-checkbox box">
+                                <input type="radio" name="radioGroup2" id="radio4" />
+                                <label htmlFor="radio4">Radio</label>
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <input type="checkbox" className="form-control-switch" />
+                        </div>
+
+                        <form className="bg-muted rounded p-2 grid gap-0.5 lg:w-1/2" onSubmit={formcheck}>
+                            <Form.ComboBox type="text" placeholder="ユーザーID" name="username" />
+                            <Form.Password placeholder="パスワード" combobox={true} />
+                            <Form.TextareaAutoSize placeholder="メッセージ" name="message" combobox={true} />
+
+                            <div className="form-group flex justify-center flex-row gap-1.5 mt-1">
+                                <Form.Checkbox name="agreement" value="agreement" label="サンプルチェック" />
                             </div>
 
-                            <div className="form-group flex flex-col lg:flex-row gap-1 lg:gap-2">
-                                <div className="form-control-checkbox">
-                                    <input type="checkbox" id="checkbox1" />
-                                    <label htmlFor="checkbox1">Checkbox</label>
-                                </div>
-
-                                <div className="form-control-checkbox">
-                                    <input type="checkbox" id="checkbox2" />
-                                    <label htmlFor="checkbox2">Checkbox</label>
-                                </div>
-
-                                <div className="form-control-checkbox">
-                                    <input type="radio" name="radioGroup1" id="radio1" />
-                                    <label htmlFor="radio1">Radio</label>
-                                </div>
-
-                                <div className="form-control-checkbox">
-                                    <input type="radio" name="radioGroup1" id="radio2" />
-                                    <label htmlFor="radio2">Radio</label>
-                                </div>
-                            </div>
-
-                            <div className="form-group flex flex-col lg:flex-row gap-0.25">
-                                <div className="form-control-checkbox box">
-                                    <input type="checkbox" id="checkbox3" />
-                                    <label htmlFor="checkbox3">Checkbox</label>
-                                </div>
-
-                                <div className="form-control-checkbox box">
-                                    <input type="checkbox" id="checkbox4" />
-                                    <label htmlFor="checkbox4">Checkbox</label>
-                                </div>
-
-                                <div className="form-control-checkbox box">
-                                    <input type="radio" name="radioGroup2" id="radio3" />
-                                    <label htmlFor="radio3">Radio</label>
-                                </div>
-
-                                <div className="form-control-checkbox box">
-                                    <input type="radio" name="radioGroup2" id="radio4" />
-                                    <label htmlFor="radio4">Radio</label>
-                                </div>
-                            </div>
-
-                            <div className="form-group">
-                                <input type="checkbox" className="form-control-switch" />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Textarea</label>
-                                <Form.TextareaAutoSize onChange={(e) => console.log(e)} />
-                            </div>
-
-                            <div className="form-group text-center">
+                            <div className="form-group text-center mb-0">
                                 <button type="submit" className="btn btn-lg btn-long is-primary rounded-full">送信する</button>
                             </div>
                         </form>

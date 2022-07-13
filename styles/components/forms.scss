@@ -12,7 +12,7 @@
     font-size:        $input-font-size;
     line-height:      $input-line-height;
     color:            $body-color;
-    background-color: rgba(255,255,255,0.2);
+    background-color: white;
     background-image: none;
     background-clip:  padding-box;
     border:           $border-width solid $input-border-color;
@@ -22,18 +22,16 @@
 
     @include darkmode {
         color: $dark-body-color;
-        background-color: rgba(0,0,0,0.2);
+        background-color: black;
         border-color: $dark-input-border-color;
     }
 
     &:focus {
         color: $body-color;
-        background-color: $body-bg;
         border-color: $body-color;
 
         @include darkmode {
             color: $dark-body-color;
-            background-color: $dark-body-bg;
             border-color: $dark-body-color;
         }
     }
@@ -475,6 +473,50 @@ label + .form-text {
 //***********************************************************************
 .form-combine {
     position: relative;
+
+    label {
+        position: absolute;
+        z-index: 2;
+        top: $border-width;
+        left: $border-width;
+        pointer-events: none;
+
+        font-weight: normal;
+        color: $muted-color;
+
+        @include darkmode {
+            color: $dark-muted-color;
+        }
+
+        padding: $input-padding-y $input-padding-x;
+        font-size: $input-font-size;
+        line-height: $input-line-height;
+    }
+
+    .form-control-sm + label {
+        padding: $input-sm-padding-y $input-padding-x;
+        font-size: $input-sm-font-size;
+    }
+
+    .form-control-lg + label {
+        padding: $input-lg-padding-y $input-padding-x;
+        font-size: $input-lg-font-size;
+    }
+
+    .form-control:focus + label {
+        top: -$input-padding-y + calc(12px / 2);
+        left: $input-padding-x + $border-width;
+        padding: 0 spacer(0.25);
+        font-size: 0.75rem;
+        line-height: 1;
+        color: $body-color;
+        background-color: white;
+
+        @include darkmode {
+            color: $dark-body-color;
+            background-color: black;
+        }
+    }
 }
 
 .form-combine-icon {
