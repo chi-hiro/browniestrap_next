@@ -16,12 +16,9 @@ const TextareaAutoSize = forwardRef((props: Props, ref: React.Ref<HTMLTextAreaEl
 
         if (textarea.current) {
             textarea.current.style.height = 'auto'
-
-            if (textarea.current.scrollHeight > textarea.current.offsetHeight) {
-                textarea.current.style.height = `${textarea.current.scrollHeight}px`
-            } else {
-                textarea.current.style.height = `${48}px`
-            }
+            textarea.current.style.height = textarea.current.scrollHeight > textarea.current.offsetHeight
+                ? `${textarea.current.scrollHeight}px`
+                : `${48}px`
         }
     }
 

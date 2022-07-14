@@ -90,6 +90,8 @@ export const Modal = forwardRef((props: Props, ref) => {
 
                         {props.children}
                     </div>
+
+                    <span className="modal-over" onClick={() => props.close && hide()} />
                 </div>
             </div>
         </CSSTransition>,

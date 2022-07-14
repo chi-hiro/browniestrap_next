@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import Icon from '@/components/UI/icon'
 
@@ -6,6 +6,13 @@ type Props = {
     theme: string
     children: React.ReactNode
     position?: string
+}
+
+const icon: {[key: string]: string} = {
+    info: 'info',
+    success: 'check_circle',
+    warning: 'warning',
+    danger: 'cancel'
 }
 
 const Notification = (props: Props) => {
@@ -32,23 +39,6 @@ const Notification = (props: Props) => {
         container?.childNodes.length == 0 && container.remove()
     }
 
-    // Computed
-    const icon = useMemo(() => {
-        switch (props.theme) {
-            case 'success':
-                return 'check_circle'
-
-            case 'warning':
-                return 'warning'
-
-            case 'danger':
-                return 'cancel'
-
-            default:
-                return 'info'
-        }
-    }, [props.theme])
-
     // Hooks
     useEffect(() => {
         if (!document.querySelector('.notification-container')) {
@@ -68,7 +58,7 @@ const Notification = (props: Props) => {
             <div ref={el} className={`card card-notification bg-${props.theme}`}>
                 <div className="flex justify-between items-center card-body">
                     <span className="icon">
-                        <Icon value={icon} />
+                        <Icon value={icon[props.theme]} />
                     </span>
 
                     <div className="flex-1 body">

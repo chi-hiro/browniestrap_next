@@ -15,11 +15,9 @@ const Badge = (props: Props) => {
         return classes.join(' ')
     }, [props.type, props.theme])
 
-    return (
-        props.href
-            ? <a className={badgeClass} href={props.href}>{props.children}</a>
-            : <span className={badgeClass}>{props.children}</span>
-    )
+    return props.href
+        ? <a className={badgeClass} href={props.href}>{props.children}</a>
+        : <span className={badgeClass}>{props.children}</span>
 }
 
 export default memo(Badge)

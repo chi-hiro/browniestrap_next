@@ -377,11 +377,7 @@ label + .form-text {
 
         input[type="checkbox"],
         input[type="radio"] {
-            position: absolute;
-            left: spacer(1);
-            top: 0;
-            bottom: 0;
-            margin: auto 0;
+            display: none;
 
             &:checked {
                 + label {
@@ -393,9 +389,11 @@ label + .form-text {
         }
 
         label {
+            display: block;
             width: 100%;
+            text-align: center;
             border: $border-width solid $input-border-color;
-            padding: spacer(1) spacer(1.5) spacer(1) spacer(3);
+            padding: spacer(1) spacer(1.5);
             @include rounded;
 
             @include darkmode {

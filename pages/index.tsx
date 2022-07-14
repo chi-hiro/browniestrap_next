@@ -427,8 +427,13 @@ export default function Home() {
                             <input type="email" className="form-control" placeholder="Disabled" disabled />
                         </div>
 
-                        <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
+                        <div className="form-group">
+                            <div className="form-control-static">
+                                Static item
+                            </div>
+                        </div>
 
+                        <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
                             <div className="form-combine form-combine-after">
                                 <input type="search" className="form-control" placeholder="検索" />
                                 <button type="button" className="form-combine-icon" tabIndex={-1}>
@@ -447,39 +452,19 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="form-group">
-                            <div className="form-control-static">
-                                Static item
-                            </div>
-                        </div>
+                        <div className="form-group grid lg:grid-cols-4 gap-0.25">
+                            <Form.Checkbox name="exsample-check" value="exsample1" label="Checkbox" theme="box" />
+                            <Form.Checkbox name="exsample-check" value="exsample2" label="Checkbox" theme="box" />
 
-                        <div className="form-group flex flex-col lg:flex-row gap-0.25">
-                            <div className="form-control-checkbox box">
-                                <input type="checkbox" id="checkbox3" />
-                                <label htmlFor="checkbox3">Checkbox</label>
-                            </div>
-
-                            <div className="form-control-checkbox box">
-                                <input type="checkbox" id="checkbox4" />
-                                <label htmlFor="checkbox4">Checkbox</label>
-                            </div>
-
-                            <div className="form-control-checkbox box">
-                                <input type="radio" name="radioGroup2" id="radio3" />
-                                <label htmlFor="radio3">Radio</label>
-                            </div>
-
-                            <div className="form-control-checkbox box">
-                                <input type="radio" name="radioGroup2" id="radio4" />
-                                <label htmlFor="radio4">Radio</label>
-                            </div>
+                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample3" label="Radio" theme="box" checked={true} />
+                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample4" label="Radio" theme="box" />
                         </div>
 
                         <div className="form-group">
                             <input type="checkbox" className="form-control-switch" />
                         </div>
 
-                        <form className="bg-muted rounded p-2 grid gap-0.5 lg:w-1/2" onSubmit={formcheck}>
+                        <form className="bg-muted rounded p-2 grid gap-0.5 lg:w-1/2 mx-auto" onSubmit={formcheck}>
                             <Form.ComboBox type="text" placeholder="ユーザーID" name="username" />
                             <Form.Password placeholder="パスワード" combobox={true} />
                             <Form.TextareaAutoSize placeholder="メッセージ" name="message" combobox={true} />
