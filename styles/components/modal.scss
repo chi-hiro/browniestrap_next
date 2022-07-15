@@ -57,10 +57,13 @@ $modal-scrollbar-width: 12px;
     left: 0;
     right: 0;
     height: 100%;
-    @include overlay;
 
     &.modal-double {
         z-index: $zindex-modal + 1;
+    }
+
+    &:not(.modal:only-of-type) {
+        @include overlay;
     }
 }
 
@@ -83,8 +86,15 @@ $modal-scrollbar-width: 12px;
     z-index: 2;
     width: 90vw;
     max-width: 500px + spacer(2) + spacer(2);
-    @include rounded;
     box-shadow: $box-shadow;
+
+    > *:first-child {
+        @include rounded-top;
+    }
+
+    > *:last-child {
+        @include rounded-bottom;
+    }
 }
 
 .modal-over {
@@ -108,8 +118,6 @@ $modal-scrollbar-width: 12px;
     background-color: darken($body-bg, 2%);
     border-bottom: 1px solid $border-color;
     padding: spacer(0.5) spacer(0.5) spacer(0.5) spacer(1.5);
-    margin-bottom: -1px;
-    @include rounded-top;
 
     @include darkmode {
         background-color: lighten($dark-body-bg, 2%);
@@ -179,32 +187,13 @@ $modal-scrollbar-width: 12px;
         background-color: $dark-body-bg;
     }
 
-    @include rounded;
-
-    + .modal-footer {
-        padding-top: $border-radius;
-        margin-top: -$border-radius;
-    }
-
     &.scroll {
         display: block;
         height: 50vh;
-        border-radius: 0;
         @include scroll-y;
 
         &::-webkit-scrollbar {
             width: $modal-scrollbar-width;
-        }
-
-        + .modal-footer {
-            margin-top: 0;
-            border-top: 1px solid $border-color;
-            padding-top: spacer(1);
-            padding-bottom: spacer(1);
-
-            @include darkmode {
-                border-color: $dark-border-color;
-            }
         }
     }
 
@@ -261,27 +250,61 @@ $modal-scrollbar-width: 12px;
 .modal-footer {
     width: 100%;
     background-color: $body-bg;
-    padding: 0 spacer(1.5) spacer(1.5);
-    @include rounded-bottom;
+    border-top: 1px solid $border-color;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: spacer(1);
-
-    @include breakpoint-up {
-        padding: 0 spacer(2) spacer(2);
-    }
 
     @include darkmode {
         background-color: $dark-body-bg;
+        border-color: $dark-border-color;
     }
 
     > * {
-        flex: 0 1 50%;
+        flex: 0 1 100%;
     }
 
-    .btn-sm {
+    button {
+        @include button-reset;
+    }
+
+    a, button {
+        user-select: none;
+        cursor: pointer;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: spacer(1.25) spacer(0.5);
+
         font-size: $input-font-size;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        vertical-align: top;
+        line-height: 1;
+        @include text-kerning;
+
+        &:not(:only-child):not(:last-child) {
+            border-right: 1px solid $border-color;
+        }
+
+        @include darkmode {
+            border-color: $dark-border-color;
+        }
+
+        @include transition((background, color));
+
+        @include hover-mouse {
+            background-color: $muted-bg;
+
+            @include darkmode {
+                background-color: $dark-muted-bg;
+            }
+        }
     }
 }

@@ -835,10 +835,10 @@ export default function Home() {
                         </ModalBody>
 
                         <ModalFooter>
-                            <button type="button" className="btn is-outline-default rounded-full" onClick={() => dummyModal1Ref.current?.hide()}>
+                            <button type="button" onClick={() => dummyModal1Ref.current?.hide()}>
                                 とじる
                             </button>
-                            <button type="button" className="btn is-primary rounded-full" onClick={(e) => dummyModal2Ref.current?.show(e)}>
+                            <button type="button" className="text-primary" onClick={(e) => dummyModal2Ref.current?.show(e)}>
                                 つぎへ
                             </button>
                         </ModalFooter>
@@ -862,12 +862,6 @@ export default function Home() {
                             <h2>ユーザーと Google の関係</h2>
                             <p>本規約は、ユーザーと Google の関係を定義するためのものです。大まかに言うと、Google は本規約を遵守することに同意したユーザーに Google のサービスの利用を許可します。本規約には、Google のビジネスの仕組みと収益を生み出す方法が反映されています。 「Google」とは、Google LLC およびその関連会社を意味します。</p>
                         </ModalBody>
-
-                        <ModalFooter>
-                            <button type="button" className="btn is-primary rounded-full" onClick={() => dummyModal2Ref.current?.hide()}>
-                                承諾
-                            </button>
-                        </ModalFooter>
                     </Modal>
                 </section>
             </main>

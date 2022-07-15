@@ -21,9 +21,9 @@ const Article = (props: Props) => {
     // Render
     return (
         <article className="article" itemScope itemType="http://schema.org/NewsArticle">
-            <div className="flex justify-between items-center article-detail">
+            <div className="flex justify-between items-center gap-0.5 article-detail">
                 <time itemProp="datepublished" dateTime={props.date} className="article-date">{formatDate}</time>
-                {props.badge && <UI.Badge theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
+                {props.badge && <UI.Badge type="sm" theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
             </div>
 
             <h1 itemProp="name" className="article-title">
