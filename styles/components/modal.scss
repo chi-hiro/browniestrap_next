@@ -58,12 +58,10 @@ $modal-scrollbar-width: 12px;
     right: 0;
     height: 100%;
 
+    @include overlay;
+
     &.modal-double {
         z-index: $zindex-modal + 1;
-    }
-
-    &:not(.modal:only-of-type) {
-        @include overlay;
     }
 }
 
