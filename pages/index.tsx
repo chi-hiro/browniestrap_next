@@ -131,9 +131,31 @@ export default function Home() {
                     </div>
                 </section>
 
+                <section id="section_skelton" className="section border-t reveal">
+                    <div className="container">
+                        <h2 className="section-heading">Skelton</h2>
+
+                        <div className="grid grid-cols-2 gap-40px">
+                            <div>
+                                <UI.Skelton theme="embed embed-16by9 mb-1" animation={true} />
+                                <UI.Skelton variant="text" height={22 * 3} animation={true} />
+                            </div>
+
+                            <div>
+                                <div className="flex items-center gap-0.5 mb-1">
+                                    <UI.Skelton variant="circular" width={48} height={48} animation={true} />
+                                    <UI.Skelton variant="text" width={80} animation={true} />
+                                </div>
+                                <UI.Skelton variant="h1" theme="w-2/3 mb-1" animation={true} />
+                                <UI.Skelton variant="text" height={22 * 5} animation={true} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="section_carousel" className="section border-t reveal">
                     <div className="container">
-                        <h2 className="section-heading">カルーセル</h2>
+                        <h2 className="section-heading">Carousel</h2>
                     </div>
 
                     <div className="mb-3">
@@ -170,7 +192,7 @@ export default function Home() {
 
                 <section id="section_card" className="section section-bg-even border-t reveal">
                     <div className="container">
-                        <h2 className="section-heading">カード</h2>
+                        <h2 className="section-heading">Card</h2>
 
                         <h3 className="section-heading-sm">画像付き</h3>
 
@@ -253,7 +275,7 @@ export default function Home() {
                 <section id="section_headline" className="section border-t">
                     <div className="container">
                         <div className="lg:flex">
-                            <h2 className="section-heading lg:w-1/3">ヘッドライン</h2>
+                            <h2 className="section-heading lg:w-1/3">Headline</h2>
 
                             <div className="grid reveal-group lg:w-2/3">
                                 <Web.Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true}>
@@ -278,7 +300,7 @@ export default function Home() {
 
                 <section id="section_button" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">ボタン</h2>
+                        <h2 className="section-heading">Button</h2>
 
                         <h3 className="section-heading-sm">Basic</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-white">
@@ -410,7 +432,7 @@ export default function Home() {
 
                 <section id="section_forms" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">フォーム</h2>
+                        <h2 className="section-heading">Form</h2>
 
                         <div className="form-group">
                             <label>Basic <UI.Badge type="sm" theme="bg-danger">必須</UI.Badge></label>
@@ -482,7 +504,7 @@ export default function Home() {
 
                 <section id="section_table" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">テーブル</h2>
+                        <h2 className="section-heading">Table</h2>
 
                         <h3 className="section-heading-sm">Vertical</h3>
                         <div className="table-responsive">
@@ -573,7 +595,7 @@ export default function Home() {
 
                 <section id="section_loader" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">ローダー</h2>
+                        <h2 className="section-heading">Loader</h2>
 
                         <div className="grid grid-cols-3 gap-1">
                             <div className="p-20px bg-muted">
@@ -606,7 +628,7 @@ export default function Home() {
 
                 <section id="section_badge" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">バッジ</h2>
+                        <h2 className="section-heading">Badge</h2>
 
                         <h3 className="section-heading-sm">Text</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
@@ -715,7 +737,7 @@ export default function Home() {
 
                 <section id="section_breadcrumb" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">パンくずリスト</h2>
+                        <h2 className="section-heading">Breadcrumb</h2>
 
                         <Web.Breadcrumb homeicon={true} src={[
                             { name: 'Home', url: '/' },
@@ -727,7 +749,7 @@ export default function Home() {
 
                 <section id="section_expansion" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">エキスパンション</h2>
+                        <h2 className="section-heading">Expansion</h2>
 
                         <h3 className="section-heading-sm">Vanilla</h3>
                         <UI.Expansion title="Expansion (Click)">
@@ -767,7 +789,7 @@ export default function Home() {
 
                 <section id="section_viewer" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">画像ビューワ</h2>
+                        <h2 className="section-heading">Viewer</h2>
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0.5">
                             <div className="col-span-1 lg:col-span-1">
@@ -820,7 +842,7 @@ export default function Home() {
 
                 <section id="section_modal" className="section border-t">
                     <div className="container">
-                        <h2 className="section-heading">モーダル</h2>
+                        <h2 className="section-heading">Modal</h2>
 
                         <div className="flex flex-wrap gap-0.5">
                             <button type="button" className="btn is-primary" onClick={(e) => dummyModal1Ref.current?.show(e)}>Basic</button>

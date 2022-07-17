@@ -8,29 +8,32 @@
 //***********************************************************************
 //  Components
 //***********************************************************************
-@use 'components/icon';
 @use 'components/buttons';
 @use 'components/table';
 @use 'components/forms';
+@use 'components/modal';
+
+@use 'components/icon';
 @use 'components/badge';
 @use 'components/card';
-@use 'components/loader';
 @use 'components/expansion';
-@use 'components/modal';
+@use 'components/loader';
+@use 'components/skelton';
+
 @use 'components/carousel';
-@use 'components/headline';
-@use 'components/breadcrumb';
 @use 'components/viewer';
 
 @use 'components/header';
 @use 'components/footer';
 @use 'components/visual';
+@use 'components/headline';
+@use 'components/breadcrumb';
 
 //***********************************************************************
 //  Layouts
 //***********************************************************************
-@use 'layouts/sectioning';
 @use 'layouts/article';
+@use 'layouts/sectioning';
 
 //***********************************************************************
 //  Utilities
