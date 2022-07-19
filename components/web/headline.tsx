@@ -25,7 +25,7 @@ const Headline = (props: Props) => {
     const renderBody = (
         <div className="headline-item-body">
             <div className="detail">
-                {props.badge && <UI.Badge type="sm" theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
+                {props.badge && <UI.Badge variant="sm" theme={props.badge.theme}>{props.badge.label}</UI.Badge>}
                 {props.date && <time itemProp="datePublished" dateTime={props.date} className="date">{formatDate}</time>}
             </div>
 

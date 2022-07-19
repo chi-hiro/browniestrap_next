@@ -170,7 +170,7 @@ const Carousel = (props: Props) => {
 
                     {props.timer && (
                         <div className={`carousel-loader ${lazyLoading ? 'hide' : ''}`}>
-                            <Loader type="circle" progress={timerProgress} />
+                            <Loader variant="circle" progress={timerProgress} />
                         </div>
                     )}
                 </Swiper>

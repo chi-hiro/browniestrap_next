@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react'
 
 type Props = {
-    type: string
+    variant: string
     theme?: string
     progress?: number
 }
@@ -19,7 +19,7 @@ const Loader = (props: Props) => {
         return array - (props.progress ? props.progress : 0) / 100 * array
     }, [props.progress])
 
-    switch (props.type) {
+    switch (props.variant) {
         case 'dot':
             return (
                 <div className={`loader loader-dot ${props.theme}`}>

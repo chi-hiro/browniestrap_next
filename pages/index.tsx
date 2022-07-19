@@ -199,7 +199,7 @@ export default function Home() {
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" theme="bg-white">
-                                    <UI.Badge type="sm" theme="bg-primary">News</UI.Badge>
+                                    <UI.Badge variant="sm" theme="bg-primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">「銀河」にインスパイアされた 2 種類のカラーで、どこまでも広がる遊びの世界へ。</p>
@@ -208,7 +208,7 @@ export default function Home() {
 
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" theme="bg-white">
-                                    <UI.Badge type="sm" theme="bg-secondary">News</UI.Badge>
+                                    <UI.Badge variant="sm" theme="bg-secondary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">『FINAL FANTASY VII REMAKE INTERGRADE』は、大人気かつ受賞歴もある『FINAL FANTASY VII REMAKE』をPlayStation 5向けにライティングや質感、背景などの表現力を向上し、ユフィを主人公とした新規エピソード「FF7R EPISODE INTERmission」などの新要素を追加した作品だ。</p>
@@ -217,7 +217,7 @@ export default function Home() {
 
                             <div className="reveal reveal-fade-up">
                                 <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" theme="bg-danger">
-                                    <UI.Badge type="sm" theme="bg-white">News</UI.Badge>
+                                    <UI.Badge variant="sm" theme="bg-white">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">氷に覆われた文明崩壊後のロサンゼルスから、スナイパーのスコープから覗く第2次世界大戦まで、魅力的な体験がゾクゾク。</p>
@@ -435,7 +435,7 @@ export default function Home() {
                         <h2 className="section-heading">Form</h2>
 
                         <div className="form-group">
-                            <label>Basic <UI.Badge type="sm" theme="bg-danger">必須</UI.Badge></label>
+                            <label>Basic <UI.Badge variant="sm" theme="bg-danger">必須</UI.Badge></label>
                             <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
                             <input type="text" className="form-control" />
                         </div>
@@ -600,27 +600,27 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-1">
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Dot</h3>
-                                <UI.Loader type="dot" theme="rounded-full" />
+                                <UI.Loader variant="dot" theme="rounded-full" />
                             </div>
 
                             <div className="p-20px bg-dark">
                                 <h3 className="section-heading-sm text-center text-white">Spin</h3>
-                                <UI.Loader type="spin" theme="is-white" />
+                                <UI.Loader variant="spin" theme="is-white" />
                             </div>
 
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Circle</h3>
-                                <UI.Loader type="circle" progress={32} />
+                                <UI.Loader variant="circle" progress={32} />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Line</h3>
-                                <UI.Loader type="line" />
+                                <UI.Loader variant="line" />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Bar</h3>
-                                <UI.Loader type="bar" progress={64} theme="rounded-full" />
+                                <UI.Loader variant="bar" progress={64} theme="rounded-full" />
                             </div>
                         </div>
                     </div>
@@ -632,74 +632,74 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Text</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" type="sm" theme="text-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="text-white uppercase">white</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-primary uppercase" href="#">primary</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-secondary uppercase" href="#">secondary</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-success uppercase" href="#">success</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-info uppercase" href="#">info</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-warning uppercase" href="#">warning</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-danger uppercase" href="#">danger</UI.Badge>
+                            <UI.Badge variant="sm" theme="text-white uppercase" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Background</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" type="sm" theme="bg-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="bg-white uppercase">white</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-primary uppercase" href="#">primary</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-secondary uppercase" href="#">secondary</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-success uppercase" href="#">success</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-info uppercase" href="#">info</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-warning uppercase" href="#">warning</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-danger uppercase" href="#">danger</UI.Badge>
+                            <UI.Badge variant="sm" theme="bg-white uppercase" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Border</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" type="sm" theme="border-primary uppercase">primary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-success uppercase">success</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-info uppercase">info</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-warning uppercase">warning</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-danger uppercase">danger</UI.Badge>
-                            <UI.Badge href="#" type="sm" theme="border-white uppercase">white</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-primary uppercase" href="#">primary</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-secondary uppercase" href="#">secondary</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-success uppercase" href="#">success</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-info uppercase" href="#">info</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-warning uppercase" href="#">warning</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-danger uppercase" href="#">danger</UI.Badge>
+                            <UI.Badge variant="sm" theme="border-white uppercase" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">with Icon</h3>
                         <div className="flex flex-wrap items-center gap-0.5 p-20px bg-muted">
-                            <UI.Badge href="#" type="sm" theme="text-primary uppercase rounded-full">
+                            <UI.Badge variant="sm" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 small
                             </UI.Badge>
-                            <UI.Badge href="#" type="md" theme="text-primary uppercase rounded-full">
+                            <UI.Badge variant="md" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge href="#" type="lg" theme="text-primary uppercase rounded-full">
+                            <UI.Badge variant="lg" theme="text-primary uppercase rounded-full">
                                 <UI.Icon value="account_circle" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge href="#" type="sm" theme="uppercase rounded-full">
+                            <UI.Badge variant="sm" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 small
                             </UI.Badge>
-                            <UI.Badge href="#" type="md" theme="uppercase rounded-full">
+                            <UI.Badge variant="md" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge href="#" type="lg" theme="uppercase rounded-full">
+                            <UI.Badge variant="lg" theme="uppercase rounded-full">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge href="#" type="sm" theme="text-danger uppercase rounded-full">
+                            <UI.Badge variant="sm" theme="text-danger uppercase rounded-full">
                                 small
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge href="#" type="md" theme="text-danger uppercase rounded-full">
+                            <UI.Badge variant="md" theme="text-danger uppercase rounded-full">
                                 medium
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge href="#" type="lg" theme="text-danger uppercase rounded-full">
+                            <UI.Badge variant="lg" theme="text-danger uppercase rounded-full">
                                 large
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
@@ -707,30 +707,30 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Icon: status</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge type="status" theme="is-primary uppercase">primary</UI.Badge>
-                            <UI.Badge type="status" theme="is-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge type="status" theme="is-success uppercase">success</UI.Badge>
-                            <UI.Badge type="status" theme="is-info uppercase">info</UI.Badge>
-                            <UI.Badge type="status" theme="is-warning uppercase">warning</UI.Badge>
-                            <UI.Badge type="status" theme="is-danger uppercase">danger</UI.Badge>
-                            <UI.Badge type="status" theme="is-white uppercase">white</UI.Badge>
+                            <UI.Badge variant="status" theme="is-primary uppercase">primary</UI.Badge>
+                            <UI.Badge variant="status" theme="is-secondary uppercase">secondary</UI.Badge>
+                            <UI.Badge variant="status" theme="is-success uppercase">success</UI.Badge>
+                            <UI.Badge variant="status" theme="is-info uppercase">info</UI.Badge>
+                            <UI.Badge variant="status" theme="is-warning uppercase">warning</UI.Badge>
+                            <UI.Badge variant="status" theme="is-danger uppercase">danger</UI.Badge>
+                            <UI.Badge variant="status" theme="is-white uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Icon: check</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge type="check" theme="is-primary capitalize">primary</UI.Badge>
-                            <UI.Badge type="check" theme="is-secondary capitalize">secondary</UI.Badge>
-                            <UI.Badge type="check" theme="is-success capitalize">success</UI.Badge>
-                            <UI.Badge type="check" theme="is-info capitalize">info</UI.Badge>
-                            <UI.Badge type="check" theme="is-warning capitalize">warning</UI.Badge>
-                            <UI.Badge type="check" theme="is-danger capitalize">danger</UI.Badge>
-                            <UI.Badge type="check" theme="is-white capitalize">white</UI.Badge>
+                            <UI.Badge variant="check" theme="is-primary capitalize">primary</UI.Badge>
+                            <UI.Badge variant="check" theme="is-secondary capitalize">secondary</UI.Badge>
+                            <UI.Badge variant="check" theme="is-success capitalize">success</UI.Badge>
+                            <UI.Badge variant="check" theme="is-info capitalize">info</UI.Badge>
+                            <UI.Badge variant="check" theme="is-warning capitalize">warning</UI.Badge>
+                            <UI.Badge variant="check" theme="is-danger capitalize">danger</UI.Badge>
+                            <UI.Badge variant="check" theme="is-white capitalize">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Count</h3>
                         <button type="button" className="btn is-primary">
                             Sample
-                            <UI.Badge type="count" theme="bg-danger">8</UI.Badge>
+                            <UI.Badge variant="count" theme="bg-danger">8</UI.Badge>
                         </button>
                     </div>
                 </section>
@@ -757,13 +757,13 @@ export default function Home() {
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Border</h3>
-                        <UI.Expansion title="Expansion (Hover)" type="border" hover={true}>
+                        <UI.Expansion title="Expansion (Hover)" variant="border" hover={true}>
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Popup</h3>
                         <div className="flex justify-end">
-                            <UI.Expansion type="popup">
+                            <UI.Expansion variant="popup">
                                 <ul className="expansion-nav-body">
                                     <li>
                                         <button type="button">

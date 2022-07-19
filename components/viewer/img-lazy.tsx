@@ -39,7 +39,7 @@ const ImgLazy = (props: Props) => {
 
             {!isLoaded && (
                 <span className="embed embed-16by9 img-lazy">
-                    <Loader type="spin" />
+                    <Loader variant="spin" />
                 </span>
             )}
         </>

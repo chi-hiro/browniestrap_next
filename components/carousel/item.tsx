@@ -38,7 +38,7 @@ const CarouselItem = (props: Props) => {
             )}
 
             <div className="swiper-lazy-preloader">
-                <Loader type="line" />
+                <Loader variant="line" />
             </div>
         </>
     )
