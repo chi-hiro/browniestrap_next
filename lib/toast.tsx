@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client'
 import Notification from '@/components/UI/notification'
 
-export const toast = (theme: string, message: string, position?: string) => {
+export const toast = (color: string, message: string, position?: string) => {
     const container = document.createElement('div')
     container.classList.add('notification-dummy')
     document.body.appendChild(container)
     createRoot(document.querySelector('.notification-dummy')!).render(
-        <Notification theme={theme} position={position}>{message}</Notification>
+        <Notification color={color} position={position}>{message}</Notification>
     )
 }

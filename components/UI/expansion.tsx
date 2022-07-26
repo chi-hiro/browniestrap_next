@@ -2,10 +2,11 @@ import { memo, useMemo, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { env } from 'lib/env'
 import Icon from '@/components/UI/icon'
+import { styles } from './expansion.style'
 
 type Props = {
     children: React.ReactNode
-    variant?: string
+    model?: string
     title?: string
     href?: string
     hover?: boolean
@@ -44,12 +45,11 @@ const Expansion = (props: Props) => {
     const hideHover = () => props.hover && hide()
 
     const expansionClass = useMemo(() => {
-        const classes = ['expansion']
-        isShow && classes.push('show')
-        props.locked && classes.push('lock')
-        props.variant && classes.push(`expansion-${props.variant}`)
-        return classes.join(' ')
-    }, [isShow, props.variant, props.locked])
+        const arr = []
+        isShow && arr.push('show')
+        props.locked && arr.push('lock')
+        return arr.join(' ')
+    }, [isShow, props.locked])
 
     // Hooks
     useEffect(() => {
@@ -57,7 +57,7 @@ const Expansion = (props: Props) => {
     }, [props.opened])
 
     useEffect(() => {
-        if (props.variant === 'popup') {
+        if (props.model === 'popup') {
             isShow && window.setTimeout(() => document.body.addEventListener('click', hide), 300)
             return () => document.body.removeEventListener('click', hide)
         }
@@ -65,12 +65,12 @@ const Expansion = (props: Props) => {
 
     // Render
     return (
-        <div className={expansionClass} onMouseLeave={hideHover}>
+        <div css={props.model ? styles[`expansion_${props.model}`] : styles.expansion} className={expansionClass} onMouseLeave={hideHover}>
             <button type="button" className="expansion-toggler" onClick={toggle} onMouseEnter={showHover} tabIndex={props.locked ? -1 : 0}>
                 {props.title && props.title}
 
                 {!props.locked && (<span className="icon">
-                    <Icon value={props.variant === 'popup' ? 'more_horiz' : 'expand_more'} />
+                    <Icon value={props.model === 'popup' ? 'more_horiz' : 'expand_more'} />
                 </span>)}
             </button>
 

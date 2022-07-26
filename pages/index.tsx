@@ -5,7 +5,7 @@ import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
 import { viewer } from 'lib/viewer'
-import { Modal, ModalBody, ModalFooter, ModalRefTypes } from 'components/modal'
+import { Modal, ModalBody, ModalFooter, ModalRefTypes } from '@/components/modal'
 import Carousel from 'components/carousel'
 import UI from 'components/UI'
 import Form from '@/components/form'
@@ -33,28 +33,14 @@ export default function Home() {
     return (
         <Layout>
             <main>
-                <div id="visual">
-                    <div id="visual-lead">
-                        <h1 className="title">LEAD SAMPLE</h1>
-                        <p className="description">DESCRIPTION SAMPLE</p>
-                    </div>
-
-                    <Carousel
-                        mode="visual"
-                        duration={8000}
-                        zoom={true}
-                        timer={true}
-                        src={[
-                            { src_lg: `${basePath}/dummy/visual1_lg.jpg`, src: `${basePath}/dummy/visual1.jpg` },
-                            { src_lg: `${basePath}/dummy/visual2_lg.jpg`, src: `${basePath}/dummy/visual2.jpg` },
-                            { src_lg: `${basePath}/dummy/visual3_lg.jpg`, src: `${basePath}/dummy/visual3.jpg` }
-                        ]}
-                    />
-
-                    <span id="visual-scroll">
-                        Scroll
-                    </span>
-                </div>
+                <Web.Visual slide={[
+                    { src_lg: `${basePath}/dummy/visual1_lg.jpg`, src: `${basePath}/dummy/visual1.jpg` },
+                    { src_lg: `${basePath}/dummy/visual2_lg.jpg`, src: `${basePath}/dummy/visual2.jpg` },
+                    { src_lg: `${basePath}/dummy/visual3_lg.jpg`, src: `${basePath}/dummy/visual3.jpg` }
+                ]}>
+                    <h1 className="title">LEAD SAMPLE</h1>
+                    <p className="description">DESCRIPTION SAMPLE</p>
+                </Web.Visual>
 
                 <section id="section_type" className="section border-t reveal">
                     <div className="container">
@@ -104,7 +90,9 @@ export default function Home() {
                     <div className="container text-white reveal reveal-fade-up">
                         <h2 className="section-heading">カバー</h2>
                         <p>背景に画像を入れた段落</p>
-                        <p><a href="/" className="btn is-outline-white">ボタン</a></p>
+                        <p>
+                            <UI.Button model="md border" color="white">ボタン</UI.Button>
+                        </p>
                     </div>
 
                     <span className="embed embed-1by1 lg:embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
@@ -137,17 +125,17 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 gap-40px">
                             <div>
-                                <UI.Skelton theme="embed embed-16by9 mb-1" animation={true} />
-                                <UI.Skelton variant="text" height={22 * 3} animation={true} />
+                                <UI.Skelton addClass="embed embed-16by9 mb-1" animation={true} />
+                                <UI.Skelton model="text" height={22 * 3} animation={true} />
                             </div>
 
                             <div>
                                 <div className="flex items-center gap-0.5 mb-1">
-                                    <UI.Skelton variant="circular" width={48} height={48} animation={true} />
-                                    <UI.Skelton variant="text" width={80} animation={true} />
+                                    <UI.Skelton model="circular" width={48} height={48} animation={true} />
+                                    <UI.Skelton model="text" width={80} animation={true} />
                                 </div>
-                                <UI.Skelton variant="h1" theme="w-2/3 mb-1" animation={true} />
-                                <UI.Skelton variant="text" height={22 * 5} animation={true} />
+                                <UI.Skelton model="h1" addClass="w-2/3 mb-1" animation={true} />
+                                <UI.Skelton model="text" height={22 * 5} animation={true} />
                             </div>
                         </div>
                     </div>
@@ -198,8 +186,8 @@ export default function Home() {
 
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！" theme="bg-white">
-                                    <UI.Badge variant="sm" theme="bg-primary">News</UI.Badge>
+                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！">
+                                    <UI.Badge model="bg sm" color="primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">「銀河」にインスパイアされた 2 種類のカラーで、どこまでも広がる遊びの世界へ。</p>
@@ -207,8 +195,8 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—" theme="bg-white">
-                                    <UI.Badge variant="sm" theme="bg-secondary">News</UI.Badge>
+                                <UI.Card model="text" color="secondary" src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—">
+                                    <UI.Badge model="bg sm" color="secondary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">『FINAL FANTASY VII REMAKE INTERGRADE』は、大人気かつ受賞歴もある『FINAL FANTASY VII REMAKE』をPlayStation 5向けにライティングや質感、背景などの表現力を向上し、ユフィを主人公とした新規エピソード「FF7R EPISODE INTERmission」などの新要素を追加した作品だ。</p>
@@ -216,8 +204,8 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう" theme="bg-danger">
-                                    <UI.Badge variant="sm" theme="bg-white">News</UI.Badge>
+                                <UI.Card model="bg" color="danger" src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう">
+                                    <UI.Badge model="bg sm" color="white">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
                                     <p className="text-clamp-3">氷に覆われた文明崩壊後のロサンゼルスから、スナイパーのスコープから覗く第2次世界大戦まで、魅力的な体験がゾクゾク。</p>
@@ -227,47 +215,47 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">通知</h3>
 
-                        <UI.Card icon="info" theme="mb-1">
+                        <UI.Card icon="info" addClass="mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="check_circle" theme="text-success mb-1">
+                        <UI.Card model="text" color="success" icon="check_circle" addClass="mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="info" theme="text-info mb-1">
+                        <UI.Card model="text" color="info" icon="info" addClass="mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
                         </UI.Card>
 
-                        <UI.Card icon="warning" theme="text-warning mb-1">
+                        <UI.Card model="text" color="warning" icon="warning" addClass="mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
                         </UI.Card>
 
-                        <UI.Card icon="cancel" theme="text-danger mb-1">
+                        <UI.Card model="text" color="danger" icon="cancel" addClass="mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
                         </UI.Card>
 
-                        <UI.Card icon="check_circle" theme="bg-success mb-1">
+                        <UI.Card model="bg" color="success" icon="check_circle" addClass="mb-1">
                             <strong>Well done!</strong> You successfully read this important alert message.
                         </UI.Card>
 
-                        <UI.Card icon="info" theme="bg-info mb-1">
+                        <UI.Card model="bg" color="info" icon="info" addClass="mb-1">
                             <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
                         </UI.Card>
 
-                        <UI.Card icon="warning" theme="bg-warning mb-1">
+                        <UI.Card model="bg" color="warning" icon="warning" addClass="mb-1">
                             <strong>Warning!</strong> Better check yourself, you're not looking too good.
                         </UI.Card>
 
-                        <UI.Card icon="cancel" theme="bg-danger mb-1">
+                        <UI.Card model="bg" color="danger" icon="cancel" addClass="mb-1">
                             <strong>Oh snap!</strong> Change a few things up and try submitting again.
                         </UI.Card>
 
                         <div className="grid lg:flex gap-0.5">
-                            <button type="button" className="btn is-outline-success" onClick={() => toast('success', 'You successfully read this important alert message.')}>Toast</button>
-                            <button type="button" className="btn is-outline-info" onClick={() => toast('info', 'This alert needs your attention, but it\'s not super important.', 'center')}>Toast(center)</button>
-                            <button type="button" className="btn is-outline-warning" onClick={() => toast('warning', 'Better check yourself, you\'re not looking too good.', 'left')}>Toast(left)</button>
-                            <button type="button" className="btn is-outline-danger" onClick={() => toast('danger', 'Change a few things up and try submitting again.', 'right')}>Toast(right)</button>
+                            <UI.Button model="sm bg" color="success" onClick={() => toast('success', 'You successfully read this important alert message.')}>Toast</UI.Button>
+                            <UI.Button model="sm bg" color="info" onClick={() => toast('info', 'This alert needs your attention, but it\'s not super important.', 'center')}>Toast(center)</UI.Button>
+                            <UI.Button model="sm bg" color="warning" onClick={() => toast('warning', 'Better check yourself, you\'re not looking too good.', 'left')}>Toast(left)</UI.Button>
+                            <UI.Button model="sm bg" color="danger" onClick={() => toast('danger', 'Change a few things up and try submitting again.', 'right')}>Toast(right)</UI.Button>
                         </div>
                     </div>
                 </section>
@@ -278,19 +266,19 @@ export default function Home() {
                             <h2 className="section-heading lg:w-1/3">Headline</h2>
 
                             <div className="grid reveal-group lg:w-2/3">
-                                <Web.Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true}>
+                                <Web.Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', color: 'primary' }} border={true}>
                                     「よゐこのはじめてのプログラミング生活 第２回あそぶ編」（前編）を公開。視聴者のみなさんがつくったゲームをプレイします。
                                 </Web.Headline>
 
-                                <Web.Headline href="/" date="2021-10-02" badge={{ label: '重要', theme: 'bg-danger' }} border={true}>
+                                <Web.Headline href="/" date="2021-10-02" badge={{ label: '重要', color: 'danger' }} border={true}>
                                     『スプラトゥーン3』の最新調査映像が公開。新たなステージやスペシャルウェポン、ヒーローモードの情報が判明。
                                 </Web.Headline>
 
-                                <Web.Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', theme: 'bg-secondary' }} border={true}>
+                                <Web.Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', color: 'secondary' }} border={true}>
                                     シリーズ完全新作、Nintendo Switch『ベヨネッタ3』が2022年に発売決定。大魔獣を直接操作する新たなアクションも明らかに。
                                 </Web.Headline>
 
-                                <Web.Headline date="2021-09-01" badge={{ label: 'お知らせ', theme: 'bg-primary' }} border={true} rows={2}>
+                                <Web.Headline date="2021-09-01" badge={{ label: 'お知らせ', color: 'primary' }} border={true} rows={2}>
                                     Nintendo Switch『ゼルダ無双 厄災の黙示録』追加コンテンツ「エキスパンション・パス」第２弾のトレーラーが公開に。10月29日（金）に配信決定。
                                 </Web.Headline>
                             </div>
@@ -302,130 +290,90 @@ export default function Home() {
                     <div className="container">
                         <h2 className="section-heading">Button</h2>
 
-                        <h3 className="section-heading-sm">Basic</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-white">
-                            <button type="button" className="btn is-primary btn-block-sm-down rounded-full">Primary</button>
-                            <button type="button" className="btn is-secondary btn-block-sm-down rounded-full">Secondary</button>
-                            <button type="button" className="btn is-success btn-block-sm-down rounded-full">Success</button>
-                            <button type="button" className="btn is-info btn-block-sm-down rounded-full">Info</button>
-                            <button type="button" className="btn is-warning btn-block-sm-down rounded-full">Warning</button>
-                            <button type="button" className="btn is-danger btn-block-sm-down rounded-full">Danger</button>
-                            <button type="button" className="btn is-white btn-block-sm-down rounded-full">White</button>
+                        <h3 className="section-heading-sm">Bg</h3>
+                        <div className="flex flex-wrap gap-0.5">
+                            <UI.Button model="bg md blockDown rounded" color="primary">primary</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="secondary">secondary</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="success">success</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="info">info</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="warning">warning</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="danger">danger</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="white">white</UI.Button>
                         </div>
 
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-dark">
-                            <button type="button" className="btn is-primary btn-block-sm-down rounded-full">Primary</button>
-                            <button type="button" className="btn is-secondary btn-block-sm-down rounded-full">Secondary</button>
-                            <button type="button" className="btn is-success btn-block-sm-down rounded-full">Success</button>
-                            <button type="button" className="btn is-info btn-block-sm-down rounded-full">Info</button>
-                            <button type="button" className="btn is-warning btn-block-sm-down rounded-full">Warning</button>
-                            <button type="button" className="btn is-danger btn-block-sm-down rounded-full">Danger</button>
-                            <button type="button" className="btn is-white btn-block-sm-down rounded-full">White</button>
-                        </div>
-
-                        <h3 className="section-heading-sm">Outline</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-white">
-                            <button type="button" className="btn is-outline-primary btn-block-sm-down rounded-full">Primary</button>
-                            <button type="button" className="btn is-outline-secondary btn-block-sm-down rounded-full">Secondary</button>
-                            <button type="button" className="btn is-outline-success btn-block-sm-down rounded-full">Success</button>
-                            <button type="button" className="btn is-outline-info btn-block-sm-down rounded-full">Info</button>
-                            <button type="button" className="btn is-outline-warning btn-block-sm-down rounded-full">Warning</button>
-                            <button type="button" className="btn is-outline-danger btn-block-sm-down rounded-full">Danger</button>
-                            <button type="button" className="btn is-outline-white btn-block-sm-down rounded-full">White</button>
-                        </div>
-
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-dark">
-                            <button type="button" className="btn is-outline-primary btn-block-sm-down rounded-full">Primary</button>
-                            <button type="button" className="btn is-outline-secondary btn-block-sm-down rounded-full">Secondary</button>
-                            <button type="button" className="btn is-outline-success btn-block-sm-down rounded-full">Success</button>
-                            <button type="button" className="btn is-outline-info btn-block-sm-down rounded-full">Info</button>
-                            <button type="button" className="btn is-outline-warning btn-block-sm-down rounded-full">Warning</button>
-                            <button type="button" className="btn is-outline-danger btn-block-sm-down rounded-full">Danger</button>
-                            <button type="button" className="btn is-outline-white btn-block-sm-down rounded-full">White</button>
+                        <h3 className="section-heading-sm">Border</h3>
+                        <div className="flex flex-wrap gap-0.5">
+                            <UI.Button model="border md blockDown rounded" color="primary">primary</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="secondary">secondary</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="success">success</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="info">info</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="warning">warning</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="danger">danger</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="white">white</UI.Button>
                         </div>
 
                         <h3 className="section-heading-sm">Other</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <button type="button" className="btn is-link btn-block-sm-down">Link</button>
-                            <button type="button" className="btn is-default btn-block-sm-down">Default</button>
-                            <button type="button" className="btn is-outline-default btn-block-sm-down">Outline-default</button>
+                        <div className="flex flex-wrap gap-0.5">
+                            <UI.Button model="link md blockDown" color="primary">link primary</UI.Button>
+                            <UI.Button model="bg md blockDown" color="default">bg default</UI.Button>
+                            <UI.Button model="border md blockDown" color="default">border default</UI.Button>
+                            <UI.Button model="bg md blockDown" color="primary" disabled>disabled</UI.Button>
+                        </div>
+
+                        <div className="flex flex-wrap gap-0.5 items-center mt-1">
+                            <UI.Button model="bg md long rounded" color="primary" loading>border default</UI.Button>
+                            <UI.Button model="border md long rounded" color="primary" loading>border default</UI.Button>
                         </div>
 
                         <h3 className="section-heading-sm">Icon</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center">
-                            <button type="button" className="btn btn-sm is-primary btn-block-sm-down">
-                                <UI.Icon value="shopping_cart" />
-                                Before.sm
-                            </button>
+                        <div className="flex flex-wrap gap-0.5 items-center">
+                            <UI.Button model="sm bg blockDown" color="primary" startIcon={<UI.Icon value="shopping_cart" />}>
+                                startIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn btn-sm is-outline-primary btn-block-sm-down">
-                                After.sm
-                                <UI.Icon value="shopping_cart" />
-                            </button>
+                            <UI.Button model="sm border blockDown" color="primary" endIcon={<UI.Icon value="shopping_cart" />}>
+                                endIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn is-primary btn-block-sm-down">
-                                <UI.Icon value="shopping_cart" />
-                                Before
-                            </button>
+                            <UI.Button model="md bg blockDown" color="info" startIcon={<UI.Icon value="shopping_cart" />}>
+                            startIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn is-outline-primary btn-block-sm-down">
-                                After
-                                <UI.Icon value="shopping_cart" />
-                            </button>
+                            <UI.Button model="md border blockDown" color="info" endIcon={<UI.Icon value="shopping_cart" />}>
+                            endIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn btn-lg is-primary btn-block-sm-down">
-                                Before.lg
-                                <UI.Icon value="shopping_cart" />
-                            </button>
+                            <UI.Button model="lg bg blockDown" color="warning" startIcon={<UI.Icon value="shopping_cart" />}>
+                            startIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn btn-lg is-outline-primary btn-block-sm-down">
-                                After.lg
-                                <UI.Icon value="shopping_cart" />
-                            </button>
+                            <UI.Button model="lg border blockDown" color="warning" endIcon={<UI.Icon value="shopping_cart" />}>
+                            endIcon
+                            </UI.Button>
                         </div>
 
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center mt-1">
-                            <button type="button" className="btn btn-long btn-icon-before hover-icon-left is-primary btn-block-sm-down">
-                                <UI.Icon value="chevron_left" />
-                                Before.btn-long
-                            </button>
+                        <div className="flex flex-wrap gap-0.5 items-center mt-1">
+                            <UI.Button model="md long bg" color="primary" addClass="hover-icon-left" startIcon={<UI.Icon value="chevron_left" />}>
+                                long startIcon
+                            </UI.Button>
 
-                            <button type="button" className="btn btn-long btn-icon-after hover-icon-right is-outline-primary btn-block-sm-down">
-                                After.btn-long
-                                <UI.Icon value="chevron_right" />
-                            </button>
-                        </div>
+                            <UI.Button model="md long bg" color="primary" addClass="hover-icon-right" endIcon={<UI.Icon value="chevron_right" />}>
+                                long endIcon
+                            </UI.Button>
 
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center mt-1">
-                            <button type="button" className="btn btn-sm is-outline-info btn-icon-only rounded-full">
-                                <UI.Icon value="chevron_left" />
-                            </button>
-
-                            <button type="button" className="btn btn is-danger btn-icon-only rounded-full">
+                            <UI.Button model="sm icon bg rounded" color="danger">
                                 <UI.Icon value="close" />
-                            </button>
+                            </UI.Button>
 
-                            <button type="button" className="btn btn-lg is-outline-info btn-icon-only rounded-full">
-                                <UI.Icon value="chevron_right" />
-                            </button>
+                            <UI.Button model="md icon border rounded" color="success">
+                                <UI.Icon value="arrow_forward" />
+                            </UI.Button>
                         </div>
 
-                        <h3 className="section-heading-sm">UI</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted items-center">
-                            <a href="./" className="btn is-info btn-block-sm-down" onClick={pageback}>
-                                JS:HistoryBack
-                            </a>
-
-                            <button type="button" className="btn is-info btn-block-sm-down" onClick={pagetop}>JS:PageTop</button>
-
-                            <div className="btn-switch">
-                                <button type="button" className="btn btn btn-icon-only active">
-                                    <UI.Icon value="view_headline" />
-                                </button>
-                                <button type="button" className="btn btn btn-icon-only">
-                                    <UI.Icon value="apps" />
-                                </button>
-                            </div>
+                        <h3 className="section-heading-sm">Handling test</h3>
+                        <div className="flex flex-wrap gap-0.5 items-center">
+                            <UI.Button model="sm bg blockDown" color="info" onClick={pageback}>JS:HistoryBack</UI.Button>
+                            <UI.Button model="sm bg blockDown" color="info" onClick={pagetop}>JS:PageTop</UI.Button>
                         </div>
                     </div>
                 </section>
@@ -434,71 +382,42 @@ export default function Home() {
                     <div className="container">
                         <h2 className="section-heading">Form</h2>
 
-                        <div className="form-group">
-                            <label>Basic <UI.Badge variant="sm" theme="bg-danger">必須</UI.Badge></label>
-                            <small className="form-text text-muted">フォームの補足説明がここに入ります。</small>
-                            <input type="text" className="form-control" />
+                        <div className="grid lg:grid-cols-3 gap-2 mb-2">
+                            <Form.TextField name="exsample1" label="Textfield" help="フォームの補足説明がここに入ります。" required />
+                            <Form.TextField name="exsample2" label="Feedback" feedback={{ color: 'danger', message: 'Error message.' }} required />
+                            <Form.TextField name="exsample3" label="Disabled" value="Disabled value" disabled />
+                            <Form.TextField name="exsample4" label="Readonly" value="Readonly value" readonly />
+                            <Form.TextField name="exsample5" type="search" placeholder="Search" startIcon={<UI.Icon value="search" />} />
+                            <Form.TextField name="exsample5" type="number" label="End Icon" endIcon={<UI.Icon value="currency_yen" />} />
+                            <Form.TextField name="exsample6" type="select" label="Select" option={[{ value: 'option1' }, {value: 'option2'}]} startIcon={<UI.Icon value="calendar_today" />} />
+                            <Form.TextField name="exsample7" type="password" label="Password" />
                         </div>
 
-                        <div className="form-group is-danger">
-                            <input type="text" className="form-control" placeholder="Variant" />
-                            <div className="form-control-feedback">Error message.</div>
+                        <h3 className="section-heading-sm">Auto-sizing Textarea</h3>
+                        <div className="mb-1">
+                            <Form.TextField name="exsample8" type="textarea" label="Message" maxlength={100} />
                         </div>
 
-                        <div className="form-group">
-                            <input type="email" className="form-control" placeholder="Disabled" disabled />
+                        <h3 className="section-heading-sm">Checkbox</h3>
+                        <div className="flex gap-1 mb-1">
+                            <Form.Checkbox name="exsample-check" value="exsample1" label="Checkbox" />
+                            <Form.Checkbox name="exsample-check" value="exsample2" color="info" label="Checkbox" />
+                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample3" label="Radio" checked={true} />
+                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample4" label="Radio" />
                         </div>
 
-                        <div className="form-group">
-                            <div className="form-control-static">
-                                Static item
-                            </div>
+                        <div className="grid lg:grid-cols-4 gap-1 mb-1">
+                            <Form.Checkbox name="exsample-check2" value="exsample5" label="Checkbox" model="box" />
+                            <Form.Checkbox name="exsample-check2" value="exsample6" label="Checkbox" model="box" />
+                            <Form.Checkbox type="radio" name="exsample-radio2" value="exsample7" label="Radio" model="box" checked={true} />
+                            <Form.Checkbox type="radio" name="exsample-radio2" value="exsample8" label="Radio" model="box" />
                         </div>
 
-                        <div className="flex flex-col lg:flex-row gap-0.5 mb-1">
-                            <div className="form-combine form-combine-after">
-                                <input type="search" className="form-control" placeholder="検索" />
-                                <button type="button" className="form-combine-icon" tabIndex={-1}>
-                                    <UI.Icon value="search" />
-                                </button>
-                            </div>
-
-                            <div className="form-combine form-combine-before">
-                                <span className="form-combine-icon">
-                                    <UI.Icon value="calendar_today" />
-                                </span>
-                                <select className="form-control">
-                                    <option value="./?dummy=1">2021年 1月</option>
-                                    <option value="./?dummy=2">2021年 2月</option>
-                                </select>
-                            </div>
+                        <h3 className="section-heading-sm">Switch</h3>
+                        <div className="flex gap-1 mb-1">
+                            <Form.Switch name="exsample-switch" value="exsample-switch1" />
+                            <Form.Switch name="exsample-switch" value="exsample-switch2" color="danger" />
                         </div>
-
-                        <div className="form-group grid lg:grid-cols-4 gap-0.25">
-                            <Form.Checkbox name="exsample-check" value="exsample1" label="Checkbox" theme="box" />
-                            <Form.Checkbox name="exsample-check" value="exsample2" label="Checkbox" theme="box" />
-
-                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample3" label="Radio" theme="box" checked={true} />
-                            <Form.Checkbox type="radio" name="exsample-radio" value="exsample4" label="Radio" theme="box" />
-                        </div>
-
-                        <div className="form-group">
-                            <input type="checkbox" className="form-control-switch" />
-                        </div>
-
-                        <form className="bg-muted rounded p-2 grid gap-0.5 lg:w-1/2 mx-auto" onSubmit={formcheck}>
-                            <Form.ComboBox type="text" placeholder="ユーザーID" name="username" />
-                            <Form.Password placeholder="パスワード" combobox={true} />
-                            <Form.TextareaAutoSize placeholder="メッセージ" name="message" combobox={true} />
-
-                            <div className="form-group flex justify-center flex-row gap-1.5 mt-1">
-                                <Form.Checkbox name="agreement" value="agreement" label="サンプルチェック" />
-                            </div>
-
-                            <div className="form-group text-center mb-0">
-                                <button type="submit" className="btn btn-lg btn-long is-primary rounded-full">送信する</button>
-                            </div>
-                        </form>
                     </div>
                 </section>
 
@@ -600,27 +519,27 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-1">
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Dot</h3>
-                                <UI.Loader variant="dot" theme="rounded-full" />
+                                <UI.Loader model="dot" addClass="rounded-full" />
                             </div>
 
                             <div className="p-20px bg-dark">
                                 <h3 className="section-heading-sm text-center text-white">Spin</h3>
-                                <UI.Loader variant="spin" theme="is-white" />
+                                <UI.Loader model="spin" color="white" />
                             </div>
 
                             <div className="p-20px bg-muted">
                                 <h3 className="section-heading-sm text-center">Circle</h3>
-                                <UI.Loader variant="circle" progress={32} />
+                                <UI.Loader model="circle" progress={32} />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Line</h3>
-                                <UI.Loader variant="line" />
+                                <UI.Loader model="line" color="warning" />
                             </div>
 
                             <div className="p-20px bg-muted col-span-3">
                                 <h3 className="section-heading-sm text-center">Bar</h3>
-                                <UI.Loader variant="bar" progress={64} theme="rounded-full" />
+                                <UI.Loader model="bar" color="success" progress={64} addClass="rounded-full" />
                             </div>
                         </div>
                     </div>
@@ -632,74 +551,74 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Text</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge variant="sm" theme="text-primary uppercase" href="#">primary</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-secondary uppercase" href="#">secondary</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-success uppercase" href="#">success</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-info uppercase" href="#">info</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-warning uppercase" href="#">warning</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-danger uppercase" href="#">danger</UI.Badge>
-                            <UI.Badge variant="sm" theme="text-white uppercase" href="#">white</UI.Badge>
+                            <UI.Badge model="text sm" color="primary" href="#">primary</UI.Badge>
+                            <UI.Badge model="text sm" color="secondary" href="#">secondary</UI.Badge>
+                            <UI.Badge model="text sm" color="success" href="#">success</UI.Badge>
+                            <UI.Badge model="text sm" color="info" href="#">info</UI.Badge>
+                            <UI.Badge model="text sm" color="warning" href="#">warning</UI.Badge>
+                            <UI.Badge model="text sm" color="danger" href="#">danger</UI.Badge>
+                            <UI.Badge model="text sm" color="white" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Background</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge variant="sm" theme="bg-primary uppercase" href="#">primary</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-secondary uppercase" href="#">secondary</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-success uppercase" href="#">success</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-info uppercase" href="#">info</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-warning uppercase" href="#">warning</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-danger uppercase" href="#">danger</UI.Badge>
-                            <UI.Badge variant="sm" theme="bg-white uppercase" href="#">white</UI.Badge>
+                            <UI.Badge model="bg sm" color="primary" href="#">primary</UI.Badge>
+                            <UI.Badge model="bg sm" color="secondary" href="#">secondary</UI.Badge>
+                            <UI.Badge model="bg sm" color="success" href="#">success</UI.Badge>
+                            <UI.Badge model="bg sm" color="info" href="#">info</UI.Badge>
+                            <UI.Badge model="bg sm" color="warning" href="#">warning</UI.Badge>
+                            <UI.Badge model="bg sm" color="danger" href="#">danger</UI.Badge>
+                            <UI.Badge model="bg sm" color="white" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Border</h3>
                         <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
-                            <UI.Badge variant="sm" theme="border-primary uppercase" href="#">primary</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-secondary uppercase" href="#">secondary</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-success uppercase" href="#">success</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-info uppercase" href="#">info</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-warning uppercase" href="#">warning</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-danger uppercase" href="#">danger</UI.Badge>
-                            <UI.Badge variant="sm" theme="border-white uppercase" href="#">white</UI.Badge>
+                            <UI.Badge model="border sm" color="primary" href="#">primary</UI.Badge>
+                            <UI.Badge model="border sm" color="secondary" href="#">secondary</UI.Badge>
+                            <UI.Badge model="border sm" color="success" href="#">success</UI.Badge>
+                            <UI.Badge model="border sm" color="info" href="#">info</UI.Badge>
+                            <UI.Badge model="border sm" color="warning" href="#">warning</UI.Badge>
+                            <UI.Badge model="border sm" color="danger" href="#">danger</UI.Badge>
+                            <UI.Badge model="border sm" color="white" href="#">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">with Icon</h3>
                         <div className="flex flex-wrap items-center gap-0.5 p-20px bg-muted">
-                            <UI.Badge variant="sm" theme="text-primary uppercase rounded-full">
+                            <UI.Badge model="text sm rounded" color="primary">
                                 <UI.Icon value="account_circle" />
                                 small
                             </UI.Badge>
-                            <UI.Badge variant="md" theme="text-primary uppercase rounded-full">
+                            <UI.Badge model="text md rounded" color="primary">
                                 <UI.Icon value="account_circle" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge variant="lg" theme="text-primary uppercase rounded-full">
+                            <UI.Badge model="text lg rounded" color="primary">
                                 <UI.Icon value="account_circle" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge variant="sm" theme="uppercase rounded-full">
+                            <UI.Badge model="text sm rounded">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 small
                             </UI.Badge>
-                            <UI.Badge variant="md" theme="uppercase rounded-full">
+                            <UI.Badge model="text md rounded">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 medium
                             </UI.Badge>
-                            <UI.Badge variant="lg" theme="uppercase rounded-full">
+                            <UI.Badge model="text lg rounded">
                                 <img src="/dummy/1.jpg" className="rounded-full" />
                                 large
                             </UI.Badge>
 
-                            <UI.Badge variant="sm" theme="text-danger uppercase rounded-full">
+                            <UI.Badge model="text sm rounded" color="danger">
                                 small
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge variant="md" theme="text-danger uppercase rounded-full">
+                            <UI.Badge model="text md rounded" color="danger">
                                 medium
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
-                            <UI.Badge variant="lg" theme="text-danger uppercase rounded-full">
+                            <UI.Badge model="text lg rounded" color="danger">
                                 large
                                 <UI.Icon value="cancel" />
                             </UI.Badge>
@@ -707,31 +626,31 @@ export default function Home() {
 
                         <h3 className="section-heading-sm">Icon: status</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge variant="status" theme="is-primary uppercase">primary</UI.Badge>
-                            <UI.Badge variant="status" theme="is-secondary uppercase">secondary</UI.Badge>
-                            <UI.Badge variant="status" theme="is-success uppercase">success</UI.Badge>
-                            <UI.Badge variant="status" theme="is-info uppercase">info</UI.Badge>
-                            <UI.Badge variant="status" theme="is-warning uppercase">warning</UI.Badge>
-                            <UI.Badge variant="status" theme="is-danger uppercase">danger</UI.Badge>
-                            <UI.Badge variant="status" theme="is-white uppercase">white</UI.Badge>
+                            <UI.Badge model="status" color="primary" addClass="uppercase">primary</UI.Badge>
+                            <UI.Badge model="status" color="secondary" addClass="uppercase">secondary</UI.Badge>
+                            <UI.Badge model="status" color="success" addClass="uppercase">success</UI.Badge>
+                            <UI.Badge model="status" color="info" addClass="uppercase">info</UI.Badge>
+                            <UI.Badge model="status" color="warning" addClass="uppercase">warning</UI.Badge>
+                            <UI.Badge model="status" color="danger" addClass="uppercase">danger</UI.Badge>
+                            <UI.Badge model="status" color="white" addClass="uppercase">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Icon: check</h3>
                         <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
-                            <UI.Badge variant="check" theme="is-primary capitalize">primary</UI.Badge>
-                            <UI.Badge variant="check" theme="is-secondary capitalize">secondary</UI.Badge>
-                            <UI.Badge variant="check" theme="is-success capitalize">success</UI.Badge>
-                            <UI.Badge variant="check" theme="is-info capitalize">info</UI.Badge>
-                            <UI.Badge variant="check" theme="is-warning capitalize">warning</UI.Badge>
-                            <UI.Badge variant="check" theme="is-danger capitalize">danger</UI.Badge>
-                            <UI.Badge variant="check" theme="is-white capitalize">white</UI.Badge>
+                            <UI.Badge model="check" color="primary" addClass="capitalize">primary</UI.Badge>
+                            <UI.Badge model="check" color="secondary" addClass="capitalize">secondary</UI.Badge>
+                            <UI.Badge model="check" color="success" addClass="capitalize">success</UI.Badge>
+                            <UI.Badge model="check" color="info" addClass="capitalize">info</UI.Badge>
+                            <UI.Badge model="check" color="warning" addClass="capitalize">warning</UI.Badge>
+                            <UI.Badge model="check" color="danger" addClass="capitalize">danger</UI.Badge>
+                            <UI.Badge model="check" color="white" addClass="capitalize">white</UI.Badge>
                         </div>
 
                         <h3 className="section-heading-sm">Count</h3>
-                        <button type="button" className="btn is-primary">
+                        <UI.Button model="md bg" color="primary">
                             Sample
-                            <UI.Badge variant="count" theme="bg-danger">8</UI.Badge>
-                        </button>
+                            <UI.Badge model="bg count" color="danger">8</UI.Badge>
+                        </UI.Button>
                     </div>
                 </section>
 
@@ -757,13 +676,13 @@ export default function Home() {
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Border</h3>
-                        <UI.Expansion title="Expansion (Hover)" variant="border" hover={true}>
+                        <UI.Expansion title="Expansion (Hover)" model="border" hover={true}>
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </UI.Expansion>
 
                         <h3 className="section-heading-sm">Popup</h3>
                         <div className="flex justify-end">
-                            <UI.Expansion variant="popup">
+                            <UI.Expansion model="popup">
                                 <ul className="expansion-nav-body">
                                     <li>
                                         <button type="button">
@@ -834,8 +753,8 @@ export default function Home() {
                         </div>
 
                         <div className="flex flex-wrap gap-0.5 mt-2">
-                            <a href={`${basePath}/dummy/video.mp4`} className="btn is-primary" onClick={viewer}>Video</a>
-                            <a href="https://www.youtube.com/watch?v=Z2P818AAOn8" className="btn is-primary" onClick={viewer}>YouTube</a>
+                            <UI.Button model="bg md" color="primary" href={`${basePath}/dummy/video.mp4`} onClick={viewer}>Video</UI.Button>
+                            <UI.Button model="bg md" color="primary" href="https://www.youtube.com/watch?v=Z2P818AAOn8" onClick={viewer}>YouTube</UI.Button>
                         </div>
                     </div>
                 </section>
@@ -845,8 +764,8 @@ export default function Home() {
                         <h2 className="section-heading">Modal</h2>
 
                         <div className="flex flex-wrap gap-0.5">
-                            <button type="button" className="btn is-primary" onClick={(e) => dummyModal1Ref.current?.show(e)}>Basic</button>
-                            <button type="button" className="btn is-primary" onClick={(e) => dummyModal2Ref.current?.show(e)}>Scroll</button>
+                            <UI.Button model="bg md" color="primary" onClick={(e) => dummyModal1Ref.current?.show(e)}>Basic</UI.Button>
+                            <UI.Button model="bg md" color="primary" onClick={(e) => dummyModal2Ref.current?.show(e)}>Scroll</UI.Button>
                         </div>
                     </div>
 

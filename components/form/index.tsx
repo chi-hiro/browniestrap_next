@@ -1,11 +1,9 @@
-import ComboBox from '@/components/form/combobox'
+import TextField from '@/components/form/textField'
 import Checkbox from '@/components/form/checkbox'
-import Password from '@/components/form/password'
-import TextareaAutoSize from '@/components/form/textarea-autosize'
+import Switch from '@/components/form/switch'
 
 export default {
-    ComboBox,
+    TextField,
     Checkbox,
-    Password,
-    TextareaAutoSize
+    Switch
 }

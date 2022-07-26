@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
 import Icon from '@/components/UI/icon'
+import { styles } from './modal.style'
+import UI from '../UI'
 
 type Props = {
     children: React.ReactNode
@@ -11,7 +13,7 @@ type Props = {
 }
 
 export type ModalRefTypes = {
-    show: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
+    show: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void,
     hide: () => void
 }
 
@@ -73,17 +75,17 @@ export const Modal = forwardRef((props: Props, ref) => {
     // Render
     return portal ? createPortal(
         <CSSTransition classNames="modal" in={isShow} timeout={400} unmountOnExit>
-            <div className={`modal ${isDouble ? 'modal-double' : ''}`}>
-                <div className="modal-mask" style={positionStyle}>
-                    <div className="modal-inner">
+            <div css={styles.modal} className={isDouble ? 'modal-double' : ''}>
+                <div css={styles.mask} style={positionStyle}>
+                    <div css={styles.inner}>
                         {props.title && (
-                            <div className="modal-header">
+                            <div css={styles.header}>
                                 <h6 className="modal-header-title">{props.title}</h6>
 
                                 {props.close && (
-                                    <button v-if="props.closebtn" type="button" className="btn btn-icon-only modal-close" onClick={hide}>
+                                    <UI.Button model="icon" addClass="modal-close" onClick={hide}>
                                         <Icon value="close" />
-                                    </button>
+                                    </UI.Button>
                                 )}
                             </div>
                         )}
@@ -91,7 +93,7 @@ export const Modal = forwardRef((props: Props, ref) => {
                         {props.children}
                     </div>
 
-                    <span className="modal-over" onClick={() => props.close && hide()} />
+                    <span css={styles.overlay} onClick={() => props.close && hide()} />
                 </div>
             </div>
         </CSSTransition>,
@@ -100,7 +102,7 @@ export const Modal = forwardRef((props: Props, ref) => {
 })
 
 export const ModalBody = (props: { children: React.ReactNode, scroll?: boolean, theme?: string }) => (
-    <div className={`modal-body ${props.scroll ? 'scroll' : ''}`}>
+    <div css={styles.body} className={props.scroll ? 'scroll' : ''}>
         <div className={`inner ${props.theme ? props.theme : ''}`}>
             {props.children}
         </div>
@@ -108,7 +110,7 @@ export const ModalBody = (props: { children: React.ReactNode, scroll?: boolean, 
 )
 
 export const ModalFooter = (props: { children: React.ReactNode }) => (
-    <div className="modal-footer">
+    <div css={styles.footer}>
         {props.children}
     </div>
 )

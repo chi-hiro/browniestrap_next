@@ -4,7 +4,7 @@ export const pagetop = () => {
     pageScroll('pagetop')
 }
 
-export const pageback = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+export const pageback = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => {
     const link = e.currentTarget ? e.currentTarget as HTMLElement : e.target as HTMLElement
     const url = link.getAttribute('href')
 
@@ -18,7 +18,7 @@ export const pageback = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => 
     }
 }
 
-export const anchor = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+export const anchor = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => {
     const link = e.currentTarget ? e.currentTarget as HTMLElement : e.target as HTMLElement
     const url = link.getAttribute('href')
 

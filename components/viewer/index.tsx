@@ -6,6 +6,7 @@ import { scrollElement } from 'lib/pageScroll'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
 import ImgLazy from '@/components/viewer/img-lazy'
 import Icon from '@/components/UI/icon'
+import { styles } from './viewer.style'
 
 type Props = {
     mode: string
@@ -135,10 +136,10 @@ const Viewer = (props: Props) => {
     // Render
     return (
         <CSSTransition classNames="viewer" in={isShow} timeout={300} unmountOnExit>
-            <div id="viewer" ref={el}>
-                <div id="viewer-body">
+            <div css={styles.viewer} ref={el}>
+                <div css={styles.body}>
                     <div
-                        id="viewer-body-container"
+                        css={styles.container}
                         className={`${isAnimate ? 'transition' : ''} ${total === 1 ? 'single' : ''}`}
                         style={{ width: `${container}px`, transform: `translate3d(${posX}px, 0, 0)` }}
                         onTouchStart={handleDown}
@@ -151,10 +152,10 @@ const Viewer = (props: Props) => {
                         onMouseLeave={handleUp}
                     >
                         {props.items.map((item, index) => (
-                            <div key={`viewer-item${index}`} className={`viewer-item ${index === active ? 'viewer-item-active' : ''}`}>
+                            <div key={`viewer-item${index}`} css={styles.item} className={index === active ? 'viewer-item-active' : ''}>
                                 {props.mode === 'image' && (
                                     <div className="img">
-                                        <ImgLazy src={item} width={1920} height={1080} alt="" isShow={index === active ? true : false} />
+                                        <ImgLazy src={item} width="100%" height="100%" alt="" isShow={index === active ? true : false} />
                                     </div>
                                 )}
 
@@ -177,29 +178,29 @@ const Viewer = (props: Props) => {
                 </div>
 
                 {(total > 1 && active !== 0) && (
-                    <button type="button" id="viewer-prev" onClick={() => toggle(-1)}>
-                        <span className="btn btn-icon-only is-link">
+                    <button type="button" css={styles.prevBtn} onClick={() => toggle(-1)}>
+                        <span className="viewer-btn">
                             <Icon value="chevron_left" />
                         </span>
                     </button>
                 )}
 
                 {(total > 1 && active !== (total - 1)) && (
-                    <button type="button" id="viewer-next" onClick={() => toggle(+1)}>
-                        <span className="btn btn-icon-only is-link">
+                    <button type="button" css={styles.nextBtn} onClick={() => toggle(+1)}>
+                        <span className="viewer-btn">
                             <Icon value="chevron_right" />
                         </span>
                     </button>
                 )}
 
-                <button type="button" id="viewer-close" onClick={dismiss}>
-                    <span className="btn btn-icon-only is-link">
+                <button type="button" css={styles.closeBtn} onClick={dismiss}>
+                    <span className="viewer-btn">
                         <Icon value="close" />
                     </span>
                 </button>
 
                 <CSSTransition classNames="viewer-nav" in={total > 1} timeout={300} unmountOnExit>
-                    <div id="viewer-index">
+                    <div css={styles.index}>
                         <span>{ active + 1 } / { total }</span>
                     </div>
                 </CSSTransition>

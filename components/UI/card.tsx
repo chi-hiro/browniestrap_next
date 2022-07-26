@@ -1,17 +1,25 @@
-import { memo, forwardRef } from 'react'
-import Link from 'next/link'
+import { memo, useMemo } from 'react'
 import Icon from '@/components/UI/icon'
+import { styles, colorVariant } from './card.style'
 
 type Props = {
     children: React.ReactNode
+    model?: string
+    color?: string
     href?: string
     title?: string
     icon?: string
-    src?: string
-    theme?: string
+    src?: string,
+    addClass?: string
 }
 
 const Card = (props: Props) => {
+    const cardCSS = useMemo(() => {
+        const arr = [props.href ? styles.linkCard : styles.card]
+        arr.push(colorVariant(props.color ? props.color : 'white', props.model ? props.model : 'bg'))
+        return arr
+    }, [props.model, props.color, props.href])
+
     const renderBody = (
         <>
             {props.src && (
@@ -35,13 +43,11 @@ const Card = (props: Props) => {
     )
 
     return props.href ? (
-        <Link href={props.href}>
-            <a className={`card hover-border ${props.theme}`}>
-                {renderBody}
-            </a>
-        </Link>
+        <a css={cardCSS} className={`hover-border ${props.addClass ? props.addClass : ''}`} href={props.href}>
+            {renderBody}
+        </a>
     ) : (
-        <div className={`card ${props.theme}`}>
+        <div css={cardCSS} className={props.addClass ? props.addClass : ''}>
             {renderBody}
         </div>
     )

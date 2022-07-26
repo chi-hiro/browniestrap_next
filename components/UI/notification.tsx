@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import Icon from '@/components/UI/icon'
+import { styles, colorVariant } from './card.style'
 
 type Props = {
-    theme: string
+    color: string
     children: React.ReactNode
     position?: string
 }
@@ -55,10 +56,10 @@ const Notification = (props: Props) => {
     // Render
     return (
         <CSSTransition classNames="notification" in={isShow} timeout={300}>
-            <div ref={el} className={`card card-notification bg-${props.theme}`}>
+            <div ref={el} css={[styles.notification, colorVariant(props.color, 'bg')]}>
                 <div className="flex justify-between items-center card-body">
                     <span className="icon">
-                        <Icon value={icon[props.theme]} />
+                        <Icon value={icon[props.color]} />
                     </span>
 
                     <div className="flex-1 body">

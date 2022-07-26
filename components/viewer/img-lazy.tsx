@@ -1,13 +1,13 @@
 import { memo, useState, useEffect } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import { toast } from 'lib/toast'
 import Loader from '@/components/UI/loader'
+import styled from 'styled-components'
 
 type Props = {
     src: string
     isShow: boolean
-    width: number
-    height: number
+    width: string
+    height: string
     alt: string
 }
 
@@ -30,19 +30,26 @@ const ImgLazy = (props: Props) => {
         props.isShow && loadImage()
     }, [props.isShow])
 
+    // CSS
+    const StyledImgLazy = styled.span`
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-item: center;
+        width: 100%;
+        height: 100%;
+    `
+
     // Render
     return (
-        <>
-            <CSSTransition classNames="img-lazy" in={isLoaded} timeout={300} unmountOnExit>
+        <StyledImgLazy>
+            {!isLoaded ? (
+                <Loader model="spin" />
+            ) : (
                 <img src={props.src} width={props.width} height={props.height} alt={props.alt} />
-            </CSSTransition>
-
-            {!isLoaded && (
-                <span className="embed embed-16by9 img-lazy">
-                    <Loader variant="spin" />
-                </span>
             )}
-        </>
+        </StyledImgLazy>
     )
 }
 

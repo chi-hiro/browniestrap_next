@@ -1,41 +1,7 @@
-//***********************************************************************
-//  Core
-//***********************************************************************
 @use 'core/reboot';
 @use 'core/type';
+@use 'core/table';
 @use 'core/reveal';
-
-//***********************************************************************
-//  Components
-//***********************************************************************
-@use 'components/buttons';
-@use 'components/table';
-@use 'components/forms';
-@use 'components/modal';
-
-@use 'components/icon';
-@use 'components/badge';
-@use 'components/card';
-@use 'components/expansion';
-@use 'components/loader';
-@use 'components/skelton';
-
-@use 'components/carousel';
-@use 'components/viewer';
-
-@use 'components/header';
-@use 'components/footer';
-@use 'components/visual';
-@use 'components/headline';
-@use 'components/breadcrumb';
-
-//***********************************************************************
-//  Layouts
-//***********************************************************************
-@use 'layouts/article';
+@use 'core/component.global';
 @use 'layouts/sectioning';
-
-//***********************************************************************
-//  Utilities
-//***********************************************************************
 @use 'core/utilities';

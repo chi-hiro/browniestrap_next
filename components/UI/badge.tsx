@@ -1,23 +1,28 @@
 import { memo, useMemo } from 'react'
+import { styles, colorVariant } from './badge.style'
 
 type Props = {
     children: React.ReactNode
-    variant?: string
-    theme?: string
+    model: string
+    color?: string
+    addClass?: string
     href?: string
 }
 
 const Badge = (props: Props) => {
-    const badgeClass = useMemo(() => {
-        const classes = ['badge']
-        props.variant && classes.push(`badge-${props.variant}`)
-        props.theme && classes.push(props.theme)
-        return classes.join(' ')
-    }, [props.variant, props.theme])
+    const badgeCSS = useMemo(() => {
+        const arr = [props.href ? styles.linkBadge : styles.badge]
+        const modelArr = props.model.split(/\s/)
+        modelArr.map(item => arr.push(styles[`badge_${item}`]))
+        if (props.color) {
+            arr.push(colorVariant(props.color, props.model, props.href))
+        }
+        return arr
+    }, [props.model, props.color, props.href])
 
     return props.href
-        ? <a className={badgeClass} href={props.href}>{props.children}</a>
-        : <span className={badgeClass}>{props.children}</span>
+        ? <a css={badgeCSS} className={props.addClass ? props.addClass : ''} href={props.href}>{props.children}</a>
+        : <span css={badgeCSS} className={props.addClass ? props.addClass : ''}>{props.children}</span>
 }
 
 export default memo(Badge)

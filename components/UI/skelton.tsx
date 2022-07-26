@@ -1,31 +1,37 @@
 import { memo, useMemo } from 'react'
+import { styles } from './skelton.style'
 
 type Props = {
-    variant?: string
+    model?: string
     animation?: boolean
-    theme?: string
+    addClass?: string
     width?: number
     height?: number
 }
 
 const Skelton = (props: Props) => {
+    const skeltonCSS = useMemo(() => {
+        const arr = [styles.skelton]
+        props.model && arr.push(styles[`skelton_${props.model}`])
+        return arr
+    }, [props.model])
+
     const skeltonClass = useMemo(() => {
-        const classes = ['skelton']
-        props.variant && classes.push('skelton-' + props.variant)
-        props.animation && classes.push('animation')
-        props.theme && classes.push(props.theme)
-        return classes.join(' ')
-    }, [props.variant, props.animation, props.theme])
+        const arr = ['skelton']
+        props.animation && arr.push('animation')
+        props.addClass && arr.push(props.addClass)
+        return arr.join(' ')
+    }, [props.animation, props.addClass])
 
     const skeltonStyle = useMemo(() => {
-        const styles = { width: '', height: '' }
+        const styles = { width: 'auto', height: 'auto' }
         if (props.width) styles.width = props.width + 'px'
         if (props.height) styles.height = props.height + 'px'
         return styles
     }, [props.width, props.height])
 
     return (
-        <span className={skeltonClass} style={skeltonStyle} />
+        <span css={skeltonCSS} className={skeltonClass} style={skeltonStyle} />
     )
 }
 

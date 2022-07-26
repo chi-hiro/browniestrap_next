@@ -1,8 +1,10 @@
 import { memo, useMemo } from 'react'
+import { styles, colorVariant } from './loader.style'
 
 type Props = {
-    variant: string
-    theme?: string
+    model: string
+    color?: string,
+    addClass?: string
     progress?: number
 }
 
@@ -19,31 +21,37 @@ const Loader = (props: Props) => {
         return array - (props.progress ? props.progress : 0) / 100 * array
     }, [props.progress])
 
-    switch (props.variant) {
+    const loaderCSS = useMemo(() => {
+        const arr = [styles[`loader_${props.model}`]]
+        props.color && arr.push(colorVariant(props.color, props.model))
+        return arr
+    }, [props.model, props.color])
+
+    switch (props.model) {
         case 'dot':
             return (
-                <div className={`loader loader-dot ${props.theme}`}>
+                <div css={loaderCSS} className={props.addClass ? props.addClass : ''}>
                     <span></span><span></span><span></span>
                 </div>
             )
 
         case 'line':
             return (
-                <div className={`loader loader-line ${props.theme}`}>
+                <div css={loaderCSS} className={props.addClass ? props.addClass : ''}>
                     <span className="loader-line-active"></span>
                 </div>
             )
 
         case 'bar':
             return (
-                <div className={`loader loader-bar ${props.theme} ${props.progress ? 'animate' : ''}`}>
+                <div css={loaderCSS} className={`${props.addClass ? props.addClass : ''} ${props.progress ? 'animate' : ''}`}>
                     <span className="loader-bar-active" style={{ width: `${props.progress}%` }}></span>
                 </div>
             )
 
         case 'circle':
             return (
-                <div className={`loader loader-circle ${props.theme} ${props.progress ? 'animate' : ''}`}>
+                <div css={loaderCSS} className={`${props.addClass ? props.addClass : ''} ${props.progress ? 'animate' : ''}`}>
                     <svg className="loader-circle-base">
                         <circle cx="12" cy="12" fill="transparent" r={radius} />
                     </svg>
@@ -56,7 +64,7 @@ const Loader = (props: Props) => {
 
         default:
             return (
-                <svg className={`loader loader-spin ${props.theme}`} viewBox="0 0 50 50">
+                <svg css={loaderCSS} className={props.addClass ? props.addClass : ''} viewBox="0 0 50 50">
                     <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5" />
                 </svg>
             )

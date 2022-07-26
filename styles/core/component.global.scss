@@ -1,0 +1,67 @@
+@use '/styles/core/core' as *;
+
+.notification-container {
+    position: fixed;
+    z-index: $zindex-modal;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    padding: spacer(0.5);
+
+    @include breakpoint-up {
+        padding: spacer(1);
+    }
+
+    &.left {
+        .card-notification {
+            margin-left: 0;
+        }
+    }
+
+    &.right {
+        .card-notification {
+            margin-right: 0;
+        }
+    }
+
+    &.center {
+        justify-content: center;
+    }
+}
+
+body.show_viewer {
+    @include isMouse {
+        overflow: hidden;
+    }
+
+    @include isTouch {
+        #app,
+        #__next,
+        #__nuxt {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            height: 100svh;
+        }
+    }
+}
+
+body.header-fixed-top {
+    #app,
+    #__next,
+    #__nuxt {
+        padding-top: $header-height-sm;
+
+        @include breakpoint-up {
+            padding-top: $header-height;
+        }
+    }
+}

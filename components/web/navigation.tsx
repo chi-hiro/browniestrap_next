@@ -43,7 +43,7 @@ const Navigation = () => {
                 </li>
 
                 <li>
-                    <a href="/" className="btn is-primary rounded-full">ログイン</a>
+                    <UI.Button model="md bg" color="primary" addClass="rounded-full" href="/">ログイン</UI.Button>
                 </li>
             </ul>
         </nav>

@@ -1,6 +1,7 @@
 import { forwardRef, useState, useRef, useEffect, useImperativeHandle } from 'react'
 import { env } from 'lib/env'
 import { getTouchPosition } from 'lib/getTouchPosition'
+import { scrollerStyles } from './carousel.style'
 
 export type Props = {
     divide?: boolean
@@ -109,14 +110,15 @@ export const CarouselScrollbar = forwardRef((props: Props, ref) => {
     }
 
     return (
-        <div ref={el} className="carousel-scrollbar" onTouchStart={handleDown} onTouchMove={handleMove} onTouchEnd={handleUp} onTouchCancel={handleUp} onMouseDown={handleDown}>
+        <div ref={el} css={scrollerStyles.wrapper} onTouchStart={handleDown} onTouchMove={handleMove} onTouchEnd={handleUp} onTouchCancel={handleUp} onMouseDown={handleDown}>
             <span
-                className={`carousel-scrollbar-bar ${isAnimate ? 'transition' : ''}`}
+                css={scrollerStyles.bar}
+                className={isAnimate ? 'transition' : ''}
                 style={{ width: `${barW}px`, transform: `translateX(${barL}px)` }}
             ></span>
 
             {(props.divide && points) && (
-                <div className="carousel-scrollbar-point">
+                <div css={scrollerStyles.point}>
                     {renderPoint()}
                 </div>
             )}

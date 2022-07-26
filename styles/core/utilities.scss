@@ -63,10 +63,6 @@
     @media (prefers-color-scheme: light) {
         display: none !important;
     }
-
-    @media all and (-ms-high-contrast:none) {
-        display: none !important;
-    }
 }
 
 .hidden-darkmode {
@@ -187,6 +183,66 @@ $embed-ratio: (1 1), (16 9), (21, 9), (4 3), (3 1), (2 1);
     @include focus-mouse {
         opacity: 0.85;
     }
+}
+
+.hover-icon-right {
+    @include hover-mouse {
+        [class*='material-icons'] {
+            animation: anim_iconslide_right $duration $easing;
+        }
+    }
+}
+
+.hover-icon-left {
+    @include hover-mouse {
+        [class*='material-icons'] {
+            animation: anim_iconslide_left $duration $easing;
+        }
+    }
+}
+
+.hover-icon-top {
+    @include hover-mouse {
+        [class*='material-icons'] {
+            animation: anim_iconslide_top $duration $easing;
+        }
+    }
+}
+
+.hover-icon-bottom {
+    @include hover-mouse {
+        [class*='material-icons'] {
+            animation: anim_iconslide_bottom $duration $easing;
+        }
+    }
+}
+
+@keyframes anim_iconslide_right {
+    0% { transform: translate(0, 0); opacity: 1; }
+    50% { transform: translate(100%, 0); opacity: 0; }
+    51% { transform: translate(-100%, 0); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
+}
+
+@keyframes anim_iconslide_left {
+    0% { transform: translate(0, 0); opacity: 1; }
+    50% { transform: translate(-100%, 0); opacity: 0; }
+    51% { transform: translate(100%, 0); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
+}
+
+@keyframes anim_iconslide_top {
+    0% { transform: translate(0, 0); opacity: 1; }
+    50% { transform: translate(0, -100%); opacity: 0; }
+    51% { transform: translate(0, 100%); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
+}
+
+@keyframes anim_iconslide_bottom {
+    0% { transform: translate(0, 0); opacity: 1; }
+    50% { transform: translate(0, 100%); opacity: 0; }
+    51% { transform: translate(0, -100%); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
 }
 
 //***********************************************************************

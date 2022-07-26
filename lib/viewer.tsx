@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import Viewer from '@/components/viewer'
 
-export const viewer = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+export const viewer = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
 
     if (e.currentTarget) {

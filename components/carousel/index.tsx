@@ -8,6 +8,7 @@ import { elementInScreen } from 'lib/elementInScreen'
 import Loader from '@/components/UI/loader'
 import CarouselItem from '@/components/carousel/item'
 import { CarouselScrollbar, CarouselScrollbarRefTypes } from '@/components/carousel/scrollbar'
+import { styles } from './carousel.style'
 
 let isResize: number = 0
 let isPause: boolean = false
@@ -150,7 +151,7 @@ const Carousel = (props: Props) => {
 
     // Render
     return (
-        <div ref={el} className={`carousel carousel-${props.mode} reveal ${props.zoom ? 'effect-zoom' : ''}`} style={durationStyle()}>
+        <div ref={el} css={styles[`carousel_${props.mode}`]} className={`reveal ${props.zoom ? 'effect-zoom' : ''}`} style={durationStyle()}>
             {isShow && (
                 <Swiper
                     {...swiperOption}
@@ -169,9 +170,7 @@ const Carousel = (props: Props) => {
                     ))}
 
                     {props.timer && (
-                        <div className={`carousel-loader ${lazyLoading ? 'hide' : ''}`}>
-                            <Loader variant="circle" progress={timerProgress} />
-                        </div>
+                        <Loader model="circle" color="white" addClass={`carousel-loader ${lazyLoading ? 'hide' : ''}`} progress={timerProgress} />
                     )}
                 </Swiper>
             )}
