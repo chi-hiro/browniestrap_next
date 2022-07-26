@@ -165,7 +165,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 list-style: none;
 
                 a, button {
-                    @include button-reset;
+                    ${mixins.buttonReset()}
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;

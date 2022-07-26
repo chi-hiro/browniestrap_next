@@ -2,7 +2,7 @@
 
 .notification-container {
     position: fixed;
-    z-index: $zindex-modal;
+    z-index: 1010;
     top: 0;
     bottom: 0;
     left: 0;
@@ -58,10 +58,10 @@ body.header-fixed-top {
     #app,
     #__next,
     #__nuxt {
-        padding-top: $header-height-sm;
+        padding-top: 64px;
 
         @include breakpoint-up {
-            padding-top: $header-height;
+            padding-top: 80px;
         }
     }
 }

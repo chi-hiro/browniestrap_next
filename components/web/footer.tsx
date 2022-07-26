@@ -2,7 +2,7 @@ import { memo } from 'react'
 import getConfig from 'next/config'
 import styled from 'styled-components'
 import { darken, lighten } from 'polished'
-import { variables } from '@/lib/styleUtl'
+import { variables, mixins } from '@/lib/styleUtl'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -43,9 +43,9 @@ const StyledFooter = styled.footer`
     padding-top: 3rem;
     padding-bottom: 3rem;
 
-    @include darkmode {
+    ${mixins.darkmode(`
         background-color: ${lighten(0.02, variables.darkTheme.bodyBg)};
-    }
+    `)}
 
     .aboutus {
         flex: 0 0 auto;

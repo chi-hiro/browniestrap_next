@@ -21,9 +21,6 @@ $brand-info:                     #5FBEDB;
 $brand-warning:                  #EAA930;
 $brand-danger:                   #E13D3B;
 
-// Text
-$marking-color:                  #ffd48c;
-
 // Theme
 $body-bg:                        #FFFFFF;
 $body-color:                     #606060;
@@ -131,30 +128,6 @@ $grid-breakpoints: map-merge(
 $grid-gutter-width: 40px;
 
 //***********************************************************************
-//  Layout
-//***********************************************************************
-// Shadow
-$box-shadow:                     0 2px 10px rgba(0,0,0,0.03);
-$box-shadow-dark:                0 4px 20px rgba(0,0,0,0.1);
-$box-shadow-reverse:             0 -2px 10px rgba(0,0,0,0.03);
-$box-shadow-reverse-dark:        0 -4px 20px rgba(0,0,0,0.1);
-
-// Layer
-$zindex-bar:                     1000;
-$zindex-overlay:                 ($zindex-bar + 1);
-$zindex-sidebar:                 ($zindex-bar + 2);
-$zindex-modal:                   ($zindex-bar + 10);
-$zindex-loader:                  9999;
-
-//***********************************************************************
-//  Header
-//***********************************************************************
-$header-bg:                      white;
-$dark-header-bg:                 #404040;
-$header-height-sm:               64px;
-$header-height:                  80px;
-
-//***********************************************************************
 //  Transition
 //***********************************************************************
 $duration:                       300ms;
@@ -168,38 +141,8 @@ $font-family-en-sans: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Hel
 $font-family-cn-sans: 'Microsoft YaHei', 'PingFang SC', sans-serif;
 $font-family-tw-sans: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
 
-$font-family-jp-serif: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', '游明朝', YuMincho, 'ＭＳ 明朝', serif;
+$font-family-jp-serif: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', '游明朝', YuMincho, serif;
 $font-family-en-serif: 'Times New Roman', serif;
 $font-family-cn-serif: 'Kaiti SC', 'SimSun', serif;
 
 $font-family-base: $font-family-jp-sans;
-
-//***********************************************************************
-//  Button, Form
-//***********************************************************************
-$input-border-radius:            $border-radius;
-$btn-border-radius:              $border-radius;
-
-$input-box-shadow:               0 2px 2px rgba(0,0,0,0.05);
-$btn-box-shadow:                 0 2px 2px rgba(0,0,0,0.05);
-
-$input-border-color:             rgba(0, 0, 0, 0.15);
-$dark-input-border-color:        rgba(255, 255, 255, 0.15);
-
-$input-padding-x:                spacer(0.75);
-$btn-padding-x:                  spacer(1.25);
-
-$input-height:                   48px;
-$input-font-size:                1rem;
-$input-line-height:              $icon-size;
-$input-padding-y:                calc(($input-height - $input-line-height) / 2 - $border-width);
-
-$input-sm-height:                40px;
-$input-sm-font-size:             0.875rem;
-$input-sm-line-height:           $icon-size;
-$input-sm-padding-y:             calc(($input-sm-height - $input-sm-line-height) / 2 - $border-width);
-
-$input-lg-height:                56px;
-$input-lg-font-size:             1.125rem;
-$input-lg-line-height:           $icon-size;
-$input-lg-padding-y:             calc(($input-lg-height - $input-lg-line-height) / 2 - $border-width);

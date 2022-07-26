@@ -13,9 +13,9 @@ const skelton = css`
     display: block;
     background-color: ${skeltonBg};
 
-    @include darkmode {
+    ${mixins.darkmode(`
         background-color: ${skeltonDarkBg};
-    }
+    `)}
 
     &.animation {
         animation: ${skelton_anime} 1s linear infinite;
