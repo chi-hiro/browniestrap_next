@@ -52,24 +52,6 @@ const expansion = css`
         &.expansion-body-exit {
             ${mixins.transition(['height'])}
             will-change: height;
-
-            ${mixins.breakpointUp(`
-                #header & {
-                    ${mixins.transition(['transform', 'opacity'])}
-                    will-change: transform, opacity;
-                    transform: translateY(-10px);
-                    opacity: 0;
-                }
-            `)}
-        }
-
-        &.expansion-body-enter-active {
-            ${mixins.breakpointUp(`
-                #header & {
-                    transform: none;
-                    opacity: 1;
-                }
-            `)}
         }
     }
 

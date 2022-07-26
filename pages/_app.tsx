@@ -44,8 +44,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta name="viewport" content={viewport} />
                 <meta name="format-detection" content="telephone=no" />
 
-                <link rel="icon" href="/img/favicon192.png" type="image/png" sizes="192x192" />
-                <link rel="apple-touch-icon" href="/img/favicon180.png" />
+                <link rel="icon" href="/img/favicon192.webp" type="image/png" sizes="192x192" />
+                <link rel="apple-touch-icon" href="/img/favicon180.webp" />
 
                 <title>{process.env.NEXT_PUBLIC_SITE_TITLE}</title>
                 {process.env.NEXT_PUBLIC_SITE_DESCRIPTION && <meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />}

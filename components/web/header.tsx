@@ -59,8 +59,8 @@ const Header = () => {
             <header css={styles.header} className={showBg || showNav ? 'show-bg' : ''} ref={headerRef}>
                 <div css={styles.logo}>
                     <a href="/" onClick={clickLogo}>
-                        <img src={`${basePath}/img/logo.png`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" />
-                        <img src={`${basePath}/img/logo-wt.png`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" />
+                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" width="244" height="20" />
+                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" width="244" height="20" />
                     </a>
                 </div>
 
@@ -291,6 +291,19 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                         left: 0;
                         min-width: 100%;
                         margin-top: -1.25rem;
+
+                        &.expansion-body-enter,
+                        &.expansion-body-exit {
+                            ${mixins.transition(['transform', 'opacity'])}
+                            will-change: transform, opacity;
+                            transform: translateY(-10px);
+                            opacity: 0;
+                        }
+
+                        &.expansion-body-enter-active {
+                            transform: none;
+                            opacity: 1;
+                        }
                     `)}
                 }
 
@@ -327,7 +340,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                     display: block;
                     padding: 1rem;
                     background-color: ${variables.theme.headerBg};
-                    box-shadow: ${variables.shadow.normakDark};
+                    box-shadow: ${variables.shadow.normalDark};
                     ${mixins.rounded()}
 
                     ${mixins.darkmode(`

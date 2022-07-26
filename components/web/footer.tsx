@@ -14,8 +14,8 @@ const Footer = () => {
             <div className="container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-1.5">
                     <div className="aboutus flex-auto text-center lg:text-left">
-                        <img src={`${basePath}/img/logo.png`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" />
-                        <img src={`${basePath}/img/logo-wt.png`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" />
+                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" width="200" height="17" />
+                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" width="200" height="17" />
 
                         <address>
                             東京地千代田区神田1-1-1<br />

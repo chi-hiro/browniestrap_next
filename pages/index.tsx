@@ -34,9 +34,9 @@ export default function Home() {
         <Layout>
             <main>
                 <Web.Visual slide={[
-                    { src_lg: `${basePath}/dummy/visual1_lg.jpg`, src: `${basePath}/dummy/visual1.jpg` },
-                    { src_lg: `${basePath}/dummy/visual2_lg.jpg`, src: `${basePath}/dummy/visual2.jpg` },
-                    { src_lg: `${basePath}/dummy/visual3_lg.jpg`, src: `${basePath}/dummy/visual3.jpg` }
+                    { src_lg: `${basePath}/dummy/visual1_lg.webp`, src: `${basePath}/dummy/visual1.webp` },
+                    { src_lg: `${basePath}/dummy/visual2_lg.webp`, src: `${basePath}/dummy/visual2.webp` },
+                    { src_lg: `${basePath}/dummy/visual3_lg.webp`, src: `${basePath}/dummy/visual3.webp` }
                 ]}>
                     <h1 className="title">LEAD SAMPLE</h1>
                     <p className="description">DESCRIPTION SAMPLE</p>
@@ -96,7 +96,7 @@ export default function Home() {
                     </div>
 
                     <span className="embed embed-1by1 lg:embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
-                        <img src={`${basePath}/dummy/cover.jpg`} alt="" />
+                        <img src={`${basePath}/dummy/cover.webp`} alt="" />
                     </span>
                 </section>
 
@@ -113,7 +113,7 @@ export default function Home() {
 
                         <div className="lg:grid-span-1 section-grid-img reveal reveal-mask-left">
                             <figure className="embed embed-4by3">
-                                <img src={`${basePath}/dummy/5.jpg`} alt="" />
+                                <img src={`${basePath}/dummy/5.webp`} alt="" />
                             </figure>
                         </div>
                     </div>
@@ -151,9 +151,9 @@ export default function Home() {
                             mode="slide"
                             pagination={true}
                             src={[
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual1_lg.jpg` },
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual2_lg.jpg` },
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual3_lg.jpg` }
+                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual1_lg.webp` },
+                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual2_lg.webp` },
+                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual3_lg.webp` }
                             ]}
                         ></Carousel>
                     </div>
@@ -164,15 +164,15 @@ export default function Home() {
                             zoom={true}
                             nav={true}
                             src={[
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.jpg` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.jpg` }
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` }
                                 ]}
                         ></Carousel>
                     </div>
@@ -186,7 +186,7 @@ export default function Home() {
 
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/1.jpg`} href="/" title="ワイヤレスコントローラーに新色登場！">
+                                <UI.Card src={`${basePath}/dummy/1.webp`} href="/" title="ワイヤレスコントローラーに新色登場！">
                                     <UI.Badge model="bg sm" color="primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
@@ -195,7 +195,7 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card model="text" color="secondary" src={`${basePath}/dummy/2.jpg`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—">
+                                <UI.Card model="text" color="secondary" src={`${basePath}/dummy/2.webp`} href="/" title="目を凝らして見る世界、その絶叫は仲間に届いていなかった—">
                                     <UI.Badge model="bg sm" color="secondary">News</UI.Badge>
                                     <h4>目を凝らして見る世界、その絶叫は仲間に届いていなかった—</h4>
                                     <small>2022.10.16</small>
@@ -204,7 +204,7 @@ export default function Home() {
                             </div>
 
                             <div className="reveal reveal-fade-up">
-                                <UI.Card model="bg" color="danger" src={`${basePath}/dummy/3.jpg`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう">
+                                <UI.Card model="bg" color="danger" src={`${basePath}/dummy/3.webp`} href="/" title="初公開の新作や、注目タイトルの最新情報をチェックしよう">
                                     <UI.Badge model="bg sm" color="white">News</UI.Badge>
                                     <h4>初公開の新作や、注目タイトルの最新情報をチェックしよう</h4>
                                     <small>2022.10.16</small>
@@ -598,15 +598,15 @@ export default function Home() {
                             </UI.Badge>
 
                             <UI.Badge model="text sm rounded">
-                                <img src="/dummy/1.jpg" className="rounded-full" />
+                                <img src="/dummy/1.webp" className="rounded-full" />
                                 small
                             </UI.Badge>
                             <UI.Badge model="text md rounded">
-                                <img src="/dummy/1.jpg" className="rounded-full" />
+                                <img src="/dummy/1.webp" className="rounded-full" />
                                 medium
                             </UI.Badge>
                             <UI.Badge model="text lg rounded">
-                                <img src="/dummy/1.jpg" className="rounded-full" />
+                                <img src="/dummy/1.webp" className="rounded-full" />
                                 large
                             </UI.Badge>
 
@@ -712,48 +712,47 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0.5">
                             <div className="col-span-1 lg:col-span-1">
-                                <a className="hover-border" href={`${basePath}/dummy/1.jpg`} data-viewer-group="group1" onClick={viewer}>
+                                <a className="hover-border" href={`${basePath}/dummy/1.webp`} data-viewer-group="group1" onClick={viewer}>
                                     <figure className="embed embed-1by1">
-                                        <img src={`${basePath}/dummy/1.jpg`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/1.webp`} width="900" height="900" alt="" />
                                     </figure>
                                 </a>
                             </div>
 
                             <div className="col-span-1 lg:col-span-1">
-                                <a className="hover-border" href={`${basePath}/dummy/2.jpg`} data-viewer-group="group1" onClick={viewer}>
+                                <a className="hover-border" href={`${basePath}/dummy/2.webp`} data-viewer-group="group1" onClick={viewer}>
                                     <figure className="embed embed-1by1">
-                                        <img src={`${basePath}/dummy/2.jpg`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/2.webp`} width="900" height="900" alt="" />
                                     </figure>
                                 </a>
                             </div>
 
                             <div className="col-span-1 lg:col-span-1">
-                                <a className="hover-border" href={`${basePath}/dummy/3.jpg`} data-viewer-group="group1" onClick={viewer}>
+                                <a className="hover-border" href={`${basePath}/dummy/3.webp`} data-viewer-group="group1" onClick={viewer}>
                                     <figure className="embed embed-1by1">
-                                        <img src={`${basePath}/dummy/3.jpg`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/3.webp`} width="900" height="900" alt="" />
                                     </figure>
                                 </a>
                             </div>
 
                             <div className="col-span-1 lg:col-span-1">
-                                <a className="hover-border" href={`${basePath}/dummy/4.jpg`} data-viewer-group="group1" onClick={viewer}>
+                                <a className="hover-border" href={`${basePath}/dummy/4.webp`} data-viewer-group="group1" onClick={viewer}>
                                     <figure className="embed embed-1by1">
-                                        <img src={`${basePath}/dummy/4.jpg`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/4.webp`} width="900" height="900" alt="" />
                                     </figure>
                                 </a>
                             </div>
 
                             <div className="col-span-2 lg:col-span-4">
-                                <a className="hover-border" href={`${basePath}/dummy/5.jpg`} onClick={viewer}>
+                                <a className="hover-border" href={`${basePath}/dummy/5.webp`} onClick={viewer}>
                                     <figure className="embed embed-21by9">
-                                        <img src={`${basePath}/dummy/5.jpg`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/5.webp`} width="900" height="900" alt="" />
                                     </figure>
                                 </a>
                             </div>
                         </div>
 
                         <div className="flex flex-wrap gap-0.5 mt-2">
-                            <UI.Button model="bg md" color="primary" href={`${basePath}/dummy/video.mp4`} onClick={viewer}>Video</UI.Button>
                             <UI.Button model="bg md" color="primary" href="https://www.youtube.com/watch?v=Z2P818AAOn8" onClick={viewer}>YouTube</UI.Button>
                         </div>
                     </div>
