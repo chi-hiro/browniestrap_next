@@ -30,7 +30,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         vertical-align: middle;
         ${mixins.textKerning()}
 
-        // color
+        // Default color
         color: ${variables.theme.bodyColor};
         background-color: rgba(0,0,0,0.05);
         border: 1px solid transparent;
@@ -40,7 +40,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             background-color: rgba(255,255,255,0.1);
         `)}
 
-        // md
+        // Default size
         min-width: ${md.height}px;
         height: ${md.height}px;
         gap: ${md.height - md.iconSize}px;

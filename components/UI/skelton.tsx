@@ -1,11 +1,12 @@
 import { memo, useMemo } from 'react'
 import { css, keyframes, FlattenSimpleInterpolation } from 'styled-components'
-import { variables, mixins } from '@/lib/styleUtl'
+import { variables, mixins, utility } from '@/lib/styleUtl'
 
 type Props = {
     model?: string
-    animation?: boolean
+    animate?: boolean
     line?: number
+    ratio?: number[]
     addClass?: string
     width?: string
     height?: string
@@ -15,15 +16,16 @@ const Skelton = (props: Props) => {
     const skeltonCSS = useMemo(() => {
         const arr = [styles.skelton]
         props.model && arr.push(styles[props.model])
+        props.ratio && arr.push(utility.embed(props.ratio[0], props.ratio[1]))
+        props.animate && arr.push(styles.animate)
         return arr
-    }, [props.model])
+    }, [props.model, props.animate])
 
     const skeltonClass = useMemo(() => {
-        const arr = ['skelton']
-        props.animation && arr.push('animation')
+        const arr = []
         props.addClass && arr.push(props.addClass)
         return arr.join(' ')
-    }, [props.animation, props.addClass])
+    }, [props.addClass])
 
     const skeltonStyle = useMemo(() => {
         const styles = {
@@ -58,10 +60,10 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         ${mixins.darkmode(`
             background-color: ${theme.darkBg};
         `)}
+    `,
 
-        &.animation {
-            animation: ${theme.anime} 1s linear infinite;
-        }
+    animate: css`
+        animation: ${theme.anime} 1s linear infinite;
     `,
 
     rounded: css`

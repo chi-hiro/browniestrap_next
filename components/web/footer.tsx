@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import getConfig from 'next/config'
 import styled from 'styled-components'
-import { variables, mixins } from '@/lib/styleUtl'
+import { variables, mixins, utility } from '@/lib/styleUtl'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -12,8 +12,8 @@ const Footer = () => {
         <StyledFooter>
             <div className="container">
                 <div className="aboutus">
-                    <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" width="200" height="17" />
-                    <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" width="200" height="17" />
+                    <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="200" height="17" />
+                    <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="200" height="17" />
 
                     <address>
                         東京地千代田区神田1-1-1<br />

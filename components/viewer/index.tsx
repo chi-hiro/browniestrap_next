@@ -4,9 +4,10 @@ import { env } from 'lib/env'
 import { getTouchPosition } from 'lib/getTouchPosition'
 import { scrollElement } from 'lib/pageScroll'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
+import { utility } from 'lib/styleUtl'
+import { styles } from './viewer.style'
 import ImgLazy from '@/components/viewer/img-lazy'
 import Icon from '@/components/UI/icon'
-import { styles } from './viewer.style'
 
 type Props = {
     mode: string
@@ -167,7 +168,7 @@ const Viewer = (props: Props) => {
 
                                 {props.mode === 'youtube' && (
                                     <div className="video">
-                                        <div className="embed embed-16by9">
+                                        <div css={utility.embed(16, 9)}>
                                             <iframe width="100%" height="100%" src={item.replace('watch?v=', 'embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                     </div>

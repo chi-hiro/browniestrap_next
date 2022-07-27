@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { EnvTypes } from 'store'
 import { scrollElement, pageScroll } from 'lib/pageScroll'
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { variables, mixins } from '@/lib/styleUtl'
+import { variables, mixins, utility } from '@/lib/styleUtl'
 import Navigation from '@/components/web/navigation'
 
 const { publicRuntimeConfig } = getConfig()
@@ -58,8 +58,8 @@ const Header = () => {
             <header css={styles.header} className={showBg || showNav ? 'show-bg' : ''} ref={headerRef}>
                 <div css={styles.logo}>
                     <a href="/" onClick={clickLogo}>
-                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-darkmode" width="244" height="20" />
-                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} className="hidden-lightmode" width="244" height="20" />
+                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="244" height="20" />
+                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="244" height="20" />
                     </a>
                 </div>
 
@@ -70,7 +70,7 @@ const Header = () => {
                     </div>
                 </CSSTransition>
 
-                {store.mobile && (<button css={styles.hambureger} type="button" onClick={() => setNav(!showNav)}>
+                {store.mobile && (<button css={styles.hambureger} type="button" onClick={() => setNav(!showNav)} aria-label="Menu Button">
                     <span css={styles.hamburgerIcon} className={showNav ? 'active' : ''}></span>
                 </button>)}
             </header>

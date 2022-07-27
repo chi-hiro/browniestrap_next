@@ -6,6 +6,7 @@ type Props = {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void,
     name: string
     value: string
+    label: string
     checked?: boolean
     color?: string
 }
@@ -33,6 +34,7 @@ const Switch = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => {
             defaultChecked={props.checked}
             onChange={props.onChange && props.onChange}
             css={switchCSS}
+            aria-label={props.label}
         />
     )
 })

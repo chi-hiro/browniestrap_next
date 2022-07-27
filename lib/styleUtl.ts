@@ -1,4 +1,5 @@
-import { lighten } from 'polished'
+import { css } from 'styled-components'
+import { darken, lighten } from 'polished'
 
 //***********************************************************************
 //  Options
@@ -199,6 +200,10 @@ export const mixins = {
         }
     },
 
+    fontFamily: function(value: string) {
+        return `font-family: ${variables.font[value]};`
+    },
+
     nowrap: function() {
         return `
             white-space: nowrap;
@@ -376,5 +381,430 @@ export const mixins = {
 
     base64encode: function(value: string) {
         return btoa(value)
+    },
+}
+
+//***********************************************************************
+//  Utilities
+//***********************************************************************
+export const utility = {
+    hiddenUp: css`
+        ${mixins.breakpointUp(`
+            display: none !important;
+        `)}
+    `,
+
+    hiddenDown: css`
+        ${mixins.breakpointDown(`
+            display: none !important;
+        `)}
+    `,
+
+    hiddenLight: css`
+        @media (prefers-color-scheme: light) {
+            display: none !important;
+        }
+    `,
+
+    hiddenDark: css`
+        ${mixins.darkmode(`
+            @include darkmode {
+                display: none !important;
+            }
+        `)}
+    `,
+
+    imgFluid: css`
+        max-width: 100%;
+        height: auto;
+    `,
+
+    borderTop: css`
+        border-top: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    borderBottom: css`
+        border-bottom: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    borderLeft: css`
+        border-left: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    borderRight: css`
+        border-right: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    borderX: css`
+        border-left: 1px solid ${variables.theme.borderColor};
+        border-right: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    borderY: css`
+        border-top: 1px solid ${variables.theme.borderColor};
+        border-bottom: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+    `,
+
+    hoverBorder: css`
+        display: block;
+        position: relative;
+
+        &::after {
+            content: '';
+            pointer-events: none;
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: ${variables.borderWidth}px solid ${variables.linkColor};
+            opacity: 0;
+            transition: opacity ${variables.duration} linear;
+        }
+
+        ${mixins.focusMouse(`
+            &::after {
+                opacity: 1;
+            }
+        `)}
+    `,
+
+    hoverZoom: css`
+        transition: transform 800ms ${easing.easeOutQuint};
+
+        ${mixins.focusMouse(`
+            transform: scale(1.03);
+        `)}
+    `,
+
+    hoverOpacity: css`
+        display: block;
+        transition: opacity ${variables.duration} linear;
+
+        ${mixins.focusMouse(`
+            opacity: 0.85;
+        `)}
+    `,
+
+    embed: function(w: number, h: number) {
+        return css`
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            aspect-ratio: ${w} / ${h};
+
+            > * {
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
+            img {
+                object-fit: cover;
+            }
+
+            a & {
+                margin-bottom: 0;
+            }
+        `
+    },
+
+    textColor: function(color: string) {
+        switch (color) {
+            case 'muted':
+                return css`
+                    color: ${variables.theme.mutedColor};
+
+                    ${mixins.darkmode(`
+                        color: ${variables.darkTheme.mutedColor};
+                    `)}
+                `
+            default:
+                return css`
+                    color: ${variables.color[color]} !important;
+                `
+        }
+    },
+
+    bgColor: function(color: string) {
+        switch (color) {
+            case 'muted':
+                return css`
+                    background-color: ${variables.theme.mutedBg};
+
+                    ${mixins.darkmode(`
+                        background-color: ${variables.darkTheme.mutedBg};
+                    `)}
+                `
+            case 'light':
+                return css`
+                    background-color: ${variables.theme.bodyBg};
+                `
+            case 'dark':
+                return css`
+                    background-color: ${variables.darkTheme.bodyBg};
+                `
+            default:
+                return css`
+                    background-color: ${variables.color[color]} !important;
+                `
+        }
+    },
+
+    borderColor: function(color: string) {
+        switch (color) {
+            default:
+                return css`
+                    border-color: ${variables.color[color]} !important;
+                `
+        }
+    },
+
+    embedUp: function(w: number, h: number) {
+        return css`
+            ${mixins.breakpointUp(`
+                aspect-ratio: ${w} / ${h};
+            `)}
+        `
+    },
+
+    embedDown: function(w: number, h: number) {
+        return css`
+            ${mixins.breakpointDown(`
+                aspect-ratio: ${w} / ${h};
+            `)}
+        `
     }
+}
+
+//***********************************************************************
+//  Sectioning
+//***********************************************************************
+export const section = {
+    base: css`
+        position: relative;
+        max-width: 100vw;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+
+        ${mixins.breakpointUp(`
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        `)}
+    `,
+
+    grid: css`
+        position: relative;
+        max-width: 100vw;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        ${mixins.breakpointUp(`
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        `)}
+
+        .section-grid-body {
+            .container > *:last-child {
+                margin-bottom: 0;
+            }
+
+            ${mixins.breakpointDown(`
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            `)}
+        }
+
+        .section-grid-img {
+            .embed {
+                margin-bottom: 0;
+            }
+
+            ${mixins.breakpointUp(`
+                min-height: 100%;
+                max-height: 80vh;
+
+                .embed {
+                    height: 100%;
+
+                    &::before {
+                        display: none;
+                    }
+
+                    img {
+                        position: static;
+                    }
+                }
+            `)}
+        }
+    `,
+
+    cover: css`
+        position: relative;
+        max-width: 100vw;
+        padding: 0;
+        overflow: hidden;
+
+        > * {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-cover-bg {
+            position: relative;
+            z-index: 1;
+
+            &.overlay {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                }
+            }
+        }
+    `,
+
+    heading: css`
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        ${mixins.darkmode(`
+            color: ${variables.darkTheme.headingsColor};
+        `)}
+
+        ${mixins.breakpointUp(`
+            font-size: 2.25rem;
+            margin-bottom: 2.5rem;
+        `)}
+
+        img {
+            vertical-align: bottom;
+        }
+
+        .text-white & {
+            color: inherit;
+        }
+    `,
+
+    headingSm: css`
+        font-weight: normal;
+
+        &:not(:first-child) {
+            margin-top: ${variables.gridGutterWidth}px;
+        }
+    `,
+
+    lead: css`
+        font-size: 1.5rem;
+        line-height: 1.3;
+        box-decoration-break: clone;
+        ${mixins.textKerning()}
+
+        ${mixins.breakpointUp(`
+            font-size: 2rem;
+        `)}
+    `,
+
+    listChart: css`
+        counter-reset: listchart;
+        margin: 0 0 1rem;
+        padding: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            line-height: 1.5;
+
+            + li {
+                margin-top: 1rem;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    left: ${(32 - 2) / 2}px;
+                    bottom: 100%;
+                    margin-bottom: -8px;
+                    width: 2px;
+                    height: 100%;
+                    background-color: ${variables.theme.bodyColor};
+
+                    ${mixins.darkmode(`
+                        background-color: ${variables.darkTheme.bodyColor};
+                    `)}
+                }
+            }
+
+            &::before {
+                position: relative;
+                z-index: 2;
+                flex: 0 0 auto;
+                counter-increment: listchart;
+                content: counter(listchart)'';
+                border: 2px solid ${variables.theme.bodyColor};
+                background-color: ${variables.theme.bodyBg};
+                line-height: 1;
+                text-align: center;
+                padding: 6px;
+                margin-top: -4px;
+                min-width: 2rem;
+                border-radius: 9999px;
+
+                ${mixins.darkmode(`
+                    border-color: ${variables.darkTheme.bodyColor};
+                    background-color: ${variables.darkTheme.bodyBg};
+                `)}
+            }
+        }
+    `
 }

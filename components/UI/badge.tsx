@@ -12,7 +12,7 @@ type Props = {
 const Badge = (props: Props) => {
     const badgeCSS = useMemo(() => {
         const arr = [styles.badge]
-        props.model.split(/\s/).map(item => arr.push(styles[item]))
+        props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.href && arr.push(styles.link)
         props.color && arr.push(colorVariant(props.color, props.model, props.href))
         return arr

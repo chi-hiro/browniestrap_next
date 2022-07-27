@@ -215,7 +215,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             }
         }
 
-        .hr-text {
+        .divider {
             margin: 1rem 1.5rem;
         }
 

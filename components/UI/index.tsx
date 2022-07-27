@@ -5,6 +5,7 @@ import Badge from '@/components/UI/badge'
 import Expansion from '@/components/UI/expansion'
 import Card from '@/components/UI/card'
 import Skelton from '@/components/UI/skelton'
+import Divider from '@/components/UI/divider'
 
 export default {
     Icon,
@@ -13,5 +14,6 @@ export default {
     Badge,
     Expansion,
     Card,
-    Skelton
+    Skelton,
+    Divider
 }

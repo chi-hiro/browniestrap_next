@@ -490,6 +490,11 @@ const reboot = css`
     [class*='material-icons'] {
         vertical-align: top;
     }
+
+    .font_ja { font-family: ${variables.font.jpSans}; }
+    .font_en { font-family: ${variables.font.enSans}; }
+    .font_zh_CN { ${variables.font.cnSans}; }
+    .font_zh_TW { ${variables.font.twSans}; }
 `
 
 export default reboot

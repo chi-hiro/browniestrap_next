@@ -34,82 +34,79 @@ const longBtn = `
     ${blockIcon}
 `
 
-const button = css`
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    gap: ${variables.input.btnPaddingX}px;
-
-    position: relative;
-    z-index: 2;
-    user-select: none;
-    cursor: pointer;
-
-    line-height: ${variables.iconSize}px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    vertical-align: top;
-    ${mixins.textKerning()}
-
-    color: inherit;
-    border: ${variables.borderWidth}px solid transparent;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    ${mixins.rounded()}
-    ${mixins.transition(['color', 'background', 'border', 'box-shadow'])}
-
-    // Default color
-    background-color: ${variables.theme.mutedBg};
-    ${mixins.darkmode(`
-        background-color: ${variables.darkTheme.mutedBg};
-    `)}
-
-    &:active {
-        transition: none;
-        transform: scale(0.98);
-        transform-origin: center bottom;
-    }
-
-    &.connecting {
-        pointer-events: none;
-    }
-
-    &.disabled,
-    &:disabled {
-        pointer-events: none;
-        cursor: default;
-        opacity: .3;
-        box-shadow: none;
-
-        .show {
-            animation: none !important;
-        }
-
-        &:active {
-            transform: none;
-        }
-    }
-
-    .icon {
-        flex: 0 0 auto;
-        height: ${variables.iconSize}px;
-        margin-left: ${variables.input.btnPaddingX / -2}px;
-        margin-right: ${variables.input.btnPaddingX / -2}px;
-    }
-`
-
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
-    button,
+    button: css`
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        gap: ${variables.input.btnPaddingX}px;
 
-    button_md: css`
+        position: relative;
+        z-index: 2;
+        user-select: none;
+        cursor: pointer;
+
+        line-height: ${variables.iconSize}px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        vertical-align: top;
+        ${mixins.textKerning()}
+
+        color: inherit;
+        border: ${variables.borderWidth}px solid transparent;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        ${mixins.rounded()}
+        ${mixins.transition(['color', 'background', 'border', 'box-shadow'])}
+
+        // Default color
+        background-color: ${variables.theme.mutedBg};
+        ${mixins.darkmode(`
+            background-color: ${variables.darkTheme.mutedBg};
+        `)}
+
+        // Default size
         min-width: ${variables.input.md.height}px;
         font-size: ${variables.input.md.fontSize};
         padding: ${variables.input.md.padding}px ${variables.input.btnPaddingX}px;
+
+        &:active {
+            transition: none;
+            transform: scale(0.98);
+            transform-origin: center bottom;
+        }
+
+        &.connecting {
+            pointer-events: none;
+        }
+
+        &.disabled,
+        &:disabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: .3;
+            box-shadow: none;
+
+            .show {
+                animation: none !important;
+            }
+
+            &:active {
+                transform: none;
+            }
+        }
+
+        .icon {
+            flex: 0 0 auto;
+            height: ${variables.iconSize}px;
+            margin-left: ${variables.input.btnPaddingX / -2}px;
+            margin-right: ${variables.input.btnPaddingX / -2}px;
+        }
     `,
 
-    button_sm: css`
+    sm: css`
         min-width: ${variables.input.sm.height}px;
         font-size: ${variables.input.sm.fontSize};
         padding: ${variables.input.sm.padding}px ${variables.input.btnPaddingX}px;
@@ -119,54 +116,54 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    button_lg: css`
+    lg: css`
         min-width: ${variables.input.lg.height};
         font-size: ${variables.input.lg.fontSize};
         padding: ${variables.input.lg.padding}px ${variables.input.btnPaddingX}px;
     `,
 
-    button_rounded: css`
+    rounded: css`
         border-radius: 9999px;
     `,
 
-    button_block: css`
+    block: css`
         ${blockBtn}
     `,
 
-    button_blockUp: css`
+    blockUp: css`
         ${mixins.breakpointUp(`
             ${blockBtn}
         `)}
     `,
 
-    button_blockDown: css`
+    blockDown: css`
         ${mixins.breakpointDown(`
             ${blockBtn}
         `)}
     `,
 
-    button_long: css`
+    long: css`
         ${longBtn}
     `,
 
-    button_longUp: css`
+    longUp: css`
         ${mixins.breakpointUp(`
             ${longBtn}
         `)}
     `,
 
-    button_longDown: css`
+    longDown: css`
         ${mixins.breakpointDown(`
             ${longBtn}
         `)}
     `,
 
-    button_icon: css`
+    icon: css`
         padding-left: 0;
         padding-right: 0;
     `,
 
-    button_switch: css`
+    switch: css`
         display: inline-flex;
         vertical-align: top;
 

@@ -1,81 +1,6 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
 import { variables, mixins } from '@/lib/styleUtl'
 
-const input = css`
-    appearance: none;
-    display: block;
-    width: 100%;
-    line-height: ${variables.iconSize}px;
-    color: ${variables.theme.bodyColor};
-    background-color: white;
-    background-image: none;
-    background-clip:  padding-box;
-    border: ${variables.borderWidth}px solid ${variables.theme.inputBorderColor};
-
-    ${mixins.rounded(`${variables.input.borderRadius}px`)}
-
-    ${mixins.darkmode(`
-        color: ${variables.darkTheme.bodyColor};
-        background-color: black;
-        border-color: ${variables.darkTheme.inputBorderColor};
-    `)}
-
-    &:focus {
-        color: ${variables.theme.bodyColor};
-        border-color: ${variables.theme.bodyColor};
-
-        ${mixins.darkmode(`
-            color: ${variables.darkTheme.bodyColor};
-            border-color: ${variables.darkTheme.bodyColor};
-        `)}
-    }
-
-    &::placeholder {
-        color: ${variables.theme.mutedColor};
-        opacity: 1;
-
-        ${mixins.darkmode(`
-            color: ${variables.darkTheme.mutedColor};
-        `)}
-    }
-
-    &:-webkit-autofill {
-        -webkit-text-fill-color: ${variables.theme.bodyColor};
-        caret-color: ${variables.theme.bodyColor};
-        transition: background 9999s;
-
-        ${mixins.darkmode(`
-            -webkit-text-fill-color: ${variables.darkTheme.bodyColor};
-            caret-color: ${variables.darkTheme.bodyColor};
-        `)}
-    }
-
-    &:disabled,
-    &[readonly] {
-        background-color: ${variables.theme.mutedBg};
-        border-color: ${variables.theme.mutedBg};
-        opacity: 1;
-        box-shadow: none;
-
-        ${mixins.darkmode(`
-            background-color: ${variables.darkTheme.mutedBg};
-            border-color: ${variables.darkTheme.mutedBg};
-        `)}
-    }
-
-    &:disabled {
-        color: ${variables.theme.mutedColor};
-
-        ${mixins.darkmode(`
-            color: ${variables.darkTheme.mutedColor};
-        `)}
-    }
-
-    &[class*='inline'] {
-        width: auto;
-    }
-`
-
 export const inputSize: { [key: string]: string } = {
     md: `
         height: ${variables.input.md.height}px;
@@ -100,7 +25,80 @@ export const inputSize: { [key: string]: string } = {
 }
 
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
-    input,
+    input: css`
+        appearance: none;
+        display: block;
+        width: 100%;
+        line-height: ${variables.iconSize}px;
+        color: ${variables.theme.bodyColor};
+        background-color: white;
+        background-image: none;
+        background-clip:  padding-box;
+        border: ${variables.borderWidth}px solid ${variables.theme.inputBorderColor};
+
+        ${mixins.rounded(`${variables.input.borderRadius}px`)}
+
+        ${mixins.darkmode(`
+            color: ${variables.darkTheme.bodyColor};
+            background-color: black;
+            border-color: ${variables.darkTheme.inputBorderColor};
+        `)}
+
+        &:focus {
+            color: ${variables.theme.bodyColor};
+            border-color: ${variables.theme.bodyColor};
+
+            ${mixins.darkmode(`
+                color: ${variables.darkTheme.bodyColor};
+                border-color: ${variables.darkTheme.bodyColor};
+            `)}
+        }
+
+        &::placeholder {
+            color: ${variables.theme.mutedColor};
+            opacity: 1;
+
+            ${mixins.darkmode(`
+                color: ${variables.darkTheme.mutedColor};
+            `)}
+        }
+
+        &:-webkit-autofill {
+            -webkit-text-fill-color: ${variables.theme.bodyColor};
+            caret-color: ${variables.theme.bodyColor};
+            transition: background 9999s;
+
+            ${mixins.darkmode(`
+                -webkit-text-fill-color: ${variables.darkTheme.bodyColor};
+                caret-color: ${variables.darkTheme.bodyColor};
+            `)}
+        }
+
+        &:disabled,
+        &[readonly] {
+            background-color: ${variables.theme.mutedBg};
+            border-color: ${variables.theme.mutedBg};
+            opacity: 1;
+            box-shadow: none;
+
+            ${mixins.darkmode(`
+                background-color: ${variables.darkTheme.mutedBg};
+                border-color: ${variables.darkTheme.mutedBg};
+            `)}
+        }
+
+        &:disabled {
+            color: ${variables.theme.mutedColor};
+
+            ${mixins.darkmode(`
+                color: ${variables.darkTheme.mutedColor};
+            `)}
+        }
+
+        &[class*='inline'] {
+            width: auto;
+        }
+    `,
 
     textarea: css`
         resize: none;
@@ -127,18 +125,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
     file: css`
         line-height: 18px;
-    `,
-
-    input_md: css`
-        ${inputSize.md}
-    `,
-
-    input_sm: css`
-        ${inputSize.sm}
-    `,
-
-    input_lg: css`
-        ${inputSize.lg}
     `,
 
     label: css`

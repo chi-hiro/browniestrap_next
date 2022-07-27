@@ -1,6 +1,7 @@
 import { memo, useMemo } from 'react'
 import Icon from '@/components/UI/icon'
 import { styles, colorVariant } from './card.style'
+import { mixins, utility } from 'lib/styleUtl'
 
 type Props = {
     children: React.ReactNode
@@ -23,7 +24,7 @@ const Card = (props: Props) => {
 
     const cardClass = useMemo(() => {
         const arr = []
-        props.href && arr.push('hover-border')
+        props.href && arr.push(utility.hoverBorder)
         props.addClass && arr.push(props.addClass)
         return arr.join(' ')
     }, [props.addClass, props.href])
@@ -31,7 +32,7 @@ const Card = (props: Props) => {
     const renderBody = (
         <>
             {props.src && (
-                <figure className="embed embed-16by9 card-thumb">
+                <figure css={utility.embed(16, 9)} className="card-thumb">
                     <img src={props.src} alt={props.title ? props.title : ''} />
                 </figure>
             )}

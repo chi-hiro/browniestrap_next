@@ -5,7 +5,7 @@ import { styles, colorVariant } from './button.style'
 type Props = {
     onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void
     children: React.ReactNode
-    model?: string
+    model: string
     color?: string
     startIcon?: JSX.Element
     endIcon?: JSX.Element
@@ -18,12 +18,8 @@ type Props = {
 const Button = (props: Props) => {
     const buttonCSS = useMemo(() => {
         const arr = [styles.button]
-        const models = (props.model ? props.model : 'bg md')
-        const modelArr = models.split(/\s/)
-        modelArr.map(item => arr.push(styles[`button_${item}`]))
-        if (props.color) {
-            arr.push(colorVariant(props.color, models))
-        }
+        props.model.split(/\s/).map(model => arr.push(styles[model]))
+        props.color && arr.push(colorVariant(props.color, props.model))
         return arr
     }, [props.model, props.color])
 

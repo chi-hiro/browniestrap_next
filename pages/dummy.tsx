@@ -1,5 +1,6 @@
 import { Layout } from 'layout/default'
 import { pageback } from 'lib/mixins'
+import { section } from 'lib/styleUtl'
 import Web from '@/components/web'
 import UI from '@/components/UI'
 
@@ -8,7 +9,7 @@ export default function Dummy() {
     return (
         <Layout>
             <main>
-                <section id="section_article" className="section">
+                <section id="section_article" css={section.base}>
                     <div className="container lg:w-2/3 ml-auto mr-auto">
                         <Web.Article
                             title="おうちで気軽に体を動かす。Nintendo Switchでおすすめの「体感ゲーム」をご紹介。"

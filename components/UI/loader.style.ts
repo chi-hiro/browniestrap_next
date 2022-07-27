@@ -90,11 +90,11 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 animation: ${dotAnime} 800ms infinite linear 200ms;
             }
         }
+    `,
 
-        &.rounded-full {
-            span {
-                border-radius: 100px;
-            }
+    dot_rounded: css`
+        span {
+            border-radius: 100px;
         }
     `,
 
@@ -118,13 +118,13 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             background-color: ${variables.color.primary};
             animation: ${lineAnime} 1s linear infinite;
         }
+    `,
 
-        &.rounded-full {
+    line_rounded: css`
+        border-radius: 9999px;
+
+        .loader-line-active {
             border-radius: 9999px;
-
-            .loader-line-active {
-                border-radius: 9999px;
-            }
         }
     `,
 
@@ -147,25 +147,25 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             height: 100%;
             background-color: ${variables.color.primary};
         }
+    `,
 
-        &.animate {
-            .loader-bar-active {
-                transition: width 100ms ${variables.easing};
-            }
+    bar_rounded: css`
+        border-radius: 9999px;
+
+        .loader-bar-active {
+            border-radius: 9999px;
         }
 
-        &.rounded-full {
-            border-radius: 9999px;
-
-            .loader-bar-active {
+        &.animate {
+            .loader-bar-active::after {
                 border-radius: 9999px;
             }
+        }
+    `,
 
-            &.animate {
-                .loader-bar-active::after {
-                    border-radius: 9999px;
-                }
-            }
+    bar_animate: css`
+        .loader-bar-active {
+            transition: width 100ms ${variables.easing};
         }
     `,
 
@@ -203,12 +203,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 }
             }
         }
+    `,
 
-        &.animate {
-            svg {
-                circle {
-                    transition: stroke-dashoffset 100ms ${variables.easing};
-                }
+    circle_animate: css`
+        svg {
+            circle {
+                transition: stroke-dashoffset 100ms ${variables.easing};
             }
         }
     `
