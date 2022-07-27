@@ -5,15 +5,14 @@ import { variables, mixins } from '@/lib/styleUtl'
 
 type Props = {
     children: React.ReactNode
+    model?: string
     date?: string
     href?: string
     badge?: { label: string, color: string }
-    border?: boolean
     rows?: number
 }
 
 const Headline = (props: Props) => {
-    // Computed
     const formatDate = useMemo(() => {
         const date = new Date(props.date as string)
         const y = date.getFullYear()
@@ -22,7 +21,12 @@ const Headline = (props: Props) => {
         return `${y}.${m}.${d}`
     }, [props.date])
 
-    // Render
+    const headlineCSS = useMemo(() => {
+        const arr = [styles.headline]
+        props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
+        return arr
+    }, [props.model])
+
     const renderBody = (
         <div className="headline-item-body">
             <div className="detail">
@@ -40,7 +44,7 @@ const Headline = (props: Props) => {
     )
 
     return (
-        <div css={styles.headline} className={`reveal reveal-fade-up ${props.border ? 'border-y' : ''}`} itemScope itemType="http://schema.org/NewsArticle">
+        <div css={headlineCSS} className="reveal reveal-fade-up" itemScope itemType="http://schema.org/NewsArticle">
             {props.href ? (
                 <a href={props.href} itemProp="url" css={styles.link}>
                     {renderBody}
@@ -57,14 +61,6 @@ export default memo(Headline)
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
     headline: css`
         position: relative;
-
-        ${mixins.darkmode(`
-            border-color: ${variables.theme.borderColor};
-        `)}
-
-        + * {
-            border-top: none !important;
-        }
 
         .headline-item-body {
             position: relative;
@@ -136,18 +132,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 `)}
             }
         }
-
-        &.border-y {
-            .headline-item-body {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-
-                ${mixins.breakpointUp(`
-                    padding-top: 2rem;
-                    padding-bottom: 2rem;
-                `)}
-            }
-        }
     `,
 
     link: css`
@@ -172,5 +156,28 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 background-size: 100% 1px;
             }
         `)}
+    `,
+
+    border: css`
+        border-top: 1px solid ${variables.theme.borderColor};
+        border-bottom: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
+
+        .headline-item-body {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+
+            ${mixins.breakpointUp(`
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            `)}
+        }
+
+        + * {
+            border-top: none;
+        }
     `
 }

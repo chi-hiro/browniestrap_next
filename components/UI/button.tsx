@@ -18,7 +18,7 @@ type Props = {
 const Button = (props: Props) => {
     const buttonCSS = useMemo(() => {
         const arr = [styles.button]
-        props.model.split(/\s/).map(model => arr.push(styles[model]))
+        props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.color && arr.push(colorVariant(props.color, props.model))
         return arr
     }, [props.model, props.color])

@@ -46,7 +46,7 @@ const Expansion = (props: Props) => {
 
     const expansionCSS = useMemo(() => {
         const arr = [styles.expansion]
-        props.model && arr.push(styles[props.model])
+        props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         return arr
     }, [props.model])
 

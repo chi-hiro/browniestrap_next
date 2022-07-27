@@ -15,7 +15,7 @@ type Props = {
 const Skelton = (props: Props) => {
     const skeltonCSS = useMemo(() => {
         const arr = [styles.skelton]
-        props.model && arr.push(styles[props.model])
+        props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.ratio && arr.push(utility.embed(props.ratio[0], props.ratio[1]))
         props.animate && arr.push(styles.animate)
         return arr

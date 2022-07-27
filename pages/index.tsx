@@ -251,19 +251,19 @@ export default function Home() {
                             <h2 className="section-heading lg:w-1/3">Headline</h2>
 
                             <div className="grid reveal-group lg:w-2/3">
-                                <Web.Headline href="/" date="2021-12-24" badge={{ label: 'お知らせ', color: 'primary' }} border={true}>
+                                <Web.Headline model="border" href="/" date="2021-12-24" badge={{ label: 'お知らせ', color: 'primary' }}>
                                     「よゐこのはじめてのプログラミング生活 第２回あそぶ編」（前編）を公開。視聴者のみなさんがつくったゲームをプレイします。
                                 </Web.Headline>
 
-                                <Web.Headline href="/" date="2021-10-02" badge={{ label: '重要', color: 'danger' }} border={true}>
+                                <Web.Headline model="border" href="/" date="2021-10-02" badge={{ label: '重要', color: 'danger' }}>
                                     『スプラトゥーン3』の最新調査映像が公開。新たなステージやスペシャルウェポン、ヒーローモードの情報が判明。
                                 </Web.Headline>
 
-                                <Web.Headline href="/" date="2021-09-24" badge={{ label: 'プレスリリース', color: 'secondary' }} border={true}>
+                                <Web.Headline model="border" href="/" date="2021-09-24" badge={{ label: 'プレスリリース', color: 'secondary' }}>
                                     シリーズ完全新作、Nintendo Switch『ベヨネッタ3』が2022年に発売決定。大魔獣を直接操作する新たなアクションも明らかに。
                                 </Web.Headline>
 
-                                <Web.Headline date="2021-09-01" badge={{ label: 'お知らせ', color: 'primary' }} border={true} rows={2}>
+                                <Web.Headline model="border" date="2021-09-01" badge={{ label: 'お知らせ', color: 'primary' }} rows={2}>
                                     Nintendo Switch『ゼルダ無双 厄災の黙示録』追加コンテンツ「エキスパンション・パス」第２弾のトレーラーが公開に。10月29日（金）に配信決定。
                                 </Web.Headline>
                             </div>
