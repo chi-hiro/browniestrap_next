@@ -1,7 +1,6 @@
 import { memo } from 'react'
-import Carousel from 'components/carousel'
+import Carousel from '@/components/carousel/carousel'
 import { css, keyframes, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 type Props = {
@@ -115,7 +114,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             display: block;
             height: 2rem;
             width: 1px;
-            background-color: ${rgba('black', 0.5)};
+            background-color: rgba(0,0,0,0.5);
         }
 
         &::before {

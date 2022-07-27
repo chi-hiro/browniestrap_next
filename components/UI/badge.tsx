@@ -11,18 +11,22 @@ type Props = {
 
 const Badge = (props: Props) => {
     const badgeCSS = useMemo(() => {
-        const arr = [props.href ? styles.linkBadge : styles.badge]
-        const modelArr = props.model.split(/\s/)
-        modelArr.map(item => arr.push(styles[`badge_${item}`]))
-        if (props.color) {
-            arr.push(colorVariant(props.color, props.model, props.href))
-        }
+        const arr = [styles.badge]
+        props.model.split(/\s/).map(item => arr.push(styles[item]))
+        props.href && arr.push(styles.link)
+        props.color && arr.push(colorVariant(props.color, props.model, props.href))
         return arr
     }, [props.model, props.color, props.href])
 
+    const badgeClass = useMemo(() => {
+        const arr = []
+        props.addClass && arr.push(props.addClass)
+        return arr.join(' ')
+    }, [props.addClass])
+
     return props.href
-        ? <a css={badgeCSS} className={props.addClass ? props.addClass : ''} href={props.href}>{props.children}</a>
-        : <span css={badgeCSS} className={props.addClass ? props.addClass : ''}>{props.children}</span>
+        ? <a css={badgeCSS} className={badgeClass} href={props.href}>{props.children}</a>
+        : <span css={badgeCSS} className={badgeClass}>{props.children}</span>
 }
 
 export default memo(Badge)

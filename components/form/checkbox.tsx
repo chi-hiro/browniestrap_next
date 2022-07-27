@@ -1,6 +1,6 @@
 import { memo, useMemo, forwardRef } from 'react'
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, lighten } from 'polished'
+import { lighten } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 
 const Checkbox = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => {
     const checkboxCSS = useMemo(() => {
-        const color = variables.variant[props.color ? props.color : 'primary']
+        const color = variables.color[props.color ? props.color : 'primary']
 
         if (props.model === 'box') {
             return [
@@ -88,22 +88,22 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             border: 2px solid transparent;
 
             &:focus-visible {
-                border-color: ${rgba('black', 0.2)};
+                border-color: rgba(0,0,0,0.2);
             }
 
             ${mixins.hoverMouse(`
-                border-color: ${rgba('black', 0.2)};
+                border-color: rgba(0,0,0,0.2);
             `)}
 
             ${mixins.darkmode(`
                 background-color: ${variables.darkTheme.inputBorderColor};
 
                 &:focus-visible {
-                    border-color: ${rgba('white', 0.3)};
+                    border-color: rgba(255,255,255,0.3);
                 }
 
                 ${mixins.hoverMouse(`
-                    border-color: ${rgba('black', 0.2)};
+                    border-color: rgba(0,0,0,0.2);
                 `)}
             `)}
 

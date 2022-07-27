@@ -56,7 +56,7 @@ const Notification = (props: Props) => {
     // Render
     return (
         <CSSTransition classNames="notification" in={isShow} timeout={300}>
-            <div ref={el} css={[styles.notification, colorVariant(props.color, 'bg')]}>
+            <div ref={el} css={[styles.card, styles.notification, colorVariant(props.color, 'bg')]}>
                 <div className="flex justify-between items-center card-body">
                     <span className="icon">
                         <Icon value={icon[props.color]} />

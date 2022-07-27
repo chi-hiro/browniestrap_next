@@ -6,9 +6,9 @@ import { pagetop, pageback } from 'lib/mixins'
 import { toast } from 'lib/toast'
 import { viewer } from 'lib/viewer'
 import { Modal, ModalBody, ModalFooter, ModalRefTypes } from '@/components/modal'
-import Carousel from 'components/carousel'
 import UI from 'components/UI'
 import Form from '@/components/form'
+import Carousel from '@/components/carousel'
 import Web from '@/components/web'
 
 const { publicRuntimeConfig } = getConfig()
@@ -20,27 +20,11 @@ export default function Home() {
     const dummyModal1Ref = useRef<ModalRefTypes>()
     const dummyModal2Ref = useRef<ModalRefTypes>()
 
-    // Methods
-    const formcheck = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log('check form ---------')
-        console.log('username:', e.currentTarget['username'].value)
-        console.log('password:', e.currentTarget['password'].value)
-        console.log('agreement:', e.currentTarget['agreement'].checked)
-    }
-
     // Render
     return (
         <Layout>
             <main>
-                <Web.Visual slide={[
-                    { src_lg: `${basePath}/dummy/visual1_lg.webp`, src: `${basePath}/dummy/visual1.webp` },
-                    { src_lg: `${basePath}/dummy/visual2_lg.webp`, src: `${basePath}/dummy/visual2.webp` },
-                    { src_lg: `${basePath}/dummy/visual3_lg.webp`, src: `${basePath}/dummy/visual3.webp` }
-                ]}>
-                    <h1 className="title">LEAD SAMPLE</h1>
-                    <p className="description">DESCRIPTION SAMPLE</p>
-                </Web.Visual>
+
 
                 <section id="section_type" className="section border-t reveal">
                     <div className="container">
@@ -95,7 +79,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <span className="embed embed-1by1 lg:embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
+                    <span className="embed embed-1by1 lg-embed-16by9 section-cover-bg overlay reveal reveal-fade-back">
                         <img src={`${basePath}/dummy/cover.webp`} alt="" />
                     </span>
                 </section>
@@ -126,40 +110,40 @@ export default function Home() {
                         <div className="grid grid-cols-2 gap-40px">
                             <div>
                                 <UI.Skelton addClass="embed embed-16by9 mb-1" animation={true} />
-                                <UI.Skelton model="text" height={22 * 3} animation={true} />
+                                <UI.Skelton model="text" line={3} animation={true} />
                             </div>
 
                             <div>
                                 <div className="flex items-center gap-0.5 mb-1">
-                                    <UI.Skelton model="circular" width={48} height={48} animation={true} />
-                                    <UI.Skelton model="text" width={80} animation={true} />
+                                    <UI.Skelton model="rounded" width="48px" height="48px" animation={true} />
+                                    <UI.Skelton model="text" line={1} width="80px" animation={true} />
                                 </div>
-                                <UI.Skelton model="h1" addClass="w-2/3 mb-1" animation={true} />
-                                <UI.Skelton model="text" height={22 * 5} animation={true} />
+                                <UI.Skelton model="h1" addClass="mb-1" width="60%" animation={true} />
+                                <UI.Skelton model="text" line={7} animation={true} />
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section id="section_carousel" className="section border-t reveal">
+                {/*<section id="section_carousel" className="section border-t reveal">
                     <div className="container">
                         <h2 className="section-heading">Carousel</h2>
                     </div>
 
                     <div className="mb-3">
-                        <Carousel
+                        <Carousel.Carousel
                             mode="slide"
                             pagination={true}
                             src={[
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual1_lg.webp` },
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual2_lg.webp` },
-                                { embed: "embed-4by3 lg:embed-16by9", src: `${basePath}/dummy/visual3_lg.webp` }
+                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual1_lg.webp` },
+                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual2_lg.webp` },
+                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual3_lg.webp` }
                             ]}
-                        ></Carousel>
+                        ></Carousel.Carousel>
                     </div>
 
                     <div className="container">
-                        <Carousel
+                        <Carousel.Carousel
                             mode="lineup"
                             zoom={true}
                             nav={true}
@@ -174,11 +158,11 @@ export default function Home() {
                                 { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
                                 { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` }
                                 ]}
-                        ></Carousel>
+                        ></Carousel.Carousel>
                     </div>
-                </section>
+                            </section>*/}
 
-                <section id="section_card" className="section section-bg-even border-t reveal">
+                <section id="section_card" className="section border-t reveal">
                     <div className="container">
                         <h2 className="section-heading">Card</h2>
 
@@ -421,97 +405,6 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="section_table" className="section border-t">
-                    <div className="container">
-                        <h2 className="section-heading">Table</h2>
-
-                        <h3 className="section-heading-sm">Vertical</h3>
-                        <div className="table-responsive">
-                            <table className="table text-sm">
-                                <thead>
-                                    <tr>
-                                        <th>Heading</th>
-                                        <th>Heading</th>
-                                        <th>Heading</th>
-                                        <th>Heading</th>
-                                        <th>Heading</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                        <td>Content</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h3 className="section-heading-sm">Horizontal</h3>
-                        <table className="table text-sm">
-                            <tbody>
-                                <tr>
-                                    <th>対応コントローラー</th>
-                                    <td>Nintendo Switch Proコントローラー</td>
-                                </tr>
-                                <tr>
-                                    <th>セーブデータお預かり</th>
-                                    <td>対応</td>
-                                </tr>
-                                <tr>
-                                    <th>対応言語</th>
-                                    <td>日本語,英語,フランス語,ドイツ語,イタリア語,スペイン語,韓国語,オランダ語,ポルトガル語,ロシア語,中国語 (簡体字),中国語 (繁体字)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h3 className="section-heading-sm">Bordered</h3>
-                        <table className="table table-bordered text-sm">
-                            <tbody>
-                                <tr>
-                                    <th>対応コントローラー</th>
-                                    <td>Nintendo Switch Proコントローラー</td>
-                                </tr>
-                                <tr>
-                                    <th>セーブデータお預かり</th>
-                                    <td>対応</td>
-                                </tr>
-                                <tr>
-                                    <th>対応言語</th>
-                                    <td>日本語,英語,フランス語,ドイツ語,イタリア語,スペイン語,韓国語,オランダ語,ポルトガル語,ロシア語,中国語 (簡体字),中国語 (繁体字)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h3 className="section-heading-sm">Striped</h3>
-                        <table className="table table-striped text-sm">
-                            <tbody>
-                                <tr>
-                                    <th>対応コントローラー</th>
-                                    <td>Nintendo Switch Proコントローラー</td>
-                                </tr>
-                                <tr>
-                                    <th>セーブデータお預かり</th>
-                                    <td>対応</td>
-                                </tr>
-                                <tr>
-                                    <th>対応言語</th>
-                                    <td>日本語,英語,フランス語,ドイツ語,イタリア語,スペイン語,韓国語,オランダ語,ポルトガル語,ロシア語,中国語 (簡体字),中国語 (繁体字)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
                 <section id="section_loader" className="section border-t">
                     <div className="container">
                         <h2 className="section-heading">Loader</h2>
@@ -550,7 +443,7 @@ export default function Home() {
                         <h2 className="section-heading">Badge</h2>
 
                         <h3 className="section-heading-sm">Text</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
+                        <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="text sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="text sm" color="secondary" href="#">secondary</UI.Badge>
                             <UI.Badge model="text sm" color="success" href="#">success</UI.Badge>
@@ -561,7 +454,7 @@ export default function Home() {
                         </div>
 
                         <h3 className="section-heading-sm">Background</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
+                        <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="bg sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="bg sm" color="secondary" href="#">secondary</UI.Badge>
                             <UI.Badge model="bg sm" color="success" href="#">success</UI.Badge>
@@ -572,7 +465,7 @@ export default function Home() {
                         </div>
 
                         <h3 className="section-heading-sm">Border</h3>
-                        <div className="flex flex-wrap gap-0.5 p-20px bg-muted">
+                        <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="border sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="border sm" color="secondary" href="#">secondary</UI.Badge>
                             <UI.Badge model="border sm" color="success" href="#">success</UI.Badge>
@@ -583,40 +476,14 @@ export default function Home() {
                         </div>
 
                         <h3 className="section-heading-sm">with Icon</h3>
-                        <div className="flex flex-wrap items-center gap-0.5 p-20px bg-muted">
+                        <div className="flex flex-wrap items-center gap-0.5">
                             <UI.Badge model="text sm rounded" color="primary">
                                 <UI.Icon value="account_circle" />
-                                small
-                            </UI.Badge>
-                            <UI.Badge model="text md rounded" color="primary">
-                                <UI.Icon value="account_circle" />
-                                medium
-                            </UI.Badge>
-                            <UI.Badge model="text lg rounded" color="primary">
-                                <UI.Icon value="account_circle" />
-                                large
-                            </UI.Badge>
-
-                            <UI.Badge model="text sm rounded">
-                                <img src="/dummy/1.webp" className="rounded-full" />
                                 small
                             </UI.Badge>
                             <UI.Badge model="text md rounded">
                                 <img src="/dummy/1.webp" className="rounded-full" />
                                 medium
-                            </UI.Badge>
-                            <UI.Badge model="text lg rounded">
-                                <img src="/dummy/1.webp" className="rounded-full" />
-                                large
-                            </UI.Badge>
-
-                            <UI.Badge model="text sm rounded" color="danger">
-                                small
-                                <UI.Icon value="cancel" />
-                            </UI.Badge>
-                            <UI.Badge model="text md rounded" color="danger">
-                                medium
-                                <UI.Icon value="cancel" />
                             </UI.Badge>
                             <UI.Badge model="text lg rounded" color="danger">
                                 large
@@ -625,7 +492,7 @@ export default function Home() {
                         </div>
 
                         <h3 className="section-heading-sm">Icon: status</h3>
-                        <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
+                        <div className="flex flex-wrap gap-1.5">
                             <UI.Badge model="status" color="primary" addClass="uppercase">primary</UI.Badge>
                             <UI.Badge model="status" color="secondary" addClass="uppercase">secondary</UI.Badge>
                             <UI.Badge model="status" color="success" addClass="uppercase">success</UI.Badge>
@@ -636,7 +503,7 @@ export default function Home() {
                         </div>
 
                         <h3 className="section-heading-sm">Icon: check</h3>
-                        <div className="flex flex-wrap gap-1.5 p-20px bg-muted">
+                        <div className="flex flex-wrap gap-1.5">
                             <UI.Badge model="check" color="primary" addClass="capitalize">primary</UI.Badge>
                             <UI.Badge model="check" color="secondary" addClass="capitalize">secondary</UI.Badge>
                             <UI.Badge model="check" color="success" addClass="capitalize">success</UI.Badge>
@@ -651,18 +518,6 @@ export default function Home() {
                             Sample
                             <UI.Badge model="bg count" color="danger">8</UI.Badge>
                         </UI.Button>
-                    </div>
-                </section>
-
-                <section id="section_breadcrumb" className="section border-t">
-                    <div className="container">
-                        <h2 className="section-heading">Breadcrumb</h2>
-
-                        <Web.Breadcrumb homeicon={true} src={[
-                            { name: 'Home', url: '/' },
-                            { name: 'Category', url: '/' },
-                            { name: 'Content', url: '/' }
-                        ]} />
                     </div>
                 </section>
 

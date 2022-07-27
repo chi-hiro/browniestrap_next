@@ -1,5 +1,4 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, darken, lighten } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 const input = css`
@@ -165,7 +164,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
     feedback: css`
         user-select: none;
         display: inline-block;
-        background-color: ${variables.variant.primary};
+        background-color: ${variables.color.primary};
         color: #FFFFFF;
         font-size: 0.85rem;
         font-weight: bold;
@@ -186,10 +185,10 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
 export const colorVariant = (color: string) => {
     return `
-        border-color: ${variables.variant[color]};
+        border-color: ${variables.color[color]};
 
         &:focus {
-            border-color: ${variables.variant[color]};
+            border-color: ${variables.color[color]};
         }
     `
 }

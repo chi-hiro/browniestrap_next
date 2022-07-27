@@ -22,7 +22,7 @@ const Loader = (props: Props) => {
     }, [props.progress])
 
     const loaderCSS = useMemo(() => {
-        const arr = [styles[`loader_${props.model}`]]
+        const arr = [styles[props.model]]
         props.color && arr.push(colorVariant(props.color, props.model))
         return arr
     }, [props.model, props.color])

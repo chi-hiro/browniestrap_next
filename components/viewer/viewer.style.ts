@@ -1,5 +1,4 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, darken, lighten } from 'polished'
 import { variables, mixins, easing } from '@/lib/styleUtl'
 
 const button = css`
@@ -11,7 +10,7 @@ const button = css`
         display: inline-block;
         vertical-align: top;
         color: white;
-        background-color: ${rgba('black', 0.2)};
+        background-color: rgba(0,0,0,0.2);
         border: none;
         border-radius: 100%;
         width: 40px;
@@ -44,7 +43,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         ${mixins.isMouse(`
             opacity: 0;
             position: fixed;
-            background-color: ${rgba('black', 0.8)};
+            background-color: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
         `)}
 
@@ -219,7 +218,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         line-height: ${variables.iconSize}px;
         font-size: 0.75rem;
         text-align: center;
-        color: ${rgba('white', 0.5)};
+        color: rgba(255,255,255,0.5);
 
         span {
             display: inline-block;

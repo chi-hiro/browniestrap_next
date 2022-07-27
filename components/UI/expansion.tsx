@@ -44,6 +44,12 @@ const Expansion = (props: Props) => {
     const showHover = () => (props.hover && !env('touch')) && show()
     const hideHover = () => props.hover && hide()
 
+    const expansionCSS = useMemo(() => {
+        const arr = [styles.expansion]
+        props.model && arr.push(styles[props.model])
+        return arr
+    }, [props.model])
+
     const expansionClass = useMemo(() => {
         const arr = []
         isShow && arr.push('show')
@@ -65,7 +71,7 @@ const Expansion = (props: Props) => {
 
     // Render
     return (
-        <div css={props.model ? styles[`expansion_${props.model}`] : styles.expansion} className={expansionClass} onMouseLeave={hideHover}>
+        <div css={expansionCSS} className={expansionClass} onMouseLeave={hideHover}>
             <button type="button" className="expansion-toggler" onClick={toggle} onMouseEnter={showHover} tabIndex={props.locked ? -1 : 0}>
                 {props.title && props.title}
 

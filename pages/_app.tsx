@@ -1,17 +1,18 @@
-import 'styles/app.scss'
-import 'swiper/scss';
-import 'swiper/scss/effect-fade';
-import 'swiper/scss/pagination';
-import 'swiper/scss/lazy';
-import 'styles/tailwind.scss'
 import { useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { store, EnvSlice } from 'store'
 import type {} from 'styled-components/cssprop'
+import { GlobalStyle } from 'styles'
 import { env } from 'lib/env'
 import { reveal } from 'lib/reveal'
+
+import 'swiper/scss';
+import 'swiper/scss/effect-fade';
+import 'swiper/scss/pagination';
+import 'swiper/scss/lazy';
+import 'styles/tailwind.scss'
 
 let isResize: number = 0
 
@@ -51,6 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 {process.env.NEXT_PUBLIC_SITE_DESCRIPTION && <meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />}
             </Head>
 
+            <GlobalStyle />
             <Component {...pageProps} />
         </Provider>
     )

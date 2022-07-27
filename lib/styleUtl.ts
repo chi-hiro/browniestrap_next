@@ -1,4 +1,4 @@
-import { rgba, lighten } from 'polished'
+import { lighten } from 'polished'
 
 //***********************************************************************
 //  Options
@@ -46,7 +46,7 @@ export const easing = {
 //***********************************************************************
 //  Variables
 //***********************************************************************
-const variant = {
+const color = {
     primary: '#6ED4BE',
     secondary: '#D38A58',
     success: '#8CCD26',
@@ -56,42 +56,58 @@ const variant = {
     white: 'white'
 }
 
+const font = {
+    jpSans: "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif",
+    enSans: "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, sans-serif",
+    cnSans: "'Microsoft YaHei', 'PingFang SC', sans-serif",
+    twSans: "'Microsoft JhengHei', 'PingFang TC', sans-serif",
+    jpSerif: "'Hiragino Mincho ProN', 'Hiragino Mincho Pro', '游明朝', YuMincho, serif",
+    enSerif: "'Times New Roman', serif",
+    cnSerif: "'Kaiti SC', 'SimSun', serif"
+}
+
 const borderWidth = 2
 
 export const variables: { [key: string]: any } = {
-    variant,
+    base: {
+        fontSize: 16,
+        fontFamily: font.jpSans,
+        lineHeight: 1.75
+    },
 
-    lightVariant: {
-        primary: lighten(0.3, variant.primary),
-        secondary: lighten(0.35, variant.secondary),
-        success: lighten(0.45, variant.success),
-        info: lighten(0.35, variant.info),
-        warning: lighten(0.4, variant.warning),
-        danger: lighten(0.4, variant.danger),
-        white: rgba('black', 0.5)
+    color,
+
+    lightColor: {
+        primary: lighten(0.3, color.primary),
+        secondary: lighten(0.35, color.secondary),
+        success: lighten(0.45, color.success),
+        info: lighten(0.35, color.info),
+        warning: lighten(0.4, color.warning),
+        danger: lighten(0.4, color.danger),
+        white: 'rgba(0,0,0,0.5)'
     },
 
     theme: {
         bodyColor: '#606060',
         headingsColor: '#101010',
-        mutedColor: rgba('black', 0.4),
-        borderColor: rgba('black', 0.1),
-        inputBorderColor: rgba('black', 0.15),
+        mutedColor: 'rgba(0,0,0,0.4)',
+        borderColor: 'rgba(0,0,0,0.1)',
+        inputBorderColor: 'rgba(0,0,0,0.15)',
         bodyBg: '#FFFFFF',
-        mutedBg: rgba('black', 0.03),
-        overlayBg: rgba('black', 0.3),
+        mutedBg: 'rgba(0,0,0,0.03)',
+        overlayBg: 'rgba(0,0,0,0.3)',
         headerBg: 'white'
     },
 
     darkTheme: {
         bodyColor: '#FFFFFF',
         headingsColor: '#FFFFFF',
-        mutedColor: rgba('white', 0.4),
-        borderColor: rgba('white', 0.2),
-        inputBorderColor: rgba('white', 0.15),
+        mutedColor: 'rgba(255,255,255,0.4)',
+        borderColor: 'rgba(255,255,255,0.2)',
+        inputBorderColor: 'rgba(255,255,255,0.15)',
         bodyBg: '#202020',
-        mutedBg: rgba('white', 0.03),
-        overlayBg: rgba('black', 0.3),
+        mutedBg: 'rgba(255,255,255,0.03)',
+        overlayBg: 'rgba(0,0,0,0.3)',
         headerBg: '#404040'
     },
 
@@ -102,9 +118,10 @@ export const variables: { [key: string]: any } = {
         reverseDark: '0 -4px 20px rgba(0,0,0,0.1)'
     },
 
-    linkColor: variant.primary,
-    linkHoverColor: variant.primary,
+    linkColor: color.primary,
+    linkHoverColor: color.primary,
 
+    scrollbarW: 16,
     breakpoint: 1024,
     gridGutterWidth: 40,
     iconSize: 24,
@@ -124,7 +141,7 @@ export const variables: { [key: string]: any } = {
 
     input: {
         borderRadius: 8,
-        boxShadow: `0 2px 2px ${rgba('black', 0.05)}`,
+        boxShadow: '0 2px 2px rgba(0,0,0,0.05)',
         btnPaddingX: 20,
         inputPaddingX: 12,
 
@@ -147,14 +164,15 @@ export const variables: { [key: string]: any } = {
         },
     },
 
-    font: {
-        jpSans: "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif",
-        enSans: "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Helvetica, Arial, sans-serif",
-        cnSans: "'Microsoft YaHei', 'PingFang SC', sans-serif",
-        twSans: "'Microsoft JhengHei', 'PingFang TC', sans-serif",
-        jpSerif: "'Hiragino Mincho ProN', 'Hiragino Mincho Pro', '游明朝', YuMincho, serif",
-        enSerif: "'Times New Roman', serif",
-        cnSerif: "'Kaiti SC', 'SimSun', serif"
+    font,
+
+    fontSize: {
+        h1: { sm: '1.5rem', lg: '2.25rem' },
+        h2: { sm: '1.4rem', lg: '2.00rem' },
+        h3: { sm: '1.3rem', lg: '1.75rem' },
+        h4: { sm: '1.2rem', lg: '1.50rem' },
+        h5: { sm: '1.1rem', lg: '1.25rem' },
+        h6: { sm: '1.0rem', lg: '1.00rem' }
     },
 
     ui: {

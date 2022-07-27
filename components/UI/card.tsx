@@ -15,10 +15,18 @@ type Props = {
 
 const Card = (props: Props) => {
     const cardCSS = useMemo(() => {
-        const arr = [props.href ? styles.linkCard : styles.card]
-        arr.push(colorVariant(props.color ? props.color : 'white', props.model ? props.model : 'bg'))
+        const arr = [styles.card]
+        props.href && arr.push(styles.link)
+        props.color && arr.push(colorVariant(props.color, props.model ? props.model : 'bg'))
         return arr
     }, [props.model, props.color, props.href])
+
+    const cardClass = useMemo(() => {
+        const arr = []
+        props.href && arr.push('hover-border')
+        props.addClass && arr.push(props.addClass)
+        return arr.join(' ')
+    }, [props.addClass, props.href])
 
     const renderBody = (
         <>
@@ -28,14 +36,14 @@ const Card = (props: Props) => {
                 </figure>
             )}
 
-            <div className={`flex justify-between card-body ${props.icon ? 'items-center' : ''}`}>
+            <div className="card-body">
                 {props.icon && (
                     <span className="icon">
                         <Icon value={props.icon} />
                     </span>
                 )}
 
-                <div className="flex-1 body">
+                <div className="body">
                     {props.children}
                 </div>
             </div>
@@ -43,11 +51,11 @@ const Card = (props: Props) => {
     )
 
     return props.href ? (
-        <a css={cardCSS} className={`hover-border ${props.addClass ? props.addClass : ''}`} href={props.href}>
+        <a css={cardCSS} className={cardClass} href={props.href}>
             {renderBody}
         </a>
     ) : (
-        <div css={cardCSS} className={props.addClass ? props.addClass : ''}>
+        <div css={cardCSS} className={cardClass}>
             {renderBody}
         </div>
     )

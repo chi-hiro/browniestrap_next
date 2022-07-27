@@ -1,6 +1,5 @@
 import { memo, useMemo, forwardRef } from 'react'
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
 
 const Switch = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => {
     const switchCSS = useMemo(() => {
-        const color = variables.variant[props.color ? props.color : 'primary']
+        const color = variables.color[props.color ? props.color : 'primary']
 
         return [
             styles.base,
@@ -54,22 +53,22 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         transition: background 100ms ${variables.easing}, border 100ms ${variables.easing};
 
         &:focus-visible {
-            border-color: ${rgba('black', 0.2)};
+            border-color: rgba(0,0,0,0.2);
         }
 
         ${mixins.hoverMouse(`
-            border-color: ${rgba('black', 0.2)};
+            border-color: rgba(0,0,0,0.2);
         `)}
 
         ${mixins.darkmode(`
             background-color: ${variables.darkTheme.inputBorderColor};
 
             &:focus-visible {
-                border-color: ${rgba('white', 0.3)};
+                border-color: rgba(255,255,255,0.3);
             }
 
             ${mixins.hoverMouse(`
-                border-color: ${rgba('white', 0.3)};
+                border-color: rgba(255,255,255,0.3);
             `)}
         `)}
 

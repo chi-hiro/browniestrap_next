@@ -11,4 +11,10 @@ module.exports = {
         basePath: basePath,
     },
     trailingSlash: true,
+    compiler: {
+        styledComponents: true,
+    },
+    experimental: {
+        scrollRestoration: true,
+    },
 }

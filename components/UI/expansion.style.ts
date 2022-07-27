@@ -1,81 +1,80 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
 import { variables, mixins } from '@/lib/styleUtl'
 
-const expansion = css`
-    .expansion-toggler {
-        ${mixins.buttonReset()}
-        position: relative;
-        display: inline-flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        line-height: 1.5;
-        color: ${variables.theme.headingsColor};
-        ${mixins.transition(['color'])}
-
-        .icon {
-            display: inline-block;
-            vertical-align: top;
-            flex: 0 0 auto;
-            font-size: ${variables.iconSize}px;
-            line-height: 0;
-            ${mixins.transition(['transform'])}
-
-            > * {
-                font-size: inherit;
-            }
-        }
-
-        ${mixins.focusMouse(`
-            text-decoration: none;
-            color: ${variables.linkHoverColor};
-        `)}
-
-        ${mixins.darkmode(`
-            color: ${variables.darkTheme.headingsColor};
-
-            &:hover {
-                color: ${variables.darkTheme.headingsColor};
-            }
-        `)}
-    }
-
-    .expansion-body {
-        position: relative;
-        overflow: hidden;
-
-        > *:last-child {
-            margin-bottom: 0;
-        }
-
-        &.expansion-body-enter,
-        &.expansion-body-exit {
-            ${mixins.transition(['height'])}
-            will-change: height;
-        }
-    }
-
-    &.show {
-        .expansion-toggler {
-            .icon {
-                transform: rotate(180deg);
-            }
-        }
-    }
-
-    &.lock {
-        .expansion-toggler {
-            cursor: default;
-            user-select: none;
-        }
-    }
-`
-
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
-    expansion,
+    expansion: css`
+        position: relative;
 
-    expansion_border: css`
-        ${expansion}
+        .expansion-toggler {
+            ${mixins.buttonReset()}
+            position: relative;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            line-height: 1.5;
+            color: ${variables.theme.headingsColor};
+            ${mixins.transition(['color'])}
+
+            .icon {
+                display: inline-block;
+                vertical-align: top;
+                flex: 0 0 auto;
+                font-size: ${variables.iconSize}px;
+                line-height: 0;
+                ${mixins.transition(['transform'])}
+
+                > * {
+                    font-size: inherit;
+                }
+            }
+
+            ${mixins.focusMouse(`
+                text-decoration: none;
+                color: ${variables.linkHoverColor};
+            `)}
+
+            ${mixins.darkmode(`
+                color: ${variables.darkTheme.headingsColor};
+
+                &:hover {
+                    color: ${variables.darkTheme.headingsColor};
+                }
+            `)}
+        }
+
+        .expansion-body {
+            position: relative;
+            overflow: hidden;
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+
+            &.expansion-body-enter,
+            &.expansion-body-exit {
+                ${mixins.transition(['height'])}
+                will-change: height;
+            }
+        }
+
+        &.show {
+            .expansion-toggler {
+                .icon {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        &.lock {
+            .expansion-toggler {
+                cursor: default;
+                user-select: none;
+            }
+        }
+    `,
+
+    border: css`
         border-top: 1px solid ${variables.theme.borderColor};
         border-bottom: 1px solid ${variables.theme.borderColor};
 
@@ -102,13 +101,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             padding-bottom: 1.5rem;
         }
 
-        + [class*='expansion'] {
+        + * {
             border-top: none;
         }
     `,
 
-    expansion_popup: css`
-        ${expansion}
+    popup: css`
         position: relative;
         display: block;
 

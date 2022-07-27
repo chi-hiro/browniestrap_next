@@ -1,5 +1,4 @@
 import { css, keyframes, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 const spinAnime = {
@@ -43,7 +42,7 @@ const lineAnime = keyframes`
 `
 
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
-    loader_spin: css`
+    spin: css`
         display: block;
         width: ${variables.iconSize}px;
         height: ${variables.iconSize}px;
@@ -51,13 +50,13 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         animation: ${spinAnime.parent} 1200ms infinite linear;
 
         .path {
-            stroke: ${variables.variant.primary};
+            stroke: ${variables.color.primary};
             stroke-linecap: round;
             animation: ${spinAnime.child} 600ms ease-in-out infinite;
         }
     `,
 
-    loader_dot: css`
+    dot: css`
         display: block;
         width: ${variables.iconSize}px;
         height: ${variables.iconSize}px;
@@ -71,7 +70,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             top: 0;
             bottom: 0;
             margin: auto 0;
-            background-color: ${variables.variant.primary};
+            background-color: ${variables.color.primary};
 
             &:nth-child(1) {
                 left: 0;
@@ -99,16 +98,16 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    loader_line: css`
+    line: css`
         display: block;
         position: relative;
         overflow: hidden;
         width: 100%;
         height: 4px;
-        background-color: ${rgba('black', 0.1)};
+        background-color: rgba(0,0,0,0.1);
 
         ${mixins.darkmode(`
-            background-color: ${rgba('white', 0.1)};
+            background-color: rgba(255,255,255,0.1);
         `)}
 
         .loader-line-active {
@@ -116,7 +115,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             display: block;
             width: 100%;
             height: 100%;
-            background-color: ${variables.variant.primary};
+            background-color: ${variables.color.primary};
             animation: ${lineAnime} 1s linear infinite;
         }
 
@@ -129,16 +128,16 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    loader_bar: css`
+    bar: css`
         display: block;
         position: relative;
         overflow: hidden;
         width: 100%;
         height: 8px;
-        background-color: ${rgba('black', 0.1)};
+        background-color: rgba(0,0,0,0.1);
 
         ${mixins.darkmode(`
-            background-color: ${rgba('white', 0.1)};
+            background-color: rgba(255,255,255,0.1);
         `)}
 
         .loader-bar-active {
@@ -146,7 +145,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             display: block;
             width: 0;
             height: 100%;
-            background-color: ${variables.variant.primary};
+            background-color: ${variables.color.primary};
         }
 
         &.animate {
@@ -170,7 +169,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    loader_circle: css`
+    circle: css`
         position: relative;
         width: ${variables.iconSize}px;
         height: ${variables.iconSize}px;
@@ -186,13 +185,13 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             margin: 0;
 
             circle {
-                stroke: ${rgba('black', 0.1)};
+                stroke: rgba(0,0,0,0.1);
                 stroke-width: 2px;
                 transform: rotate(-90deg) scale(1.25);
                 transform-origin: center;
 
                 ${mixins.darkmode(`
-                    stroke: ${rgba('white', 0.1)};
+                    stroke: rgba(255,255,255,0.1);
                 `)}
             }
 
@@ -200,7 +199,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 z-index: 2;
 
                 circle {
-                    stroke: ${variables.variant.primary};
+                    stroke: ${variables.color.primary};
                 }
             }
         }
@@ -219,31 +218,31 @@ export const colorVariant = (color: string, model: string) => {
     return css`
         ${model === 'spin' && `
             .path {
-                stroke: ${variables.variant[color]};
+                stroke: ${variables.color[color]};
             }
         `}
 
         ${model === 'dot' && `
             span {
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
             }
         `}
 
         ${model === 'line' && `
             .loader-line-active {
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
             }
         `}
 
         ${model === 'bar' && `
             .loader-bar-active {
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
             }
         `}
 
         ${model === 'circle' && `
             svg.loader-circle-active circle {
-                stroke: ${variables.variant[color]};
+                stroke: ${variables.color[color]};
             }
         `}
     `

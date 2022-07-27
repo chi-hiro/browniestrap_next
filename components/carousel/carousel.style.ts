@@ -1,5 +1,5 @@
 import { css, keyframes, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, darken, lighten } from 'polished'
+import { darken, lighten } from 'polished'
 import { variables, mixins, easing } from '@/lib/styleUtl'
 
 const carousel_timer_waiting = keyframes`
@@ -64,17 +64,7 @@ const carousel = css`
         }
     }
 
-    .swiper-lazy-loading {
-        position: absolute;
-    }
-
     .swiper-lazy-preloader {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         width: 100%;
         height: 100%;
         margin: 0;
@@ -82,6 +72,7 @@ const carousel = css`
         border: none;
         border-radius: 0;
         animation: none !important;
+        background-image: none;
         background-color: ${variables.theme.mutedBg};
 
         ${mixins.darkmode(`
@@ -188,10 +179,10 @@ const carousel = css`
 
             &::before,
             &::after {
-                border-color: ${rgba('black', 0.1)};
+                border-color: rgba(0,0,0,0.1);
 
                 ${mixins.darkmode(`
-                    border-color: ${rgba('white', 0.1)};
+                    border-color: rgba(255,255,255,0.1);
                 `)}
             }
         }
@@ -237,11 +228,11 @@ const carousel = css`
 
         .swiper-pagination-bullet {
             opacity: 1;
-            background-color: ${rgba('black', 0.3)};
+            background-color: rgba(0,0,0,0.3);
         }
 
         .swiper-pagination-bullet-active {
-            background-color: ${variables.variant.primary};
+            background-color: ${variables.color.primary};
         }
     }
 
@@ -258,7 +249,7 @@ const carousel = css`
 
         svg {
             circle {
-                stroke: ${rgba('black', 0.5)};
+                stroke: rgba(0,0,0,0.5);
             }
 
             &.loader-circle-active {
@@ -300,6 +291,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 object-fit: cover;
                 object-position: center;
             }
+        }
+
+        .swiper-lazy-preloader {
+            height: 100vh;
+            height: 100svh;
+            max-height: 200vw;
         }
 
         &.effect-zoom {
@@ -484,7 +481,7 @@ export const scrollerStyles: { [key: string]: FlattenSimpleInterpolation } = {
             margin: auto;
             width: 100%;
             height: ${scrollerH}px;
-            background-color: ${variables.variant.primary};
+            background-color: ${variables.color.primary};
         }
 
         &.transition {

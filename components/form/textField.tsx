@@ -323,16 +323,16 @@ const iconSizeVariant = (size: string) => {
 
 const feedbackColorVariant = (color: string) => {
     return `
-        color: ${variables.variant[color]};
+        color: ${variables.color[color]};
     `
 }
 
 const feedbackMessageVariant = (color: string) => {
     return `
-        background-color: ${variables.variant[color]};
+        background-color: ${variables.color[color]};
 
         &::after {
-            border-color: transparent transparent ${variables.variant[color]} transparent;
+            border-color: transparent transparent ${variables.color[color]} transparent;
         }
     `
 }

@@ -1,5 +1,5 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, darken } from 'polished'
+import { darken } from 'polished'
 import { variables, mixins } from '@/lib/styleUtl'
 
 const blockIcon = `
@@ -56,7 +56,7 @@ const button = css`
 
     color: inherit;
     border: ${variables.borderWidth}px solid transparent;
-    box-shadow: 0 1px 3px ${rgba('black', 0.1)};
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     ${mixins.rounded()}
     ${mixins.transition(['color', 'background', 'border', 'box-shadow'])}
 
@@ -209,12 +209,12 @@ export const colorVariant = (color: string, model: string) => {
                     border-color: ${darken(0.2, variables.linkHoverColor)};
                 `)}
             ` : `
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
                 color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
 
                 ${mixins.focusMouse(`
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
-                    border-color: ${darken(0.2, variables.variant[color])};
+                    border-color: ${darken(0.2, variables.color[color])};
                 `)}
             `}
         `}
@@ -237,26 +237,26 @@ export const colorVariant = (color: string, model: string) => {
                 `)}
             ` : `
                 background-color: transparent;
-                color: ${variables.variant[color]};
-                border-color: ${variables.variant[color]};
+                color: ${variables.color[color]};
+                border-color: ${variables.color[color]};
 
                 ${mixins.focusMouse(`
-                    background-color: ${variables.variant[color]};
+                    background-color: ${variables.color[color]};
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
-                    border-color: ${darken(0.2, variables.variant[color])};
+                    border-color: ${darken(0.2, variables.color[color])};
                 `)}
             `}
         `}
 
         ${model.includes('link') && `
             background-color: transparent;
-            color: ${variables.variant[color]};
+            color: ${variables.color[color]};
             border-color: transparent;
             box-shadow: none !important;
 
             ${mixins.focusMouse(`
                 background-color: ${variables.theme.mutedBg};
-                color: ${variables.variant[color]};
+                color: ${variables.color[color]};
                 border-color: transparent;
 
                 ${mixins.darkmode(`

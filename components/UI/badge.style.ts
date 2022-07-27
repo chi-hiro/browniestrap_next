@@ -17,66 +17,62 @@ const lg = {
     iconSize: variables.iconSize * 1
 }
 
-const badge = css`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    ${mixins.rounded('3px')}
-    font-size: 0.875rem;
-    text-align: center;
-    line-height: 1;
-    white-space: nowrap;
-    vertical-align: middle;
-    ${mixins.textKerning()}
-
-    // Default color
-    color: ${variables.theme.bodyColor};
-    background-color: rgba(0,0,0,0.05);
-    border: 1px solid transparent;
-
-    ${mixins.darkmode(`
-        color: ${variables.darkTheme.bodyColor};
-        background-color: rgba(255,255,255,0.1);
-    `)}
-
-    // Sizing
-    min-width: ${md.height}px;
-    height: ${md.height}px;
-    gap: ${md.height - md.iconSize}px;
-    padding: 0 ${md.height - md.iconSize}px;
-
-    img, .font-icon {
-        margin: 0 ${(md.height - md.iconSize) / -2}px;
-    }
-
-    img {
-        width: ${md.iconSize}px;
-        height: ${md.iconSize}px;
-        object-fit: cover;
-    }
-
-    .font-icon {
-        font-size: ${md.iconSize}px;
-    }
-
-    // UI
-    .card-body .body & {
-        &:first-child {
-            position: absolute;
-            z-index: 2;
-            top: -2.25rem;
-            left: 0;
-            margin: 0;
-        }
-    }
-`
-
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
-    badge,
+    badge: css`
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        ${mixins.rounded('3px')}
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1;
+        white-space: nowrap;
+        vertical-align: middle;
+        ${mixins.textKerning()}
 
-    linkBadge: css`
-        ${badge}
+        // color
+        color: ${variables.theme.bodyColor};
+        background-color: rgba(0,0,0,0.05);
+        border: 1px solid transparent;
 
+        ${mixins.darkmode(`
+            color: ${variables.darkTheme.bodyColor};
+            background-color: rgba(255,255,255,0.1);
+        `)}
+
+        // md
+        min-width: ${md.height}px;
+        height: ${md.height}px;
+        gap: ${md.height - md.iconSize}px;
+        padding: 0 ${md.height - md.iconSize}px;
+
+        img, .font-icon {
+            margin: 0 ${(md.height - md.iconSize) / -2}px;
+        }
+
+        img {
+            width: ${md.iconSize}px;
+            height: ${md.iconSize}px;
+            object-fit: cover;
+        }
+
+        .font-icon {
+            font-size: ${md.iconSize}px;
+        }
+
+        // UI
+        .card-body .body & {
+            &:first-child {
+                position: absolute;
+                z-index: 2;
+                top: -2.25rem;
+                left: 0;
+                margin: 0;
+            }
+        }
+    `,
+
+    link: css`
         ${mixins.transition(['color', 'border', 'background'])}
 
         ${mixins.hoverMouse(`
@@ -90,7 +86,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         `)}
     `,
 
-    badge_sm: css`
+    sm: css`
         min-width: ${sm.height}px;
         height: ${sm.height}px;
         gap: ${sm.height - sm.iconSize}px;
@@ -111,7 +107,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    badge_lg: css`
+    lg: css`
         min-width: ${lg.height}px;
         height: ${lg.height}px;
         gap: ${lg.height - lg.iconSize}px;
@@ -132,11 +128,15 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    badge_rounded: css`
+    long: css`
+        min-width: 100px;
+    `,
+
+    rounded: css`
         border-radius: 9999px;
     `,
 
-    badge_status: css`
+    status: css`
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -161,7 +161,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    badge_check: css`
+    check: css`
         position: relative;
         vertical-align: top;
         min-width: initial;
@@ -184,7 +184,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             width: ${variables.iconSize}px;
             height: ${variables.iconSize}px;
             border-radius: 100%;
-            background-color: ${variables.theme.mutedColor}px;
+            background-color: ${variables.theme.mutedColor};
 
             ${mixins.darkmode(`
                 background-color: ${variables.darkTheme.mutedColor};
@@ -207,7 +207,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
     `,
 
-    badge_count: css`
+    count: css`
         position: absolute;
         min-width: ${variables.iconSize}px;
         height: ${variables.iconSize}px;
@@ -217,48 +217,48 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         padding: 0 0.25rem;
         font-size: 11px;
         color: white;
-        background-color: ${variables.variant.primary};
+        background-color: ${variables.color.primary};
     `
 }
 
 export const colorVariant = (color: string, model: string, link: string | undefined) => {
     return css`
         ${model.includes('text') && `
-            color: ${variables.variant[color]};
-            background-color: ${variables.lightVariant[color]};
+            color: ${variables.color[color]};
+            background-color: ${variables.lightColor[color]};
 
             ${link && `
                 ${mixins.focusMouse(`
-                    color: ${variables.variant[color]};
-                    border-color: ${color === 'white' ? variables.theme.headingsColor : variables.variant[color]};
+                    color: ${variables.color[color]};
+                    border-color: ${color === 'white' ? variables.theme.headingsColor : variables.color[color]};
                 `)}
             `}
         `}
 
         ${model.includes('bg') && `
             color: ${color === 'white' ? variables.theme.headingsColor : 'white'};
-            background-color: ${variables.variant[color]};
+            background-color: ${variables.color[color]};
 
             ${link && `
                 ${mixins.focusMouse(`
-                    border-color: ${darken(0.2, variables.variant[color])};
+                    border-color: ${darken(0.2, variables.color[color])};
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
 
                     ${mixins.darkmode(`
-                        border-color: ${color === 'white' ? darken(0.2, 'white') : lighten(0.2, variables.variant[color])};
+                        border-color: ${color === 'white' ? darken(0.2, 'white') : lighten(0.2, variables.color[color])};
                     `)}
                 `)}
             `}
         `}
 
         ${model.includes('border') && `
-            color: ${variables.variant[color]};
+            color: ${variables.color[color]};
             background-color: transparent;
-            border-color: ${variables.variant[color]};
+            border-color: ${variables.color[color]};
 
             ${link && `
                 ${mixins.focusMouse(`
-                    background-color: ${variables.variant[color]};
+                    background-color: ${variables.color[color]};
                     border-color: transparent;
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'}
                 `)}
@@ -267,13 +267,13 @@ export const colorVariant = (color: string, model: string, link: string | undefi
 
         ${model.includes('status') && `
             &::before {
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
             }
         `}
 
         ${model.includes('check') && `
             &::before {
-                background-color: ${variables.variant[color]};
+                background-color: ${variables.color[color]};
             }
 
             ${color === 'white' && `

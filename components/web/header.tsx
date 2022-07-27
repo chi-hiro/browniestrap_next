@@ -5,8 +5,7 @@ import { useSelector } from 'react-redux'
 import { EnvTypes } from 'store'
 import { scrollElement, pageScroll } from 'lib/pageScroll'
 import { css, FlattenSimpleInterpolation } from 'styled-components'
-import { rgba, darken, lighten } from 'polished'
-import { variables, mixins, easing } from '@/lib/styleUtl'
+import { variables, mixins } from '@/lib/styleUtl'
 import Navigation from '@/components/web/navigation'
 
 const { publicRuntimeConfig } = getConfig()
@@ -113,6 +112,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             right: 0;
         }
 
+        .header-fixed-top.hide_scrollbar & {
+            ${mixins.isMouse(`
+                right: ${variables.scrollbarW}px;
+            `)}
+        }
+
         ${mixins.hoverMouse(`
             background-color: ${variables.theme.headerBg};
             box-shadow: ${variables.shadow.normalDark};
@@ -177,7 +182,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         right: 0;
         height: calc(100% - ${variables.ui.headerHeightSm}px);
 
-        background-color: ${rgba('black', 0.5)};
+        background-color: rgba(0,0,0,0.5);
         backdrop-filter: blur(5px);
         font-size: 1rem;
 
@@ -246,7 +251,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 `)}
             }
 
-            a:not([class*='button']),
+            a:not(.header-btn),
             .expansion-toggler {
                 position: relative;
                 width: 100%;
@@ -272,14 +277,15 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 `)}
             }
 
-            [class*='expansion'] {
-                position: relative;
-
-                .expansion-toggler {
+            .expansion-toggler {
                     font-size: inherit;
 
                     .icon {
                         color: ${variables.linkColor};
+                    }
+
+                    .show & {
+                        color: ${variables.linkHoverColor};
                     }
                 }
 
@@ -307,14 +313,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                     `)}
                 }
 
-                &.show {
-                    .expansion-toggler {
-                        color: ${variables.linkHoverColor};
-                    }
-                }
-            }
-
-            [class*='button'] {
+            .header-btn {
                 font-size: inherit;
                 font-weight: normal;
 
@@ -354,7 +353,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                     }
                 }
 
-                a:not([class*='button']) {
+                a:not(.header-btn) {
                     padding: ${(mixins.spacer(3.5) - variables.iconSize) / 2}px ${variables.gridGutterWidth}px;
                     font-size: 0.875em;
 
