@@ -61,7 +61,7 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
         input.current && setLength(input.current.value.length)
     }
 
-    const boxCSS = useMemo(() => {
+    const boxCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [boxStyles.box, boxSizeVariant(size)]
         props.feedback && arr.push(feedbackColorVariant(props.feedback.color))
         props.startIcon && arr.push(boxWithStartIcon(size))
@@ -70,7 +70,7 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
         return arr
     }, [props.type, props.model, props.feedback, props.startIcon, props.endIcon, size, isFocus])
 
-    const inputCSS = useMemo(() => {
+    const inputCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.input, inputSize[size]]
         props.type === 'select' && arr.push(styles.select)
         props.type === 'textarea' && arr.push(styles.textarea)
@@ -175,7 +175,7 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
 
 export default memo(TextField)
 
-const focusLabelStyle = `
+const focusLabelStyle = css`
     top: ${-variables.input.md.padding + (12 / 2)}px;
     left: ${variables.input.inputPaddingX + variables.borderWidth}px;
     padding: 0 0.25rem !important;
@@ -275,7 +275,7 @@ export const boxStyles: { [key: string]: FlattenSimpleInterpolation } = {
 }
 
 const boxSizeVariant = (size: string) => {
-    return `
+    return css`
         label {
             ${inputSize[size]}
         }
@@ -283,7 +283,7 @@ const boxSizeVariant = (size: string) => {
 }
 
 const boxWithStartIcon = (size: string) => {
-    return `
+    return css`
         label {
             ${inputWithStartIcon(size)}
         }
@@ -291,7 +291,7 @@ const boxWithStartIcon = (size: string) => {
 }
 
 const boxWithEndIcon = (size: string) => {
-    return `
+    return css`
         label {
             ${inputWithEndIcon(size)}
         }
@@ -301,19 +301,19 @@ const boxWithEndIcon = (size: string) => {
 const iconSizeVariant = (size: string) => {
     switch (size) {
         case 'sm':
-            return `
+            return css`
                 width: ${variables.input.sm.height}px;
                 height: ${variables.input.sm.height}px;
                 padding: ${(variables.input.sm.height - variables.iconSize) / 2}px;
             `
         case 'lg':
-            return `
+            return css`
                 width: ${variables.input.lg.height}px;
                 height: ${variables.input.lg.height}px;
                 padding: ${(variables.input.lg.height - variables.iconSize) / 2}px;
             `
         default:
-            return `
+            return css`
                 width: ${variables.input.md.height}px;
                 height: ${variables.input.md.height}px;
                 padding: ${(variables.input.md.height - variables.iconSize) / 2}px;
@@ -322,13 +322,11 @@ const iconSizeVariant = (size: string) => {
 }
 
 const feedbackColorVariant = (color: string) => {
-    return `
-        color: ${variables.color[color]};
-    `
+    return css`color: ${variables.color[color]};`
 }
 
 const feedbackMessageVariant = (color: string) => {
-    return `
+    return css`
         background-color: ${variables.color[color]};
 
         &::after {
@@ -340,21 +338,21 @@ const feedbackMessageVariant = (color: string) => {
 const inputWithStartIcon = (size: string) => {
     switch (size) {
         case 'sm':
-            return `padding-left: ${variables.input.sm.height}px;`
+            return css`padding-left: ${variables.input.sm.height}px;`
         case 'lg':
-            return `padding-left: ${variables.input.lg.height}px;`
+            return css`padding-left: ${variables.input.lg.height}px;`
         default:
-            return `padding-left: ${variables.input.md.height}px;`
+            return css`padding-left: ${variables.input.md.height}px;`
     }
 }
 
 const inputWithEndIcon = (size: string) => {
     switch (size) {
         case 'sm':
-            return `padding-right: ${variables.input.sm.height}px;`
+            return css`padding-right: ${variables.input.sm.height}px;`
         case 'lg':
-            return `padding-right: ${variables.input.lg.height}px;`
+            return css`padding-right: ${variables.input.lg.height}px;`
         default:
-            return `padding-right: ${variables.input.md.height}px;`
+            return css`padding-right: ${variables.input.md.height}px;`
     }
 }

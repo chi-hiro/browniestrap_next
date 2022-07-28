@@ -1,7 +1,9 @@
 import { forwardRef, useState, useRef, useEffect, useImperativeHandle } from 'react'
 import { env } from 'lib/env'
 import { getTouchPosition } from 'lib/getTouchPosition'
-import { scrollerStyles } from './carousel.style'
+import { css, FlattenSimpleInterpolation } from 'styled-components'
+import { darken, lighten } from 'polished'
+import { variables, mixins, easing } from '@/lib/styleUtl'
 
 export type Props = {
     divide?: boolean
@@ -59,6 +61,7 @@ export const CarouselScrollbar = forwardRef((props: Props, ref) => {
     }
 
     const updateScrollbar = (snapLength: number, snapIndex: number) => {
+        console.log('updateScrollbar:', snapLength, snapIndex)
         setAnimate(true)
 
         if (el.current) {
@@ -110,18 +113,114 @@ export const CarouselScrollbar = forwardRef((props: Props, ref) => {
     }
 
     return (
-        <div ref={el} css={scrollerStyles.wrapper} onTouchStart={handleDown} onTouchMove={handleMove} onTouchEnd={handleUp} onTouchCancel={handleUp} onMouseDown={handleDown}>
+        <div ref={el} css={styles.wrapper} onTouchStart={handleDown} onTouchMove={handleMove} onTouchEnd={handleUp} onTouchCancel={handleUp} onMouseDown={handleDown}>
             <span
-                css={scrollerStyles.bar}
+                css={styles.bar}
                 className={isAnimate ? 'transition' : ''}
                 style={{ width: `${barW}px`, transform: `translateX(${barL}px)` }}
             ></span>
 
             {(props.divide && points) && (
-                <div css={scrollerStyles.point}>
-                    {renderPoint()}
-                </div>
+                <span css={styles.point}>{renderPoint()}</span>
             )}
         </div>
     )
 })
+
+const scrollerH = 2
+
+export const styles: { [key: string]: FlattenSimpleInterpolation } = {
+    wrapper: css`
+        cursor: ew-resize;
+        user-select: none;
+        overflow: hidden;
+        position: relative;
+        height: ${variables.componentHeight}px;
+        width: 100%;
+        max-width: 75vw;
+        margin: 1.5rem auto 0;
+
+        ${mixins.breakpointUp(`
+            max-width: 400px;
+        `)}
+
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 100%;
+            height: ${scrollerH}px;
+            background-color: ${darken(0.15, variables.theme.bodyBg)};
+
+            ${mixins.darkmode(`
+                background-color: ${lighten(0.15, variables.darkTheme.bodyBg)};
+            `)}
+        }
+
+        .reveal & {
+            transform: scale(0, 1);
+            transform-origin: center;
+        }
+
+        .reveal-active & {
+            transform: none;
+            transition: transform 800ms ${easing.easeInOutQuart};
+        }
+    `,
+
+    bar: css`
+        position: relative;
+        z-index: 5;
+        display: block;
+        height: ${variables.componentHeight}px;
+        padding: ${(variables.componentHeight - scrollerH) / 2}px 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 100%;
+            height: ${scrollerH}px;
+            background-color: ${variables.color.primary};
+        }
+
+        &.transition {
+            ${mixins.transition(['transform'])}
+        }
+    `,
+
+    point: css`
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .carousel-scrollbar-point-item {
+            flex: 1 1 100%;
+            position: relative;
+            text-align: center;
+            height: ${scrollerH}px;
+
+            border-left: 1px solid ${variables.theme.bodyBg};
+            border-right: 1px solid ${variables.theme.bodyBg};
+
+            ${mixins.darkmode(`
+                border-color: ${variables.darkTheme.bodyBg};
+            `)}
+        }
+    `
+}

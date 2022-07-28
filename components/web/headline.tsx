@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Headline = (props: Props) => {
-    const formatDate = useMemo(() => {
+    const formatDate = useMemo((): string => {
         const date = new Date(props.date as string)
         const y = date.getFullYear()
         const m = date.getMonth() + 1
@@ -21,7 +21,7 @@ const Headline = (props: Props) => {
         return `${y}.${m}.${d}`
     }, [props.date])
 
-    const headlineCSS = useMemo(() => {
+    const headlineCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.headline]
         props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         return arr

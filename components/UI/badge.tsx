@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react'
+import { FlattenSimpleInterpolation } from 'styled-components'
 import { styles, colorVariant } from './badge.style'
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 }
 
 const Badge = (props: Props) => {
-    const badgeCSS = useMemo(() => {
+    const badgeCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.badge]
         props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.href && arr.push(styles.link)
@@ -18,7 +19,7 @@ const Badge = (props: Props) => {
         return arr
     }, [props.model, props.color, props.href])
 
-    const badgeClass = useMemo(() => {
+    const badgeClass = useMemo((): string => {
         const arr = []
         props.addClass && arr.push(props.addClass)
         return arr.join(' ')

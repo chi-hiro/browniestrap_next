@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react'
 import UI from '.'
+import { FlattenSimpleInterpolation } from 'styled-components'
 import { styles, colorVariant } from './button.style'
 
 type Props = {
@@ -16,14 +17,14 @@ type Props = {
 }
 
 const Button = (props: Props) => {
-    const buttonCSS = useMemo(() => {
+    const buttonCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.button]
         props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.color && arr.push(colorVariant(props.color, props.model))
         return arr
     }, [props.model, props.color])
 
-    const buttonClass = useMemo(() => {
+    const buttonClass = useMemo((): string => {
         const arr = []
         props.addClass && arr.push(props.addClass)
         props.loading && arr.push('connecting')
@@ -31,11 +32,11 @@ const Button = (props: Props) => {
         return arr.join(' ')
     }, [props.addClass, props.loading])
 
-    const loaderColor = useMemo(() => {
+    const loaderColor = useMemo((): string => {
         if (props.model?.includes('bg')) {
             return props.color === 'white' ? 'primary' : 'white'
         } else if (props.model?.includes('border')) {
-            return props.color === 'white' ? 'white' : props.color
+            return props.color === 'white' ? 'white' : props.color ? props.color : 'primary'
         } else {
             return 'primary'
         }
@@ -52,8 +53,8 @@ const Button = (props: Props) => {
     )
 
     return props.href
-        ? <a href={props.href} css={buttonCSS} className={buttonClass} onClick={props.onClick && props.onClick}>{content}</a>
-        : <button css={buttonCSS} className={buttonClass} type="button" onClick={props.onClick && props.onClick} disabled={props.disabled}>{content}</button>
+        ? <a href={props.href} css={buttonCSS} className={buttonClass} onClick={props.onClick && props.onClick} title={props.loading ? 'connecting...' : ''}>{content}</a>
+        : <button css={buttonCSS} className={buttonClass} type="button" onClick={props.onClick && props.onClick} disabled={props.disabled} aria-label={props.loading ? 'connecting...' : ''}>{content}</button>
 }
 
 export default memo(Button)

@@ -1,7 +1,8 @@
 import { memo, useMemo } from 'react'
 import Icon from '@/components/UI/icon'
+import { FlattenSimpleInterpolation } from 'styled-components'
 import { styles, colorVariant } from './card.style'
-import { mixins, utility } from 'lib/styleUtl'
+import { utility } from 'lib/styleUtl'
 
 type Props = {
     children: React.ReactNode
@@ -15,14 +16,14 @@ type Props = {
 }
 
 const Card = (props: Props) => {
-    const cardCSS = useMemo(() => {
+    const cardCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.card]
         props.href && arr.push(styles.link)
         props.color && arr.push(colorVariant(props.color, props.model ? props.model : 'bg'))
         return arr
     }, [props.model, props.color, props.href])
 
-    const cardClass = useMemo(() => {
+    const cardClass = useMemo((): string => {
         const arr = []
         props.href && arr.push(utility.hoverBorder)
         props.addClass && arr.push(props.addClass)

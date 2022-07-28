@@ -15,40 +15,12 @@ type Props = {
 }
 
 const Checkbox = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => {
-    const checkboxCSS = useMemo(() => {
-        const color = variables.color[props.color ? props.color : 'primary']
-
-        if (props.model === 'box') {
-            return [
-                styles.base,
-                styles.box,
-                `
-                    input[type="checkbox"],
-                    input[type="radio"] {
-                        &:checked {
-                            + label {
-                                color: ${color};
-                                border-color: ${color};
-                                background-color: ${lighten(0.3, color)};
-                            }
-                        }
-                    }
-                `
-            ]
-        } else {
-            return [
-                styles.base,
-                `
-                    input[type="checkbox"],
-                    input[type="radio"] {
-                        &:checked {
-                            background-color: ${color};
-                        }
-                    }
-                `
-            ]
-        }
-    }, [props.color, props.model])
+    const checkboxCSS = useMemo((): FlattenSimpleInterpolation[] => {
+        const arr = [styles.base]
+        props.model && arr.push(styles[props.model])
+        arr.push(colorVariant(props.color ? props.color : 'primary', props.model ? props.model : ''))
+        return arr
+    }, [props.model, props.color])
 
     return (
         <div css={checkboxCSS}>
@@ -70,7 +42,7 @@ const Checkbox = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => 
 
 export default memo(Checkbox)
 
-export const styles: { [key: string]: FlattenSimpleInterpolation } = {
+const styles: { [key: string]: FlattenSimpleInterpolation } = {
     base: css`
         display: flex;
         align-items: center;
@@ -210,4 +182,31 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             }
         }
     `
+}
+
+const colorVariant = (color: string, model: string) => {
+    switch (model) {
+        case 'box':
+            return css`
+                input[type="checkbox"],
+                input[type="radio"] {
+                    &:checked {
+                        + label {
+                            color: ${variables.color[color]};
+                            border-color: ${variables.color[color]};
+                            background-color: ${lighten(0.3, variables.color[color])};
+                        }
+                    }
+                }
+            `
+        default:
+            return css`
+                input[type="checkbox"],
+                input[type="radio"] {
+                    &:checked {
+                        background-color: ${variables.color[color]};
+                    }
+                }
+            `
+    }
 }

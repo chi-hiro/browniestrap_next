@@ -1,4 +1,4 @@
-export const initSwiperOption = (mode: string, duration: number | undefined, nav: boolean | undefined, pagination: boolean | undefined) => {
+export const initialSwiperOption = (model: string, duration: number | undefined, nav: boolean | undefined, pagination: boolean | undefined) => {
     let options: {[key: string]: any} = {
         loop: true,
         speed: 300,
@@ -33,7 +33,7 @@ export const initSwiperOption = (mode: string, duration: number | undefined, nav
         options.pagination = true
     }
 
-    switch (mode) {
+    switch (model) {
         case 'visual':
             options.speed = 1000
             options.effect = 'fade'

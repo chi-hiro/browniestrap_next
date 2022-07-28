@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Skelton = (props: Props) => {
-    const skeltonCSS = useMemo(() => {
+    const skeltonCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.skelton]
         props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         props.ratio && arr.push(utility.embed(props.ratio[0], props.ratio[1]))
@@ -21,13 +21,13 @@ const Skelton = (props: Props) => {
         return arr
     }, [props.model, props.animate])
 
-    const skeltonClass = useMemo(() => {
+    const skeltonClass = useMemo((): string => {
         const arr = []
         props.addClass && arr.push(props.addClass)
         return arr.join(' ')
     }, [props.addClass])
 
-    const skeltonStyle = useMemo(() => {
+    const skeltonStyle = useMemo((): {[key: string]: string | undefined} => {
         const styles = {
             width: props.width && props.width,
             height: props.height && props.height

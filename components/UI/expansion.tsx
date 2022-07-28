@@ -1,8 +1,9 @@
 import { memo, useMemo, useState, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { env } from 'lib/env'
-import Icon from '@/components/UI/icon'
+import { FlattenSimpleInterpolation } from 'styled-components'
 import { styles } from './expansion.style'
+import Icon from '@/components/UI/icon'
 
 type Props = {
     children: React.ReactNode
@@ -44,13 +45,13 @@ const Expansion = (props: Props) => {
     const showHover = () => (props.hover && !env('touch')) && show()
     const hideHover = () => props.hover && hide()
 
-    const expansionCSS = useMemo(() => {
+    const expansionCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.expansion]
         props.model && props.model.split(/\s/).map(model => arr.push(styles[model]))
         return arr
     }, [props.model])
 
-    const expansionClass = useMemo(() => {
+    const expansionClass = useMemo((): string => {
         const arr = []
         isShow && arr.push('show')
         props.locked && arr.push('lock')

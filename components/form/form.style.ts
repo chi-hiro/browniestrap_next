@@ -1,22 +1,22 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components'
 import { variables, mixins } from '@/lib/styleUtl'
 
-export const inputSize: { [key: string]: string } = {
-    md: `
+export const inputSize: { [key: string]: FlattenSimpleInterpolation } = {
+    md: css`
         height: ${variables.input.md.height}px;
         padding: ${variables.input.md.padding}px ${variables.input.inputPaddingX}px;
         font-size: ${variables.input.md.fontSize};
         line-height: ${variables.iconSize}px;
     `,
 
-    sm: `
+    sm: css`
         height: ${variables.input.sm.height}px;
         padding: ${variables.input.sm.padding}px ${variables.input.inputPaddingX}px;
         font-size: ${variables.input.sm.fontSize};
         line-height: ${variables.iconSize}px;
     `,
 
-    lg: `
+    lg: css`
         height: ${variables.input.lg.height}px;
         padding: ${variables.input.lg.padding}px ${variables.input.inputPaddingX}px;
         font-size: ${variables.input.lg.fontSize};
@@ -170,7 +170,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 }
 
 export const colorVariant = (color: string) => {
-    return `
+    return css`
         border-color: ${variables.color[color]};
 
         &:focus {

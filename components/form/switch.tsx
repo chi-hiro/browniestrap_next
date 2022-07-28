@@ -12,28 +12,21 @@ type Props = {
 }
 
 const Switch = forwardRef((props: Props, ref: React.Ref<HTMLInputElement>) => {
-    const switchCSS = useMemo(() => {
-        const color = variables.color[props.color ? props.color : 'primary']
-
-        return [
-            styles.base,
-            `
-                &:checked {
-                    background-color: ${color};
-                }
-            `
-        ]
+    const switchCSS = useMemo((): FlattenSimpleInterpolation[] => {
+        const arr = [styles.base]
+        arr.push(colorVariant(props.color ? props.color : 'primary'))
+        return arr
     }, [props.color])
 
     return (
         <input
             ref={ref}
+            css={switchCSS}
             type="checkbox"
             name={props.name}
             id={props.value}
             defaultChecked={props.checked}
             onChange={props.onChange && props.onChange}
-            css={switchCSS}
             aria-label={props.label}
         />
     )
@@ -91,6 +84,14 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             &::after {
                 transform: translateX(${variables.iconSize}px);
             }
+        }
+    `
+}
+
+const colorVariant = (color: string) => {
+    return css`
+        &:checked {
+            background-color: ${variables.color[color]};
         }
     `
 }

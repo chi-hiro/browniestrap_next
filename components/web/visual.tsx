@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import Carousel from '@/components/carousel/carousel'
+import Carousel from '@/components/carousel'
 import { css, keyframes, FlattenSimpleInterpolation } from 'styled-components'
 import { variables, mixins } from '@/lib/styleUtl'
 
@@ -8,8 +8,7 @@ type Props = {
     slide: Array<{
         src: string,
         src_lg?: string,
-        url?: string,
-        embed?: string
+        url?: string
     }>
 }
 
@@ -20,7 +19,7 @@ const Visual = (props: Props) => (
         </div>
 
         <Carousel
-            mode="visual"
+            model="visual"
             duration={8000}
             zoom={true}
             timer={true}
@@ -45,14 +44,6 @@ const visual_scroll_anime = keyframes`
 export const styles: { [key: string]: FlattenSimpleInterpolation } = {
     visual: css`
         position: relative;
-
-        .header-fixed-top & {
-            margin-top: ${-variables.ui.headerHeightSm}px;
-
-            ${mixins.breakpointUp(`
-                margin-top: ${-variables.ui.headerHeight}px;
-            `)}
-        }
     `,
 
     lead: css`

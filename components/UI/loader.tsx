@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react'
+import { FlattenSimpleInterpolation } from 'styled-components'
 import { styles, colorVariant } from './loader.style'
 
 type Props = {
@@ -10,29 +11,29 @@ type Props = {
 }
 
 const Loader = (props: Props) => {
-    const radius = useMemo(() => {
+    const radius = useMemo((): number => {
         return (24 / 2) - (2 * 2)
     }, [props.progress])
 
-    const array = useMemo(() => {
+    const array = useMemo((): number => {
         return radius * 2 * Math.PI
     }, [props.progress])
 
-    const offset = useMemo(() => {
+    const offset = useMemo((): number => {
         return array - (props.progress ? props.progress : 0) / 100 * array
     }, [props.progress])
 
-    const loaderCSS = useMemo(() => {
+    const loaderCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles[props.model]]
         props.color && arr.push(colorVariant(props.color, props.model))
         props.rounded && arr.push(styles[`${props.model}_rounded`])
-        props.progress && arr.push(styles[`${props.model}_animate`])
         return arr
     }, [props.model, props.color, props.progress])
 
-    const loaderClass = useMemo(() => {
+    const loaderClass = useMemo((): string => {
         const arr = []
         props.addClass && arr.push(props.addClass)
+        props.progress && arr.push('animate')
         return arr.join(' ')
     }, [props.addClass, props.progress])
 

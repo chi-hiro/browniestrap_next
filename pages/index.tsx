@@ -25,7 +25,16 @@ export default function Home() {
     return (
         <Layout>
             <main>
-
+                <Web.Visual
+                    slide={[
+                        { src: '/dummy/visual1.webp', src_lg: '/dummy/visual1_lg.webp' },
+                        { src: '/dummy/visual2.webp', src_lg: '/dummy/visual2_lg.webp' },
+                        { src: '/dummy/visual3.webp', src_lg: '/dummy/visual3_lg.webp' }
+                    ]}
+                >
+                    <h1 className="title">LEAD SAMPLE</h1>
+                    <p className="description">DESCRIPTION SAMPLE</p>
+                </Web.Visual>
 
                 <section id="section_type" css={[section.base, utility.borderTop]} className="reveal">
                     <div className="container">
@@ -71,9 +80,9 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section css={section.cover} className="text-center reveal-group snap-start">
-                    <div className="container text-white reveal reveal-fade-up">
-                        <h2 css={section.heading}>カバー</h2>
+                <section css={[section.cover, utility.textColor('white')]} className="text-center reveal-group snap-start">
+                    <div className="container reveal reveal-fade-up">
+                        <h2 css={[section.heading, utility.textColor('white')]}>カバー</h2>
                         <p>背景に画像を入れた段落</p>
                         <p>
                             <UI.Button model="md border" color="white">ボタン</UI.Button>
@@ -126,42 +135,42 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/*<section id="section_carousel" css={[section.base, utility.borderTop]} className="reveal">
+                <section id="section_carousel" css={[section.base, utility.borderTop]} className="reveal">
                     <div className="container">
                         <h2 css={section.heading}>Carousel</h2>
                     </div>
 
                     <div className="mb-3">
-                        <Carousel.Carousel
-                            mode="slide"
+                        <Carousel
+                            model="slide"
                             pagination={true}
                             src={[
-                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual1_lg.webp` },
-                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual2_lg.webp` },
-                                { embed: "embed-4by3 lg-embed-16by9", src: `${basePath}/dummy/visual3_lg.webp` }
+                                { ratio: [16, 9], src: `${basePath}/dummy/visual1_lg.webp` },
+                                { ratio: [16, 9], src: `${basePath}/dummy/visual2_lg.webp` },
+                                { ratio: [16, 9], src: `${basePath}/dummy/visual3_lg.webp` }
                             ]}
-                        ></Carousel.Carousel>
+                        />
                     </div>
 
                     <div className="container">
-                        <Carousel.Carousel
-                            mode="lineup"
+                        <Carousel
+                            model="lineup"
                             zoom={true}
                             nav={true}
                             src={[
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { embed: "embed-1by1", url: "/", src: `${basePath}/dummy/visual3.webp` }
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` }
                                 ]}
-                        ></Carousel.Carousel>
+                        />
                     </div>
-                            </section>*/}
+                </section>
 
                 <section id="section_card" css={[section.base, utility.borderTop]} className="reveal">
                     <div className="container">

@@ -147,6 +147,10 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             height: 100%;
             background-color: ${variables.color.primary};
         }
+
+        &.animate {
+            transition: width 100ms ${variables.easing};
+        }
     `,
 
     bar_rounded: css`
@@ -160,12 +164,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             .loader-bar-active::after {
                 border-radius: 9999px;
             }
-        }
-    `,
-
-    bar_animate: css`
-        .loader-bar-active {
-            transition: width 100ms ${variables.easing};
         }
     `,
 
@@ -203,12 +201,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 }
             }
         }
-    `,
 
-    circle_animate: css`
-        svg {
-            circle {
-                transition: stroke-dashoffset 100ms ${variables.easing};
+        &.animate {
+            svg {
+                circle {
+                    transition: stroke-dashoffset 100ms ${variables.easing};
+                }
             }
         }
     `

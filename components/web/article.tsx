@@ -13,7 +13,7 @@ type Props = {
 
 const Article = (props: Props) => {
     // Computed
-    const formatDate = useMemo(() => {
+    const formatDate = useMemo((): string => {
         const date = new Date(props.date as string)
         const y = date.getFullYear()
         const m = date.getMonth() + 1

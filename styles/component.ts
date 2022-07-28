@@ -53,16 +53,6 @@ const components = css`
             }
         `)}
     }
-
-    body.header-fixed-top {
-        #__next {
-            padding-top: 64px;
-
-            ${mixins.breakpointUp(`
-                padding-top: 80px;
-            `)}
-        }
-    }
 `
 
 export default components
