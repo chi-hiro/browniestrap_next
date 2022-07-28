@@ -61,7 +61,6 @@ export const CarouselScrollbar = forwardRef((props: Props, ref) => {
     }
 
     const updateScrollbar = (snapLength: number, snapIndex: number) => {
-        console.log('updateScrollbar:', snapLength, snapIndex)
         setAnimate(true)
 
         if (el.current) {

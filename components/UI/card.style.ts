@@ -88,10 +88,8 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             `)}
         }
 
-        &.hover-border {
-            &::after {
-                ${mixins.rounded()}
-            }
+        &::after {
+            ${mixins.rounded()}
         }
     `,
 
@@ -156,7 +154,7 @@ export const colorVariant = (color: string, model: string) => {
                 color: ${variables.color[color]};
             }
 
-            &.hover-border::after {
+            ::after {
                 border-color: ${variables.color[color]};
             }
         `}
@@ -178,7 +176,7 @@ export const colorVariant = (color: string, model: string) => {
                     color: white;
                 }
 
-                &.hover-border::after {
+                ::after {
                     border-color: ${darken(0.15, variables.color[color])};
                 }
             ` : `

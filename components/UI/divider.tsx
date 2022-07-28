@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import styled from 'styled-components'
+import { css } from 'styled-components'
 import { variables, mixins } from '@/lib/styleUtl'
 
 type Props = {
@@ -8,15 +8,15 @@ type Props = {
 
 const Divider = (props: Props) => {
     return (
-        <StyledDivider>
+        <span css={style}>
             <span>{props.children}</span>
-        </StyledDivider>
+        </span>
     )
 }
 
 export default memo(Divider)
 
-const StyledDivider = styled.span`
+const style = css`
     display: block;
     position: relative;
     text-align: center;

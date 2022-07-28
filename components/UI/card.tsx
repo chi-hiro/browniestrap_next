@@ -19,13 +19,13 @@ const Card = (props: Props) => {
     const cardCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.card]
         props.href && arr.push(styles.link)
+        props.href && arr.push(utility.hoverBorder)
         props.color && arr.push(colorVariant(props.color, props.model ? props.model : 'bg'))
         return arr
     }, [props.model, props.color, props.href])
 
     const cardClass = useMemo((): string => {
         const arr = []
-        props.href && arr.push(utility.hoverBorder)
         props.addClass && arr.push(props.addClass)
         return arr.join(' ')
     }, [props.addClass, props.href])
