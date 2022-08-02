@@ -43,9 +43,13 @@ const style = css`
         padding: 0 0.5rem;
         position: relative;
         z-index: 2;
-        background-color: white;
+        background-color: ${variables.theme.bodyBg};
         font-size: 0.8125rem;
         letter-spacing: 1px;
         line-height: ${variables.iconSize}px;
+
+        ${mixins.darkmode(`
+            background-color: ${variables.darkTheme.bodyBg};
+        `)}
     }
 `

@@ -11,7 +11,7 @@ type Props = {
     startIcon?: JSX.Element
     endIcon?: JSX.Element
     href?: string
-    addClass?: string,
+    addClass?: string
     loading?: boolean
     disabled?: boolean
 }

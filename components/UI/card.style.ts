@@ -17,11 +17,15 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
         ${mixins.darkmode(`
             background-color: ${variables.darkTheme.mutedBg};
-            color: ${variables.darkTheme.mutedBg};
+            color: ${variables.darkTheme.bodyColor};
         `)}
 
         [class*="grid"] &, [class*="flex"] & {
             height: 100%;
+        }
+
+        .card-thumb {
+            margin: 0;
         }
 
         .card-body {
@@ -52,10 +56,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                     margin-bottom: 0;
                 }
 
-                .badge {
-                    margin-bottom: 0.5rem;
-                }
-
                 > small {
                     display: block;
                     margin-bottom: 0.5rem;
@@ -76,6 +76,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
         .card-thumb + .card-body {
             padding: 1.5rem;
+            align-items: flex-start;
         }
     `,
 
@@ -157,6 +158,11 @@ export const colorVariant = (color: string, model: string) => {
             ::after {
                 border-color: ${variables.color[color]};
             }
+
+            ${mixins.darkmode(`
+                color: ${variables.color[color]};
+                background-color: ${variables.lightColor[color]};
+            `)}
         `}
 
         ${model === 'bg' && `
@@ -179,6 +185,15 @@ export const colorVariant = (color: string, model: string) => {
                 ::after {
                     border-color: ${darken(0.15, variables.color[color])};
                 }
+
+                ${mixins.darkmode(`
+                    color: white;
+                    background-color: ${variables.color[color]};
+
+                    small {
+                        color: rgba(255,255,255,0.5);
+                    }
+                `)}
             ` : `
                 background-color: ${variables.color[color]};
 
@@ -187,8 +202,6 @@ export const colorVariant = (color: string, model: string) => {
                 }
 
                 ${mixins.darkmode(`
-                    background-color: #303030;
-
                     small {
                         color: rgba(255,255,255,0.5);
                     }

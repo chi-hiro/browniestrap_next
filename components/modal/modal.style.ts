@@ -216,7 +216,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         }
 
         .divider {
-            margin: 1rem 1.5rem;
+            margin: 1rem -1.5rem;
         }
 
         .terms {

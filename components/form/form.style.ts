@@ -33,7 +33,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         color: ${variables.theme.bodyColor};
         background-color: white;
         background-image: none;
-        background-clip:  padding-box;
+        background-clip: padding-box;
         border: ${variables.borderWidth}px solid ${variables.theme.inputBorderColor};
 
         ${mixins.rounded(`${variables.input.borderRadius}px`)}
@@ -93,10 +93,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             ${mixins.darkmode(`
                 color: ${variables.darkTheme.mutedColor};
             `)}
-        }
-
-        &[class*='inline'] {
-            width: auto;
         }
     `,
 
@@ -176,5 +172,9 @@ export const colorVariant = (color: string) => {
         &:focus {
             border-color: ${variables.color[color]};
         }
+
+        ${mixins.darkmode(`
+            border-color: ${variables.color[color]};
+        `)}
     `
 }

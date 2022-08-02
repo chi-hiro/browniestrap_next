@@ -23,9 +23,7 @@ const ImgLazy = (props: Props) => {
         }
     }
 
-    useEffect(() => {
-        props.isShow && loadImage()
-    }, [props.isShow])
+    useEffect(() => loadImage(), [props.isShow])
 
     return (
         <span css={style}>

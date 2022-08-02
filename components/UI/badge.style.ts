@@ -46,7 +46,8 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         gap: ${md.height - md.iconSize}px;
         padding: 0 ${md.height - md.iconSize}px;
 
-        img, .font-icon {
+        img,
+        .font-icon {
             margin: 0 ${(md.height - md.iconSize) / -2}px;
         }
 
@@ -54,6 +55,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             width: ${md.iconSize}px;
             height: ${md.iconSize}px;
             object-fit: cover;
+            border-radius: 999px;
         }
 
         .font-icon {
@@ -93,7 +95,8 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         padding: 0 ${sm.height - sm.iconSize}px;
         font-size: 0.75rem;
 
-        img, .font-icon {
+        img,
+        .font-icon {
             margin: 0 ${(sm.height - sm.iconSize) / -2}px;
         }
 
@@ -114,7 +117,8 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         padding: 0 ${lg.height - lg.iconSize}px;
         font-size: 1rem;
 
-        img, .font-icon {
+        img,
+        .font-icon {
             margin: 0 ${(lg.height - lg.iconSize) / -2}px;
         }
 
@@ -146,6 +150,10 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         background: none;
         user-select: auto;
 
+        ${mixins.darkmode(`
+            background: none;
+        `)}
+
         &::before {
             content: '';
             display: inline-block;
@@ -173,6 +181,10 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
         font-size: 1rem;
         font-weight: normal;
+
+        ${mixins.darkmode(`
+            background: none;
+        `)}
 
         &::before {
             content: '';
@@ -227,6 +239,11 @@ export const colorVariant = (color: string, model: string, link: string | undefi
             color: ${variables.color[color]};
             background-color: ${variables.lightColor[color]};
 
+            ${mixins.darkmode(`
+                color: ${variables.color[color]};
+                background-color: ${variables.lightColor[color]};
+            `)}
+
             ${link && `
                 ${mixins.focusMouse(`
                     color: ${variables.color[color]};
@@ -238,6 +255,11 @@ export const colorVariant = (color: string, model: string, link: string | undefi
         ${model.includes('bg') && `
             color: ${color === 'white' ? variables.theme.headingsColor : 'white'};
             background-color: ${variables.color[color]};
+
+            ${mixins.darkmode(`
+                color: ${color === 'white' ? variables.theme.headingsColor : 'white'};
+                background-color: ${variables.color[color]};
+            `)}
 
             ${link && `
                 ${mixins.focusMouse(`
@@ -255,6 +277,12 @@ export const colorVariant = (color: string, model: string, link: string | undefi
             color: ${variables.color[color]};
             background-color: transparent;
             border-color: ${variables.color[color]};
+
+            ${mixins.darkmode(`
+                color: ${variables.color[color]};
+                background-color: transparent;
+                border-color: ${variables.color[color]};
+            `)}
 
             ${link && `
                 ${mixins.focusMouse(`

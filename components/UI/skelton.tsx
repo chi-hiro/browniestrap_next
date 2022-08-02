@@ -76,6 +76,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         background-image: repeating-linear-gradient(0deg, ${theme.bg}, ${theme.bg} ${variables.base.fontSize}px, transparent ${variables.base.fontSize}px, transparent ${variables.base.fontSize * variables.base.lineHeight}px);
 
         ${mixins.darkmode(`
+            background-color: transparent;
             background-image: repeating-linear-gradient(0deg, ${theme.darkBg}, ${theme.darkBg} ${variables.base.fontSize}px, transparent ${variables.base.fontSize}px, transparent ${variables.base.fontSize * variables.base.lineHeight}px);
         `)}
     `,

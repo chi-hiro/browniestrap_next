@@ -5,7 +5,7 @@ import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
 import { mixins, section, utility } from 'lib/styleUtl'
 import { toast } from 'lib/toast'
-import { viewer } from 'lib/viewer'
+import { openViewer } from 'lib/viewer'
 import { Modal, ModalBody, ModalFooter, ModalRefTypes } from '@/components/modal'
 import UI from 'components/UI'
 import Form from '@/components/form'
@@ -180,7 +180,7 @@ export default function Home() {
 
                         <div className="grid gap-20px lg:gap-40px md:grid-cols-2 lg:grid-cols-3 reveal-group">
                             <div className="reveal reveal-fade-up">
-                                <UI.Card src={`${basePath}/dummy/1.webp`} href="/" title="ワイヤレスコントローラーに新色登場！">
+                                <UI.Card src={`${basePath}/dummy/1.webp`} title="ワイヤレスコントローラーに新色登場！">
                                     <UI.Badge model="bg sm" color="primary">News</UI.Badge>
                                     <h4>DualSense ワイヤレスコントローラーに新色登場！</h4>
                                     <small>2022.10.16</small>
@@ -286,37 +286,34 @@ export default function Home() {
 
                         <h3 css={section.headingSm}>Bg</h3>
                         <div className="flex flex-wrap gap-0.5">
-                            <UI.Button model="bg md blockDown rounded" color="primary">primary</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="secondary">secondary</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="success">success</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="info">info</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="warning">warning</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="danger">danger</UI.Button>
-                            <UI.Button model="bg md blockDown rounded" color="white">white</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="primary">Primary</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="secondary">Secondary</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="success">Success</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="info">Info</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="warning">Warning</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="danger">Danger</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="white">White</UI.Button>
+                            <UI.Button model="bg md blockDown rounded" color="default">Default</UI.Button>
                         </div>
 
                         <h3 css={section.headingSm}>Border</h3>
                         <div className="flex flex-wrap gap-0.5">
-                            <UI.Button model="border md blockDown rounded" color="primary">primary</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="secondary">secondary</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="success">success</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="info">info</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="warning">warning</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="danger">danger</UI.Button>
-                            <UI.Button model="border md blockDown rounded" color="white">white</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="primary">Primary</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="secondary">Secondary</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="success">Success</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="info">Info</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="warning">Warning</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="danger">Danger</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="white">White</UI.Button>
+                            <UI.Button model="border md blockDown rounded" color="default">Default</UI.Button>
                         </div>
 
                         <h3 css={section.headingSm}>Other</h3>
                         <div className="flex flex-wrap gap-0.5">
                             <UI.Button model="link md blockDown" color="primary">link primary</UI.Button>
-                            <UI.Button model="bg md blockDown" color="default">bg default</UI.Button>
-                            <UI.Button model="border md blockDown" color="default">border default</UI.Button>
                             <UI.Button model="bg md blockDown" color="primary" disabled>disabled</UI.Button>
-                        </div>
-
-                        <div className="flex flex-wrap gap-0.5 items-center mt-1">
-                            <UI.Button model="bg md long rounded" color="primary" loading>border default</UI.Button>
-                            <UI.Button model="border md long rounded" color="primary" loading>border default</UI.Button>
+                            <UI.Button model="bg md long" color="primary" loading>bg loading</UI.Button>
+                            <UI.Button model="border md long" color="primary" loading>border loading</UI.Button>
                         </div>
 
                         <h3 css={section.headingSm}>Icon</h3>
@@ -376,6 +373,7 @@ export default function Home() {
                     <div className="container">
                         <h2 css={section.heading}>Form</h2>
 
+                        <h3 css={section.headingSm}>TextField</h3>
                         <div className="grid lg:grid-cols-3 gap-2 mb-2">
                             <Form.TextField name="basic" label="Textfield" help="フォームの補足説明がここに入ります。" required />
                             <Form.TextField name="feedback" label="Feedback" feedback={{ color: 'danger', message: 'Error message.' }} required />
@@ -389,7 +387,6 @@ export default function Home() {
 
                         <UI.Divider>または</UI.Divider>
 
-                        <h3 css={section.headingSm}>Auto-sizing Textarea</h3>
                         <div className="mb-1">
                             <Form.TextField name="textarea" type="textarea" label="Message" maxlength={100} />
                         </div>
@@ -411,7 +408,7 @@ export default function Home() {
 
                         <h3 css={section.headingSm}>Switch</h3>
                         <div className="flex gap-1 mb-1">
-                            <Form.Switch name="exsample-switch" value="exsample-switch1" label="Switch 1" />
+                            <Form.Switch name="exsample-switch" value="exsample-switch1" label="Switch 1" checked />
                             <Form.Switch name="exsample-switch" value="exsample-switch2" color="danger" label="Switch 2" />
                         </div>
                     </div>
@@ -423,27 +420,27 @@ export default function Home() {
 
                         <div className="grid grid-cols-3 gap-1">
                             <div css={utility.bgColor('muted')} className="p-20px">
-                                <h3 css={section.headingSm} className="text-center">Dot</h3>
+                                <h3 css={section.headingSm} className="text-center">dot</h3>
                                 <UI.Loader model="dot" rounded={true} />
                             </div>
 
                             <div css={utility.bgColor('dark')} className="p-20px">
-                                <h3 css={[section.headingSm, utility.textColor('white')]} className="text-center">Spin</h3>
+                                <h3 css={[section.headingSm, utility.textColor('white')]} className="text-center">spin</h3>
                                 <UI.Loader model="spin" color="white" />
                             </div>
 
                             <div css={utility.bgColor('muted')} className="p-20px">
-                                <h3 css={section.headingSm} className="text-center">Circle</h3>
+                                <h3 css={section.headingSm} className="text-center">circle</h3>
                                 <UI.Loader model="circle" progress={32} />
                             </div>
 
                             <div css={utility.bgColor('muted')} className="p-20px col-span-3">
-                                <h3 css={section.headingSm} className="text-center">Line</h3>
+                                <h3 css={section.headingSm} className="text-center">line</h3>
                                 <UI.Loader model="line" color="warning" />
                             </div>
 
                             <div css={utility.bgColor('muted')} className="p-20px col-span-3">
-                                <h3 css={section.headingSm} className="text-center">Bar</h3>
+                                <h3 css={section.headingSm} className="text-center">bar</h3>
                                 <UI.Loader model="bar" color="success" rounded={true} progress={64} />
                             </div>
                         </div>
@@ -454,7 +451,7 @@ export default function Home() {
                     <div className="container">
                         <h2 css={section.heading}>Badge</h2>
 
-                        <h3 css={section.headingSm}>Text</h3>
+                        <h3 css={section.headingSm}>text</h3>
                         <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="text sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="text sm" color="secondary" href="#">secondary</UI.Badge>
@@ -465,7 +462,7 @@ export default function Home() {
                             <UI.Badge model="text sm" color="white" href="#">white</UI.Badge>
                         </div>
 
-                        <h3 css={section.headingSm}>Background</h3>
+                        <h3 css={section.headingSm}>background</h3>
                         <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="bg sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="bg sm" color="secondary" href="#">secondary</UI.Badge>
@@ -476,7 +473,7 @@ export default function Home() {
                             <UI.Badge model="bg sm" color="white" href="#">white</UI.Badge>
                         </div>
 
-                        <h3 css={section.headingSm}>Border</h3>
+                        <h3 css={section.headingSm}>border</h3>
                         <div className="flex flex-wrap gap-0.5">
                             <UI.Badge model="border sm" color="primary" href="#">primary</UI.Badge>
                             <UI.Badge model="border sm" color="secondary" href="#">secondary</UI.Badge>
@@ -493,8 +490,8 @@ export default function Home() {
                                 <UI.Icon value="account_circle" />
                                 small
                             </UI.Badge>
-                            <UI.Badge model="text md rounded">
-                                <img src="/dummy/1.webp" alt="" className="rounded-full" />
+                            <UI.Badge model="md rounded">
+                                <img src="/dummy/1.webp" alt="" />
                                 medium
                             </UI.Badge>
                             <UI.Badge model="text lg rounded" color="danger">
@@ -579,7 +576,7 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0.5">
                             <span className="col-span-1 lg:col-span-1">
-                                <a css={utility.hoverBorder} href={`${basePath}/dummy/1.webp`} data-viewer-group="group1" onClick={viewer} title="画像を拡大表示">
+                                <a css={utility.hoverBorder} href={`${basePath}/dummy/1.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
                                         <img src={`${basePath}/dummy/1.webp`} width="900" height="900" alt="" />
                                     </figure>
@@ -587,7 +584,7 @@ export default function Home() {
                             </span>
 
                             <span className="col-span-1 lg:col-span-1">
-                                <a css={utility.hoverBorder} href={`${basePath}/dummy/2.webp`} data-viewer-group="group1" onClick={viewer} title="画像を拡大表示">
+                                <a css={utility.hoverBorder} href={`${basePath}/dummy/2.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
                                         <img src={`${basePath}/dummy/2.webp`} width="900" height="900" alt="" />
                                     </figure>
@@ -595,7 +592,7 @@ export default function Home() {
                             </span>
 
                             <span className="col-span-1 lg:col-span-1">
-                                <a css={utility.hoverBorder} href={`${basePath}/dummy/3.webp`} data-viewer-group="group1" onClick={viewer} title="画像を拡大表示">
+                                <a css={utility.hoverBorder} href={`${basePath}/dummy/3.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
                                         <img src={`${basePath}/dummy/3.webp`} width="900" height="900" alt="" />
                                     </figure>
@@ -603,7 +600,7 @@ export default function Home() {
                             </span>
 
                             <span className="col-span-1 lg:col-span-1">
-                                <a css={utility.hoverBorder} href={`${basePath}/dummy/4.webp`} data-viewer-group="group1" onClick={viewer} title="画像を拡大表示">
+                                <a css={utility.hoverBorder} href={`${basePath}/dummy/4.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
                                         <img src={`${basePath}/dummy/4.webp`} width="900" height="900" alt="" />
                                     </figure>
@@ -611,7 +608,7 @@ export default function Home() {
                             </span>
 
                             <span className="col-span-2 lg:col-span-4">
-                                <a css={utility.hoverBorder} href={`${basePath}/dummy/5.webp`} onClick={viewer} title="画像を拡大表示">
+                                <a css={utility.hoverBorder} href={`${basePath}/dummy/5.webp`} onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(21,9)}>
                                         <img src={`${basePath}/dummy/5.webp`} width="900" height="900" alt="" />
                                     </figure>
@@ -620,7 +617,7 @@ export default function Home() {
                         </div>
 
                         <div className="flex flex-wrap gap-0.5 mt-2">
-                            <UI.Button model="bg md" color="primary" href="https://www.youtube.com/watch?v=Z2P818AAOn8" onClick={viewer}>YouTube</UI.Button>
+                            <UI.Button model="bg md" color="primary" href="https://www.youtube.com/watch?v=Z2P818AAOn8" onClick={openViewer}>YouTube</UI.Button>
                         </div>
                     </div>
                 </section>

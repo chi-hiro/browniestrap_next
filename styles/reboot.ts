@@ -54,6 +54,14 @@ const reboot = css`
         box-sizing: content-box;
         height: 0;
         overflow: visible;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid ${variables.theme.borderColor};
+
+        ${mixins.darkmode(`
+            border-color: ${variables.darkTheme.borderColor};
+        `)}
     }
 
     h1,
@@ -109,7 +117,7 @@ const reboot = css`
     }
 
     address {
-        margin-bottom: $spacer;
+        margin-bottom: 1rem;
         font-style: normal;
         line-height: inherit;
     }
@@ -473,7 +481,7 @@ const reboot = css`
     }
 
     ::-webkit-scrollbar {
-        width: 16px;
+        width: ${variables.scrollbarW}px;
     }
 
     ::-webkit-scrollbar-thumb {

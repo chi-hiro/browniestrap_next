@@ -142,7 +142,7 @@ export const variables: { [key: string]: any } = {
 
     input: {
         borderRadius: 8,
-        boxShadow: '0 2px 2px rgba(0,0,0,0.05)',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
         btnPaddingX: 20,
         inputPaddingX: 12,
 
@@ -373,7 +373,7 @@ export const mixins = {
 
     breakpointDown: function(content: string) {
         return `
-            @media (max-width: ${variables.breakpoint - 1}px) {
+            @media (max-width: ${variables.breakpoint - .02}px) {
                 ${content}
             }
         `
@@ -407,11 +407,9 @@ export const utility = {
     `,
 
     hiddenDark: css`
-        ${mixins.darkmode(`
-            @include darkmode {
-                display: none !important;
-            }
-        `)}
+        @media (prefers-color-scheme: dark) {
+            display: none !important;
+        }
     `,
 
     imgFluid: css`

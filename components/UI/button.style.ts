@@ -57,7 +57,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
         color: inherit;
         border: ${variables.borderWidth}px solid transparent;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        box-shadow: ${variables.input.boxShadow};
         ${mixins.rounded()}
         ${mixins.transition(['color', 'background', 'border', 'box-shadow'])}
 
@@ -201,13 +201,18 @@ export const colorVariant = (color: string, model: string) => {
                 `)}
 
                 ${mixins.focusMouse(`
-                    background-color: ${darken(0.1, variables.linkHoverColor)};
+                    background-color: ${variables.linkHoverColor};
                     color: white;
                     border-color: ${darken(0.2, variables.linkHoverColor)};
                 `)}
             ` : `
                 background-color: ${variables.color[color]};
                 color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
+
+                ${mixins.darkmode(`
+                    background-color: ${variables.color[color]};
+                    color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
+                `)}
 
                 ${mixins.focusMouse(`
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
@@ -237,6 +242,12 @@ export const colorVariant = (color: string, model: string) => {
                 color: ${variables.color[color]};
                 border-color: ${variables.color[color]};
 
+                ${mixins.darkmode(`
+                    background-color: transparent;
+                    color: ${variables.color[color]};
+                    border-color: ${variables.color[color]};
+                `)}
+
                 ${mixins.focusMouse(`
                     background-color: ${variables.color[color]};
                     color: ${color === 'white' ? variables.theme.bodyColor : 'white'};
@@ -250,6 +261,12 @@ export const colorVariant = (color: string, model: string) => {
             color: ${variables.color[color]};
             border-color: transparent;
             box-shadow: none !important;
+
+            ${mixins.darkmode(`
+                background-color: transparent;
+                color: ${variables.color[color]};
+                border-color: transparent;
+            `)}
 
             ${mixins.focusMouse(`
                 background-color: ${variables.theme.mutedBg};

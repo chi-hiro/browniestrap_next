@@ -10,7 +10,7 @@ type Props = {
     model?: string
     name: string
     value?: string | number,
-    option?: Array<{ value: string | number, label?: string }>,
+    option?: Array<{ value: string | number, label?: string }>
     label?: string
     placeholder?: string
     required?: boolean
@@ -66,7 +66,7 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
         props.feedback && arr.push(feedbackColorVariant(props.feedback.color))
         props.startIcon && arr.push(boxWithStartIcon(size))
         if (props.endIcon || props.type === 'password') arr.push(boxWithEndIcon(size))
-        isFocus && arr.push(boxStyles.boxFocused)
+        if (isFocus || props.feedback) arr.push(boxStyles.boxFocused)
         return arr
     }, [props.type, props.model, props.feedback, props.startIcon, props.endIcon, size, isFocus])
 
@@ -77,7 +77,7 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
         props.feedback && arr.push(colorVariant(props.feedback.color))
         props.startIcon && arr.push(inputWithStartIcon(size))
         if (props.endIcon || props.type === 'password') arr.push(inputWithEndIcon(size))
-        !isFocus && arr.push(boxStyles.input)
+        if (!isFocus) arr.push(boxStyles.input)
         return arr
     }, [props.type, props.model, props.feedback, props.startIcon, props.endIcon, size, isFocus])
 
@@ -134,8 +134,8 @@ const TextField = forwardRef((props: Props, ref: React.Ref<HTMLInputElement | HT
                     css={inputCSS}
                     type={props.type ? (props.type === 'password' ? passType : props.type) : 'text'}
                     name={props.name}
-                    value={props.value}
                     id={`textfield-${props.name}`}
+                    value={props.value}
                     placeholder={props.placeholder && props.placeholder}
                     required={props.required}
                     disabled={props.disabled}
@@ -206,12 +206,15 @@ export const boxStyles: { [key: string]: FlattenSimpleInterpolation } = {
         label {
             position: absolute;
             z-index: 2;
-            top: ${variables.borderWidth}px;
-            left: ${variables.borderWidth}px;
+            top: 0;
+            left: 0;
             pointer-events: none;
 
             font-weight: normal;
             color: ${variables.theme.mutedColor};
+            display: flex;
+            align-items: center;
+            margin: 0;
 
             ${mixins.darkmode(`
                 color: ${variables.darkTheme.mutedColor};
@@ -241,7 +244,7 @@ export const boxStyles: { [key: string]: FlattenSimpleInterpolation } = {
         top: 0;
         pointer-events: none;
 
-        > * {
+        .font-icon {
             transform: scale(0.75);
         }
 
@@ -322,16 +325,14 @@ const iconSizeVariant = (size: string) => {
 }
 
 const feedbackColorVariant = (color: string) => {
-    return css`color: ${variables.color[color]};`
+    return css`
+        color: ${variables.color[color]};
+    `
 }
 
 const feedbackMessageVariant = (color: string) => {
     return css`
         background-color: ${variables.color[color]};
-
-        &::after {
-            border-color: transparent transparent ${variables.color[color]} transparent;
-        }
     `
 }
 
