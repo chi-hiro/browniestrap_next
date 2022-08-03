@@ -6,7 +6,7 @@ import { scrollElement } from 'lib/pageScroll'
 import { toggleScrollbarSpacer } from 'lib/toggleScrollbarSpacer'
 import { utility } from 'lib/styleUtl'
 import { styles } from './viewer.style'
-import ImgLazy from '@/components/viewer/img-lazy'
+import Lazyimg from '@/components/viewer/lazyimg'
 import Icon from '@/components/UI/icon'
 
 type Props = {
@@ -155,19 +155,19 @@ const Viewer = (props: Props) => {
                         {props.items.map((item, index) => (
                             <div key={`viewer-item${index}`} css={styles.item} className={index === active ? 'viewer-item-active' : ''}>
                                 {props.mode === 'image' && (
-                                    <div className="img">
-                                        <ImgLazy src={item} width="100%" height="100%" alt="" isShow={index === active ? true : false} />
+                                    <div css={styles[props.mode]}>
+                                        <Lazyimg src={item} width="100%" height="100%" alt="" isShow={index === active ? true : false} />
                                     </div>
                                 )}
 
                                 {props.mode === 'video' && (
-                                    <div className="video">
+                                    <div css={styles[props.mode]}>
                                         <video src={item} onClick={playVideo} controls controlsList="nodownload nofullscreen" disablePictureInPicture webkit-playsinline="true" playsInline></video>
                                     </div>
                                 )}
 
                                 {props.mode === 'youtube' && (
-                                    <div className="video">
+                                    <div css={styles[props.mode]}>
                                         <div css={utility.embed(16, 9)}>
                                             <iframe width="100%" height="100%" src={item.replace('watch?v=', 'embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>

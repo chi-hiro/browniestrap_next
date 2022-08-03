@@ -101,42 +101,65 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         flex: 0 0 100vw;
         width: 100vw;
         user-select: none;
+    `,
 
-        &.viewer-item-active {
-            .img {
-                transform: none;
-            }
+    image: css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: ${variables.componentHeight}px;
+        bottom: ${variables.componentHeight}px;
+        left: 0;
+        right: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transition: transform 300ms ${easing.easeOutCubic};
+        transform: scale(0.9);
+
+        ${mixins.breakpointUp(`
+            left: ${variables.componentHeight}px;
+            right: ${variables.componentHeight}px;
+            transform: none;
+        `)}
+
+        .viewer-item-active & {
+            transform: none;
         }
 
-        .img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    `,
+
+    video: css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        video {
+            width: 100%;
+            max-height: 100%;
+        }
+
+        ${mixins.breakpointUp(`
             top: ${variables.componentHeight}px;
             bottom: ${variables.componentHeight}px;
-            left: 0;
-            right: 0;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            transition: transform 300ms ${easing.easeOutCubic};
-            transform: scale(0.9);
+            left: ${variables.componentHeight}px;
+            right: ${variables.componentHeight}px;
+            transform: none;
+        `)}
+    `,
 
-            ${mixins.breakpointUp(`
-                left: ${variables.componentHeight}px;
-                right: ${variables.componentHeight}px;
-                transform: none;
-            `)}
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-        }
-
-        .video {
+    youtube: css`
             display: flex;
             justify-content: center;
             align-items: center;
@@ -146,15 +169,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             left: 0;
             right: 0;
 
-            video {
-                width: 100%;
-                max-height: 100%;
-            }
-
-            .embed {
-                max-height: 100%;
-            }
-
             ${mixins.breakpointUp(`
                 top: ${variables.componentHeight}px;
                 bottom: ${variables.componentHeight}px;
@@ -162,7 +176,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 right: ${variables.componentHeight}px;
                 transform: none;
             `)}
-        }
     `,
 
     closeBtn: css`

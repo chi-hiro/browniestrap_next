@@ -30,12 +30,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         img {
             display: block;
             width: 100%;
-            height: auto;
-        }
-
-        .embed img {
-            width: 100%;
-            height: 100%;
         }
 
         .swiper-slide {
