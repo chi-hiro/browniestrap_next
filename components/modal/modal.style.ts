@@ -17,19 +17,20 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             z-index: ${variables.zIndex.modal + 1};
         }
 
+        opacity: 0;
+
         &.modal-enter {
             transition: opacity 300ms linear;
             will-change: opacity;
-            opacity: 0;
         }
 
         &.modal-exit {
             transition: opacity 200ms linear;
             will-change: opacity;
-            opacity: 0;
         }
 
-        &.modal-enter-active {
+        &.modal-enter-active,
+        &.modal-enter-done {
             opacity: 1;
         }
     `,
@@ -47,13 +48,16 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
         justify-content: center;
         align-items: center;
 
+        clip-path: circle(0% at var(--path));
+
         .modal-enter & {
             transition: clip-path 200ms linear;
             will-change: clip-path;
-            clip-path: circle(0% at var(--path));
         }
 
-        .modal-enter-active & {
+        .modal-enter-active &,
+        .modal-enter-done &,
+        .modal-exit & {
             clip-path: circle(100% at var(--path));
         }
     `,
@@ -73,10 +77,11 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             ${mixins.roundedBottom()}
         }
 
+        transform: scale(0.85);
+
         .modal-enter & {
             transition: transform 300ms ${easing.easeOutBack};
             will-change: transform;
-            transform: scale(0.85);
         }
 
         .modal-exit & {
@@ -85,7 +90,8 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             transform: translateY(16px);
         }
 
-        .modal-enter-active & {
+        .modal-enter-active &,
+        .modal-enter-done & {
             transform: none;
         }
     `,

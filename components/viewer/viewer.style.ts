@@ -237,16 +237,5 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             display: inline-block;
             padding: 0 0.5rem;
         }
-
-        &.viewer-nav-enter,
-        &.viewer-nav-exit {
-            transition: opacity 300ms linear;
-            will-change: opacity;
-            opacity: 0;
-        }
-
-        &.viewer-nav-enter-active {
-            opacity: 1;
-        }
     `
 }

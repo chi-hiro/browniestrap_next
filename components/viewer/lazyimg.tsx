@@ -1,7 +1,9 @@
 import { memo, useState, useEffect } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import { toast } from 'lib/toast'
 import Loader from '@/components/UI/loader'
 import { css } from 'styled-components'
+import { mixins } from 'lib/styleUtl'
 
 type Props = {
     src: string
@@ -26,13 +28,15 @@ const ImgLazy = (props: Props) => {
     useEffect(() => loadImage(), [props.isShow])
 
     return (
-        <span css={style}>
-            {!isLoaded ? (
-                <Loader model="spin" />
-            ) : (
-                <img src={props.src} width={props.width} height={props.height} alt={props.alt} />
-            )}
-        </span>
+        <>
+            <CSSTransition classNames="img-lazy" in={isLoaded} timeout={300} unmountOnExit>
+                <span css={style}>
+                    <img src={props.src} width={props.width} height={props.height} alt={props.alt} />
+                </span>
+            </CSSTransition>
+
+            {!isLoaded && <span css={style}><Loader model="spin" /></span>}
+        </>
     )
 }
 
@@ -46,4 +50,17 @@ const style = css`
     align-item: center;
     width: 100%;
     height: 100%;
+
+    ${mixins.transition(['opacity'])}
+    opacity: 0;
+
+    &.img-lazy-enter,
+    &.img-lazy-exit {
+        will-change: opacity;
+    }
+
+    &.img-lazy-enter-active,
+    &.img-lazy-enter-done {
+        opacity: 1;
+    }
 `

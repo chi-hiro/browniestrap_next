@@ -197,14 +197,16 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             font-size: 1rem;
         `)}
 
+        opacity: 0;
+
         &.header-nav-enter,
         &.header-nav-exit {
             ${mixins.transition(['opacity'])}
             will-change: opacity;
-            opacity: 0;
         }
 
-        &.header-nav-enter-active {
+        &.header-nav-enter-active,
+        &.header-nav-enter-done {
             opacity: 1;
         }
 
@@ -300,15 +302,17 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                         min-width: 100%;
                         margin-top: -1.25rem;
 
+                        transform: translateY(-10px);
+                        opacity: 0;
+
                         &.expansion-body-enter,
                         &.expansion-body-exit {
                             ${mixins.transition(['transform', 'opacity'])}
                             will-change: transform, opacity;
-                            transform: translateY(-10px);
-                            opacity: 0;
                         }
 
-                        &.expansion-body-enter-active {
+                        &.expansion-body-enter-active,
+                        &.expansion-body-enter-done {
                             transform: none;
                             opacity: 1;
                         }

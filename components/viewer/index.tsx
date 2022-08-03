@@ -200,11 +200,9 @@ const Viewer = (props: Props) => {
                     </span>
                 </button>
 
-                <CSSTransition classNames="viewer-nav" in={total > 1} timeout={300} unmountOnExit>
-                    <div css={styles.index}>
-                        <span>{ active + 1 } / { total }</span>
-                    </div>
-                </CSSTransition>
+                {total > 1 && (<div css={styles.index}>
+                    <span>{ active + 1 } / { total }</span>
+                </div>)}
             </div>
         </CSSTransition>
     )

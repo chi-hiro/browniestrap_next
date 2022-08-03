@@ -576,7 +576,7 @@ export default function Home() {
                     <div className="container">
                         <h2 css={section.heading}>Viewer</h2>
 
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0.5">
                             <span className="col-span-1 lg:col-span-1">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/dummy1.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
