@@ -58,8 +58,8 @@ const Header = () => {
             <header css={styles.header} className={showBg || showNav ? 'show-bg' : ''} ref={headerRef}>
                 <div css={styles.logo}>
                     <a href="/" onClick={clickLogo}>
-                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="244" height="20" />
-                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="244" height="20" />
+                        <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="244" height="20" loading="lazy" />
+                        <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="244" height="20" loading="lazy" />
                     </a>
                 </div>
 

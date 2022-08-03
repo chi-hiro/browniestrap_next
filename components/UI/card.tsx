@@ -34,7 +34,7 @@ const Card = (props: Props) => {
         <>
             {props.src && (
                 <figure css={utility.embed(16, 9)} className="card-thumb">
-                    <img src={props.src} alt={props.title ? props.title : ''} />
+                    <img src={props.src} alt={props.title ? props.title : ''} width="640" height="360" loading="lazy" />
                 </figure>
             )}
 

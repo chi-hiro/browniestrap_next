@@ -89,7 +89,7 @@ export default function Home() {
                     </div>
 
                     <span css={[utility.embed(1,1), utility.embedUp(21,9)]} className="section-cover-bg overlay reveal reveal-fade-back">
-                        <img src={`${basePath}/dummy/cover.webp`} alt="" />
+                        <img src={`${basePath}/dummy/cover.webp`} alt="" loading="lazy" />
                     </span>
                 </section>
 
@@ -106,7 +106,7 @@ export default function Home() {
 
                         <div className="lg:grid-span-1 section-grid-img reveal reveal-mask-left">
                             <figure css={utility.embed(4,3)}>
-                                <img src={`${basePath}/dummy/5.webp`} alt="" />
+                                <img src={`${basePath}/dummy/5.webp`} alt="" loading="lazy" />
                             </figure>
                         </div>
                     </div>
@@ -492,7 +492,7 @@ export default function Home() {
                                 small
                             </UI.Badge>
                             <UI.Badge model="md rounded">
-                                <img src="/dummy/1.webp" alt="" />
+                                <img src="/dummy/1.webp" alt="" loading="lazy" />
                                 medium
                             </UI.Badge>
                             <UI.Badge model="text lg rounded" color="danger">
@@ -579,7 +579,7 @@ export default function Home() {
                             <span className="col-span-1 lg:col-span-1">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/1.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
-                                        <img src={`${basePath}/dummy/1.webp`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/1.webp`} width="900" height="900" alt="" loading="lazy" />
                                     </figure>
                                 </a>
                             </span>
@@ -587,7 +587,7 @@ export default function Home() {
                             <span className="col-span-1 lg:col-span-1">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/2.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
-                                        <img src={`${basePath}/dummy/2.webp`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/2.webp`} width="900" height="900" alt="" loading="lazy" />
                                     </figure>
                                 </a>
                             </span>
@@ -595,7 +595,7 @@ export default function Home() {
                             <span className="col-span-1 lg:col-span-1">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/3.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
-                                        <img src={`${basePath}/dummy/3.webp`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/3.webp`} width="900" height="900" alt="" loading="lazy" />
                                     </figure>
                                 </a>
                             </span>
@@ -603,7 +603,7 @@ export default function Home() {
                             <span className="col-span-1 lg:col-span-1">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/4.webp`} data-viewer-group="group1" onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(1,1)}>
-                                        <img src={`${basePath}/dummy/4.webp`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/4.webp`} width="900" height="900" alt="" loading="lazy" />
                                     </figure>
                                 </a>
                             </span>
@@ -611,7 +611,7 @@ export default function Home() {
                             <span className="col-span-2 lg:col-span-4">
                                 <a css={utility.hoverBorder} href={`${basePath}/dummy/5.webp`} onClick={openViewer} title="画像を拡大表示">
                                     <figure css={utility.embed(21,9)}>
-                                        <img src={`${basePath}/dummy/5.webp`} width="900" height="900" alt="" />
+                                        <img src={`${basePath}/dummy/5.webp`} width="900" height="900" alt="" loading="lazy" />
                                     </figure>
                                 </a>
                             </span>

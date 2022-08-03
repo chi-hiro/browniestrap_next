@@ -12,8 +12,8 @@ const Footer = () => {
         <StyledFooter>
             <div className="container">
                 <div className="aboutus">
-                    <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="200" height="17" />
-                    <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="200" height="17" />
+                    <img src={`${basePath}/img/logo.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenDark} width="200" height="17" loading="lazy" />
+                    <img src={`${basePath}/img/logo-wt.webp`} alt={process.env.NEXT_PUBLIC_SITE_TITLE} css={utility.hiddenLight} width="200" height="17" loading="lazy" />
 
                     <address>
                         東京地千代田区神田1-1-1<br />
