@@ -3,7 +3,7 @@ export const pageScroll = (hash: string) => {
     const buffer = header ? header.offsetHeight : 0
     let top: number = 0
 
-    if (hash !== '#app') {
+    if (hash !== 'pagetop') {
         const target = document.querySelector<HTMLElement>(hash)
         if (target) top = target.getBoundingClientRect().top + scrollElement().scrollTop - buffer
     }

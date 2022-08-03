@@ -64,9 +64,8 @@ const StyledFooter = styled.footer`
         img {
             display: inline-block;
             margin: 0 0 1rem;
-
-            max-width: 200px;
-            max-height: 200px;
+            width: auto;
+            height: 18px;
             object-fit: contain;
         }
 

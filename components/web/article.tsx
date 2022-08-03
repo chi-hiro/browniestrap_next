@@ -46,6 +46,11 @@ const styles: FlattenSimpleInterpolation = css`
     font-size: 1rem;
     line-height: 2;
 
+    ${mixins.breakpointUp(`
+        font-size: 1.125rem;
+        line-height: 2;
+    `)}
+
     .article-detail {
         display: flex;
         justify-content: between;

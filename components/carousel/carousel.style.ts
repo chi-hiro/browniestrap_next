@@ -83,10 +83,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             ${mixins.darkmode(`
                 background-color: ${variables.darkTheme.mutedBg};
             `)}
-
-            [class*='loader'] {
-                position: static;
-            }
         }
 
         .swiper-button-prev,
@@ -208,26 +204,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             }
         }
 
-        &.reveal {
-            .swiper-button-prev,
-            .swiper-button-next {
-                transform: scale(0);
-                transform-origin: center;
-            }
-        }
-
-        &.reveal-active {
-            .swiper-button-prev {
-                transform: none;
-                transition: transform 800ms ${easing.easeInOutQuart} 200ms;
-            }
-
-            .swiper-button-next {
-                transform: none;
-                transition: transform 800ms ${easing.easeInOutQuart} 300ms;
-            }
-        }
-
         .swiper-pagination {
             bottom: 1.5rem;
 
@@ -271,6 +247,26 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                         animation: ${carousel_timer_waiting} 1000ms ${easing.easeInOutQuint} var(--carousel-timer-duration) infinite;
                     }
                 }
+            }
+        }
+
+        &.reveal {
+            .swiper-button-prev,
+            .swiper-button-next {
+                transform: scale(0);
+                transform-origin: center;
+            }
+        }
+
+        &.reveal-active {
+            .swiper-button-prev {
+                transform: none;
+                transition: transform 800ms ${easing.easeInOutQuart} 200ms;
+            }
+
+            .swiper-button-next {
+                transform: none;
+                transition: transform 800ms ${easing.easeInOutQuart} 300ms;
             }
         }
     `,

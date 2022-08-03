@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import Head from 'next/head'
 import getConfig from 'next/config'
 import { Layout } from 'layout/default'
 import { pagetop, pageback } from 'lib/mixins'
@@ -65,7 +64,7 @@ export default function Home() {
                             <li><a href="">Integer molestie lorem at massa</a></li>
                         </ul>
 
-                        <ol className="list-chart">
+                        <ol css={section.listChart}>
                             <li>Lorem ipsum dolor sit amet</li>
                             <li>Consectetur adipiscing elit</li>
                             <li>Integer molestie lorem at massa</li>
@@ -89,7 +88,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <span css={[utility.embed(1,1), utility.embedUp(16,9)]} className="section-cover-bg overlay reveal reveal-fade-back">
+                    <span css={[utility.embed(1,1), utility.embedUp(21,9)]} className="section-cover-bg overlay reveal reveal-fade-back">
                         <img src={`${basePath}/dummy/cover.webp`} alt="" />
                     </span>
                 </section>
@@ -113,7 +112,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="section_skelton" css={[section.base, utility.borderTop]} className="reveal">
+                <section id="section_skelton" css={[section.base, utility.borderTop]}>
                     <div className="container">
                         <h2 css={section.heading}>Skelton</h2>
 
@@ -144,10 +143,11 @@ export default function Home() {
                         <Carousel
                             model="slide"
                             pagination={true}
+                            ratio={[16,9]}
                             src={[
-                                { ratio: [16, 9], src: `${basePath}/dummy/visual1_lg.webp` },
-                                { ratio: [16, 9], src: `${basePath}/dummy/visual2_lg.webp` },
-                                { ratio: [16, 9], src: `${basePath}/dummy/visual3_lg.webp` }
+                                { src: `${basePath}/dummy/visual1_lg.webp` },
+                                { src: `${basePath}/dummy/visual2_lg.webp` },
+                                { src: `${basePath}/dummy/visual3_lg.webp` }
                             ]}
                         />
                     </div>
@@ -157,17 +157,18 @@ export default function Home() {
                             model="lineup"
                             zoom={true}
                             nav={true}
+                            ratio={[1,1]}
                             src={[
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual1.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual2.webp` },
-                                { ratio: [1, 1], url: "/", src: `${basePath}/dummy/visual3.webp` }
-                                ]}
+                                { url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual3.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual1.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual2.webp` },
+                                { url: "/", src: `${basePath}/dummy/visual3.webp` }
+                            ]}
                         />
                     </div>
                 </section>
@@ -392,7 +393,7 @@ export default function Home() {
                         </div>
 
                         <h3 css={section.headingSm}>Checkbox</h3>
-                        <div className="flex gap-1 mb-1">
+                        <div className="flex flex-wrap gap-1 mb-1">
                             <Form.Checkbox name="exsample-check" value="exsample1" label="Checkbox" />
                             <Form.Checkbox name="exsample-check" value="exsample2" color="info" label="Checkbox" />
                             <Form.Checkbox type="radio" name="exsample-radio" value="exsample3" label="Radio" checked={true} />
@@ -500,7 +501,7 @@ export default function Home() {
                             </UI.Badge>
                         </div>
 
-                        <h3 css={section.headingSm}>Icon: status</h3>
+                        <h3 css={section.headingSm}>status</h3>
                         <div className="flex flex-wrap gap-1.5">
                             <UI.Badge model="status" color="primary" addClass="uppercase">primary</UI.Badge>
                             <UI.Badge model="status" color="secondary" addClass="uppercase">secondary</UI.Badge>
@@ -511,7 +512,7 @@ export default function Home() {
                             <UI.Badge model="status" color="white" addClass="uppercase">white</UI.Badge>
                         </div>
 
-                        <h3 css={section.headingSm}>Icon: check</h3>
+                        <h3 css={section.headingSm}>check</h3>
                         <div className="flex flex-wrap gap-1.5">
                             <UI.Badge model="check" color="primary" addClass="capitalize">primary</UI.Badge>
                             <UI.Badge model="check" color="secondary" addClass="capitalize">secondary</UI.Badge>
@@ -522,7 +523,7 @@ export default function Home() {
                             <UI.Badge model="check" color="white" addClass="capitalize">white</UI.Badge>
                         </div>
 
-                        <h3 css={section.headingSm}>Count</h3>
+                        <h3 css={section.headingSm}>count</h3>
                         <UI.Button model="md bg" color="primary">
                             Sample
                             <UI.Badge model="bg count" color="danger">8</UI.Badge>
@@ -534,19 +535,19 @@ export default function Home() {
                     <div className="container">
                         <h2 css={section.heading}>Expansion</h2>
 
-                        <h3 css={section.headingSm}>Vanilla</h3>
+                        <h3 css={section.headingSm}>default</h3>
                         <UI.Expansion title="Expansion (Click)">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </UI.Expansion>
 
-                        <h3 css={section.headingSm}>Border</h3>
-                        <UI.Expansion title="Expansion (Hover)" model="border" hover={true}>
+                        <h3 css={section.headingSm}>border</h3>
+                        <UI.Expansion model="border" title="Expansion (Hover)" hover={true}>
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </UI.Expansion>
 
-                        <h3 css={section.headingSm}>Popup</h3>
+                        <h3 css={section.headingSm}>popup</h3>
                         <div className="flex justify-end">
-                            <UI.Expansion model="popup">
+                            <UI.Expansion model="popup" title="Expansion (Popup)">
                                 <ul className="expansion-nav-body">
                                     <li>
                                         <button type="button">

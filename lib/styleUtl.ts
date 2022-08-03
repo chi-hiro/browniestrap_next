@@ -388,6 +388,14 @@ export const mixins = {
 //  Utilities
 //***********************************************************************
 export const utility = {
+    headerMargin: css`
+        margin-top: ${variables.ui.headerHeightSm}px;
+
+        ${mixins.breakpointUp(`
+            margin-top: ${variables.ui.headerHeight}px;
+        `)}
+    `,
+
     hiddenUp: css`
         ${mixins.breakpointUp(`
             display: none !important;
@@ -645,26 +653,14 @@ export const section = {
         }
 
         .section-grid-img {
-            .embed {
-                margin-bottom: 0;
-            }
-
             ${mixins.breakpointUp(`
                 min-height: 100%;
                 max-height: 80vh;
-
-                .embed {
-                    height: 100%;
-
-                    &::before {
-                        display: none;
-                    }
-
-                    img {
-                        position: static;
-                    }
-                }
             `)}
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
         }
     `,
 

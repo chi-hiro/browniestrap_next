@@ -73,8 +73,8 @@ const Expansion = (props: Props) => {
     // Render
     return (
         <div css={expansionCSS} className={expansionClass} onMouseLeave={hideHover}>
-            <button type="button" className="expansion-toggler" onClick={toggle} onMouseEnter={showHover} tabIndex={props.locked ? -1 : 0}>
-                {props.title && props.title}
+            <button type="button" className="expansion-toggler" onClick={toggle} onMouseEnter={showHover} tabIndex={props.locked ? -1 : 0} aria-label={props.title}>
+                {(props.model !== 'popup' && props.title) ? props.title : ''}
 
                 {!props.locked && (<span className="icon">
                     <Icon value={props.model === 'popup' ? 'more_horiz' : 'expand_more'} />

@@ -18,14 +18,14 @@ type Props = {
     src: Array<{
         src: string,
         src_lg?: string,
-        url?: string,
-        ratio?: number[]
+        url?: string
     }>
     duration?: number
     zoom?: boolean
     timer?: boolean
     nav?: boolean
     pagination?: boolean
+    ratio?: number[]
 }
 
 const Carousel = (props: Props) => {
@@ -99,6 +99,7 @@ const Carousel = (props: Props) => {
         mySwiper.slideTo(value)
     }
 
+    // Computed
     const carouselCSS = useMemo((): FlattenSimpleInterpolation[] => {
         const arr = [styles.carousel]
         props.model && arr.push([styles[props.model]])
@@ -113,11 +114,12 @@ const Carousel = (props: Props) => {
 
     const carouselStyle = useMemo((): {[key: string]: string} => {
         return props.duration ? {
-            '--carousel-duration': `${(props.duration + 2000)}ms`,
+            '--carousel-duration': (props.model === 'visual') ? `${(props.duration + 2000)}ms` : `${props.duration}ms`,
             '--carousel-timer-duration': `${props.duration}ms`
         } : {}
     }, [props.duration])
 
+    // Hooks
     useEffect(() => {
         beforeW = window.innerWidth
 
@@ -139,6 +141,7 @@ const Carousel = (props: Props) => {
         }
     }, [mySwiper])
 
+    // Render
     return (
         <div ref={el} css={carouselCSS} className={carouselClass} style={carouselStyle}>
             {isShow && (
@@ -154,7 +157,7 @@ const Carousel = (props: Props) => {
                 >
                     {props.src.map((item, index) => (
                         <SwiperSlide key={`carousel-item${index}`}>
-                            <CarouselItem src={item} />
+                            <CarouselItem src={item} ratio={props.ratio} />
                         </SwiperSlide>
                     ))}
 

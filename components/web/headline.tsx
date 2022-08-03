@@ -28,7 +28,7 @@ const Headline = (props: Props) => {
     }, [props.model])
 
     const renderBody = (
-        <div className="headline-item-body">
+        <div className="headline-body">
             <div className="detail">
                 {props.badge && <UI.Badge model="bg sm long" color={props.badge.color}>{props.badge.label}</UI.Badge>}
                 {props.date && <time itemProp="datePublished" dateTime={props.date} className="date">{formatDate}</time>}
@@ -62,7 +62,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
     headline: css`
         position: relative;
 
-        .headline-item-body {
+        .headline-body {
             position: relative;
 
             ${mixins.breakpointUp(`
@@ -90,7 +90,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 font-weight: normal;
                 color: ${variables.theme.bodyColor};
                 line-height: 1;
-
                 ${mixins.transition(['color'])}
 
                 ${mixins.darkmode(`
@@ -143,7 +142,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             background-repeat: no-repeat;
             background-position: right bottom;
             background-size: 0 1px;
-
             ${mixins.transition(['background-size'])}
 
             ${mixins.darkmode(`
@@ -166,7 +164,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
             border-color: ${variables.darkTheme.borderColor};
         `)}
 
-        .headline-item-body {
+        .headline-body {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
 

@@ -42,7 +42,7 @@ const Header = () => {
     const clickLogo = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (store.mobile && scrollElement().scrollTop > 0) {
             e.preventDefault()
-            pageScroll('#__next')
+            pageScroll('pagetop')
         }
     }
 
@@ -249,6 +249,12 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
                 ${mixins.breakpointUp(`
                     border: none;
                 `)}
+
+                > .show {
+                    .expansion-toggler {
+                        color: ${variables.linkHoverColor};
+                    }
+                }
             }
 
             a:not(.header-btn),
@@ -282,10 +288,6 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
                     .icon {
                         color: ${variables.linkColor};
-                    }
-
-                    .show & {
-                        color: ${variables.linkHoverColor};
                     }
                 }
 
@@ -324,7 +326,7 @@ export const styles: { [key: string]: FlattenSimpleInterpolation } = {
 
                 ${mixins.breakpointUp(`
                     margin: 0 0.5rem;
-                    padding: ${variables.input.sm.padding}px ${variables.input.inputPaddingX}px;
+                    padding: ${variables.input.sm.padding}px ${variables.input.btnPaddingX}px;
                 `)}
             }
 

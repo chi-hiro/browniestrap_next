@@ -8,15 +8,15 @@ type Props = {
         src: string
         src_lg?: string
         url?: string
-        ratio?: number[]
     }
+    ratio?: number[]
 }
 
 const CarouselItem = (props: Props) => {
     const store = useSelector((state: { env: EnvTypes }) => state.env)
 
-    const renderBody = props.src.ratio ? (
-        <span css={utility.embed(props.src.ratio[0], props.src.ratio[1])}>
+    const renderBody = props.ratio ? (
+        <span css={utility.embed(props.ratio[0], props.ratio[1])}>
             <img data-src={props.src.src} width="100%" height="100%" alt="" className="swiper-lazy" />
         </span>
     ) : (
